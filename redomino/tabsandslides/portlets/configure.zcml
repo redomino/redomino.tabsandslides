@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="redomino.tabsandslides">
+
+    <include package="plone.portlet.collection" />
+
+<!-- slideshow portlet -->
+
+     <!-- Register the portlet -->
+     <plone:portlet
+         name="redomino.tabsandslides.portlet"
+         interface=".portlet_slideshow.ICollectionPortlet"
+         assignment=".portlet_slideshow.Assignment"
+         view_permission="zope2.View"
+         edit_permission="plone.portlet.collection.AddCollectionPortlet"
+         renderer=".portlet_slideshow.Renderer"
+         addview=".portlet_slideshow.AddForm"
+         editview=".portlet_slideshow.EditForm"
+         />
+
+
+
+</configure>

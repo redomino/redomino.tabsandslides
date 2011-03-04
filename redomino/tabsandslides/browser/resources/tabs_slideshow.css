@@ -1,0 +1,246 @@
+/*
+**********************************************************************
+ COMMON
+**********************************************************************
+*/
+#content .tab-content-core.template_image_view_fullscreen a:visited{
+border:none;
+}
+
+#content .tab-content-core.template_image_view_fullscreen span, .tab-content-core.template_image_view_fullscreen br{
+display:none;
+}
+
+/*#content a:visited, dl.portlet a:visited {*/
+/*    border-bottom: none;*/
+/*}*/
+
+/*
+**********************************************************************
+ SLIDES
+**********************************************************************
+*/
+
+/* container for slides */
+.slideshow_panes {
+    background-color:#fff;
+	border:1px solid #ccc;
+	position:relative;	
+	height:300px;
+	
+/*	width:330px;*/
+	width:100%;
+	float:left;	
+	margin:15px;
+	cursor:pointer;
+
+    overflow:hidden;	
+	/* CSS3 tweaks for modern browsers */
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-box-shadow:0 0 25px #666;
+	-webkit-box-shadow:0 0 25px #666;	
+}
+
+/* single slide */
+.slideshow_panes > div {
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;		
+/*	margin:7px;*/
+/*	padding:15px 30px 15px 15px;*/
+	height:256px;
+	font-size:12px;
+/*    width:300px;*/
+	width:100%;
+
+}
+
+
+/* tabs (those little circles below slides) */
+.slideshow_tabs {
+	clear:both;
+/*	margin-left:115px;*/
+	margin-left:50%;
+}
+
+/* single tab */
+.slideshow_tabs a {
+	width:8px;
+	height:8px;
+	float:left;
+	margin:3px;
+	background:url(navigator.png) 0 0 no-repeat;
+	display:block;
+	font-size:1px;		
+}
+
+/* mouseover state */
+.slideshow_tabs a:hover {
+	background-position:0 -8px;      
+}
+
+/* active state (current page state) */
+.slideshow_tabs a.current {
+	background-position:0 -16px;     
+} 	
+
+
+/* prev and next buttons */
+.forward, .backward {
+	float:left;
+	margin-top:140px;
+	background:#fff url(hori_large.png) no-repeat;
+	display:block;
+	width:30px;
+	height:30px;
+	cursor:pointer;
+	font-size:1px;
+	text-indent:-9999em;	
+}
+
+/* next */
+.forward 				{ background-position: 0 -30px; clear:right; }
+.forward:hover 		{ background-position:-30px -30px; }
+.forward:active 	 	{ background-position:-60px -30px; } 
+
+
+/* prev */
+.backward:hover  		{ background-position:-30px 0; }
+.backward:active  	{ background-position:-60px 0; }
+
+/* disabled navigational button. is not needed when tabs are configured with rotate: true */
+.disabled {
+	visibility:hidden ;		
+}
+
+
+/*
+**********************************************************************
+ TABS
+**********************************************************************
+*/
+
+
+/* root element for tabs  */
+.tabs {  
+	margin:0 !important; 
+	padding:0;
+	height:30px;
+	border-bottom:1px solid #666;	 	
+}
+
+/* single tab */
+.tabs li {  
+	float:left;	 
+	padding:0; 
+	margin:0;  
+	list-style-type:none;	
+}
+
+/* link inside the tab. uses a background image */
+.tabs a { 
+	float:left;
+	font-size:13px;
+	display:block;
+	padding:5px 30px;	
+	text-decoration:none;
+	border:1px solid #666;	
+	border-bottom:0px;
+	height:18px;
+	background-color:#efefef;
+	color:#777;
+	margin-right:2px;
+	position:relative;
+	top:1px;	
+	outline:0;
+	-moz-border-radius:4px 4px 0 0;	
+}
+
+.tabs a:hover {
+	background-color:#F7F7F7;
+	color:#333;
+}
+	
+/* selected tab */
+.tabs a.current {
+	background-color:#ddd;
+	border-bottom:1px solid #ddd;	
+	color:#000;	
+	cursor:default;
+}
+
+	
+/* tab pane */
+.panes > div {
+	display:none;
+	border:1px solid #666;
+	border-width:0 1px 1px 1px;
+	min-height:150px;
+	padding:15px 20px;
+	background-color:#ddd;	
+}
+
+/*
+**********************************************************************
+ IMAGE TABS
+**********************************************************************
+*/
+.imagetabs-tabs div {
+width:210px;
+height:200px;
+/*list-style:none;*/
+}
+.imagetabs-panes{
+clear:both;
+}
+
+.boxscrollable-next, .boxscrollable-prev{
+    color: transparent;
+    width: 30px;
+    height:30px;
+    cursor:pointer;
+    margin-top:80px;
+}
+
+.boxscrollable-next {
+    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 -30px transparent;
+/*    padding-left:3px;*/
+}
+.boxscrollable-prev {
+    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 0 transparent;
+/*    padding-right:3px;*/
+}
+.boxscrollable-prev:hover {
+    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat -60px 0 transparent;
+}
+.boxscrollable-next:hover {
+    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat -60px -30px transparent;
+}
+
+.boxscrollable-prev.disabled, .boxscrollable-next.disabled{
+visibility:visible;
+opacity:0.5;
+cursor:default;
+}
+
+.boxscrollable-next.disabled:hover {
+    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 -30px transparent;
+}
+.boxscrollable-prev.disabled:hover {
+    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 0 transparent;
+}
+
+/*
+**********************************************************************
+ GALLERY
+**********************************************************************
+*/
+.imagegallery div {
+/*width:210px;*/
+/*height:200px;*/
+/*list-style:none;*/
+}
+
+

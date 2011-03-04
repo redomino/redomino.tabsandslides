@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="redomino.tabsandslides">
+
+
+
+<body>
+    <div metal:fill-slot="main">
+        <tal:main-macro metal:define-macro="main">
+            <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
+            <div class="documentDescription" tal:content="context/Description"></div>
+
+            <div id="content-core" tal:define="contents view/getViews">
+
+                <!-- the tabs -->
+                <ul class="tabs">
+	                <li tal:repeat="content contents" tal:content="structure content/tab">tab 1 content</li>
+                </ul>
+
+                <!-- tab "panes" -->
+                <div class="panes">
+	                <div tal:repeat="content contents" tal:content="structure content/pane">pane 1 content</div>
+                </div>
+
+            </div>
+            
+            <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>
+
+        </tal:main-macro>
+    </div>
+</body>
+</html>

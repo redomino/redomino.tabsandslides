@@ -1,0 +1,93 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="redomino.tabsandslides">
+
+
+
+<!--Tabbed folder -->
+
+    <adapter
+        for="*"
+        provides=".interfaces.ITabViewAdapter"
+        factory=".tabgenerator.SimpleTabGenerator"
+    />
+
+    <adapter
+        for="Products.ATContentTypes.interface.IATImage"
+        provides=".interfaces.ITabViewAdapter"
+        factory=".tabgenerator.TabGeneratorImage"
+    />
+
+<!-- Slideshow folder -->
+
+    <adapter
+        for="*"
+        provides=".interfaces.ISlideshowViewAdapter"
+        factory=".tabgenerator.SimpleTabGenerator"
+    />
+
+    <adapter
+        for="Products.ATContentTypes.interface.IATImage"
+        provides=".interfaces.ISlideshowViewAdapter"
+        factory=".tabgenerator.TabGeneratorImage"
+    />
+
+<!--Tabbed portlet -->
+
+    <adapter
+        for="*"
+        provides=".interfaces.ITabPortletAdapter"
+        factory=".tabgenerator.SimpleTabGenerator"
+    />
+
+    <adapter
+        for="Products.ATContentTypes.interface.IATImage"
+        provides=".interfaces.ITabPortletAdapter"
+        factory=".tabgenerator.TabGeneratorImage"
+    />
+
+
+<!-- Image Tab generator adapters -->
+
+    <adapter
+        for="*"
+        provides=".interfaces.IImageTabViewAdapter"
+        factory=".tabgenerator.ImagesTabGenerator"
+    />
+
+    <adapter
+        for="Products.ATContentTypes.interface.IATImage"
+        provides=".interfaces.IImageTabViewAdapter"
+        factory=".tabgenerator.ImagesImageTabGenerator"
+    />
+
+    <adapter
+        for="Products.ATContentTypes.interface.IATNewsItem"
+        provides=".interfaces.IImageTabViewAdapter"
+        factory=".tabgenerator.ImagesNewsTabGenerator"
+    />
+
+<!-- Gallery Tab generator adapters -->
+
+    <adapter
+        for="*"
+        provides=".interfaces.IGalleryAdapter"
+        factory=".gallerygenerator.GalleryTabGenerator"
+    />
+
+    <adapter
+        for="Products.ATContentTypes.interface.IATImage"
+        provides=".interfaces.IGalleryAdapter"
+        factory=".gallerygenerator.GalleryImageTabGenerator"
+    />
+
+    <adapter
+        for="Products.ATContentTypes.interface.IATNewsItem"
+        provides=".interfaces.IGalleryAdapter"
+        factory=".gallerygenerator.GalleryImageTabGenerator"
+    />
+
+
+</configure>
