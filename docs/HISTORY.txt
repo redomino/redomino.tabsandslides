@@ -1,7 +1,15 @@
 Changelog
 =========
 
-1.0dev (unreleased)
+0.5 (first released)
 -------------------
 
 - Initial release
+
+0.6 (2011-03-11)
+-------------------
+
+- New javascript configuration.
+  This use a browser resource so it can be overridden using layer interface
+  [sithmel]
+
