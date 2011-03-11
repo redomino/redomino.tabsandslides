@@ -6,7 +6,7 @@ Changelog
 
 - Initial release
 
-0.6 (2011-03-11)
+0.6.2 (2011-03-11)
 -------------------
 
 - New javascript configuration.

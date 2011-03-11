@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.6.1'
+version = '0.6.2'
 
 setup(name='redomino.tabsandslides',
       version=version,
@@ -13,11 +13,12 @@ setup(name='redomino.tabsandslides',
       classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
+        "License :: OSI Approved :: GNU General Public License (GPL)",
         ],
-      keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      keywords='Zope Plone Views',
+      author='Maurizio Lupo',
+      author_email='maurizio.lupo@redomino.com',
+      url='http://pypi.python.org/pypi/redomino.tabsandslides',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['redomino'],
@@ -25,7 +26,6 @@ setup(name='redomino.tabsandslides',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
           'lxml'
       ],
       entry_points="""

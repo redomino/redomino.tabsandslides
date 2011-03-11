@@ -9,7 +9,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="redomino.tabsandslides"
+      title="Tabs and Slides"
       directory="profiles/default"
       description="Installs the redomino.tabsandslides package"
       provides="Products.GenericSetup.interfaces.EXTENSION"

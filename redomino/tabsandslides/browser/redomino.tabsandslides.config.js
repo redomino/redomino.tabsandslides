@@ -7,7 +7,7 @@ tabsandslides.gallery = {};
 tabsandslides.gallery.config_boxscrollable = {horizontal:true,
 //                                            number_items:4, 
                                               minheight:200, 
-                                              minwidth:210,
+                                              minwidth:220,
                                               easing:'easeInOutCirc'}
 
 //
