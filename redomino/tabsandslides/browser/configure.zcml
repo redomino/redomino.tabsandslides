@@ -17,6 +17,14 @@
        directory="resources"
        />
 
+<!-- javascript config -->
+
+   <browser:resource
+      name="redomino.tabsandslides.config.js"
+      file="redomino.tabsandslides.config.js"
+      permission="zope2.View"
+      />
+
 <!-- gallery view -->
 
   <browser:page

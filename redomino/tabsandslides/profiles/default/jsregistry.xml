@@ -18,6 +18,12 @@
       for the latest list of all available keys and default values.
       -->
  <javascript
+    id="++resource++redomino.tabsandslides.config.js"
+    cacheable="False" compression="safe" cookable="False"
+    enabled="True" expression=""  inline="False" insert-after="*"/>
+
+
+ <javascript
     id="++resource++redomino.tabsandslides_resources/tabs.slideshow.min.js"
     cacheable="False" compression="safe" cookable="False"
     enabled="True" expression=""  inline="False" insert-after="*"/>

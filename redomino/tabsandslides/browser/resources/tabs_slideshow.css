@@ -31,7 +31,7 @@ display:none;
 /*	width:330px;*/
 	width:100%;
 	float:left;	
-	margin:15px;
+	margin-bottom:15px;
 	cursor:pointer;
 
     overflow:hidden;	
@@ -66,7 +66,7 @@ display:none;
 }
 
 /* single tab */
-.slideshow_tabs a {
+#content .slideshow_tabs a {
 	width:8px;
 	height:8px;
 	float:left;
@@ -74,15 +74,18 @@ display:none;
 	background:url(navigator.png) 0 0 no-repeat;
 	display:block;
 	font-size:1px;		
+    border-bottom:none;
+	text-indent:-9999em;	
+
 }
 
 /* mouseover state */
-.slideshow_tabs a:hover {
+#content .slideshow_tabs a:hover {
 	background-position:0 -8px;      
 }
 
 /* active state (current page state) */
-.slideshow_tabs a.current {
+#content .slideshow_tabs a.current {
 	background-position:0 -16px;     
 } 	
 
@@ -206,10 +209,12 @@ clear:both;
 
 .boxscrollable-next {
     background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 -30px transparent;
+    text-indent: -9999em;
 /*    padding-left:3px;*/
 }
 .boxscrollable-prev {
     background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 0 transparent;
+    text-indent: -9999em;
 /*    padding-right:3px;*/
 }
 .boxscrollable-prev:hover {
