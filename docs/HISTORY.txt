@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.6.3dev (unreleased)
--------------------
+0.6.3 (2011-04-21)
+------------------
 
 - New view (slideshow_preview_view). [sithmel]
 
