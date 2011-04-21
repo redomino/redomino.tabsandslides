@@ -19,6 +19,11 @@ slideshow_view
 ------------------
 Show elements inside a folder (or collection) as a slideshow.
 
+slideshow_preview_view
+------------------
+Show elements inside a folder (or collection) as a slideshow with a tiny preview.
+
+
 redomino.tabsandslides.portlet
 ----------------------------------
 This is a portlet that show elements of a collection as a slideshow
@@ -27,6 +32,7 @@ This is a portlet that show elements of a collection as a slideshow
 Customization
 --------------
 The views can be customized using adapters. Watch the "browser/adapters" folder.
+The js configuration is overridable (redomino.tabsandslides.config.js).
 
 
 Installation

@@ -37,6 +37,9 @@ class IImageTabViewAdapter(ITabGenerator):
 class ITabPortletAdapter(ITabGenerator):
     """Tab portlet view adapter"""
 
+class ISlideshowPreviewViewAdapter(ITabGenerator):
+    """slideshow preview view adapter"""
+
 # GALLERIES
 
 class IGalleryGenerator(Interface):

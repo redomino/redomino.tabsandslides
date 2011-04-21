@@ -8,6 +8,7 @@
   <element value="slideshow_view"/>
   <element value="tabbed_summary_view"/>
   <element value="gallery_view"/>
+  <element value="slideshow_preview_view"/>
  </property>
 
 </object>

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.6.2'
+version = '0.6.3dev'
 
 setup(name='redomino.tabsandslides',
       version=version,
@@ -35,5 +35,5 @@ setup(name='redomino.tabsandslides',
       target = plone
       """,
       setup_requires=["PasteScript"],
-      paster_plugins=["ZopeSkel"],
+#      paster_plugins=["ZopeSkel"],
       )

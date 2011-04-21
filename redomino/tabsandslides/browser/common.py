@@ -24,7 +24,7 @@ from Products.ATContentTypes.interface import IATTopic
 
 from redomino.tabsandslides.browser.interfaces import  IImagesTabbedFolder, ITabbedFolder, IGalleryFolder
 
-from redomino.tabsandslides.browser.adapters.interfaces import IImageTabViewAdapter, ISlideshowViewAdapter, ITabViewAdapter, IGalleryAdapter
+from redomino.tabsandslides.browser.adapters.interfaces import IImageTabViewAdapter, ISlideshowViewAdapter, ITabViewAdapter, IGalleryAdapter, ISlideshowPreviewViewAdapter
 
 #
 # abstract class
@@ -60,8 +60,8 @@ class BaseTabbedFolderView(BrowserView):
         """return the views:
 
         DANGER!!!!!
-        If other contents views refer to the context may happen an infinite loop !!!!
-        The patch: in the adapter I have disabled references to '@@tabbed_folder'
+        If other contents views refer to the same context may happen an infinite loop !!!!
+        The ugly patch: in the adapter I have disabled references to '@@tabbed_folder'
         """
         contentsMethod = self.contentsMethod()
 
@@ -126,4 +126,14 @@ class GalleryFolder(BaseTabbedFolderView):
 
     def getAdapter(self,obj):
         return IGalleryAdapter(obj)
+
+class SlideshowPreviewFolder(BaseTabbedFolderView):
+    """
+    slideshow_preview_view browser view
+    """
+    implements(ITabbedFolder)
+
+    def getAdapter(self,obj):
+        return ISlideshowPreviewViewAdapter(obj)
+
 

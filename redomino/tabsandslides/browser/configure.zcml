@@ -105,5 +105,25 @@
       permission="zope2.View"
       />
 
+<!-- slideshow with preview view -->
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATFolder"
+      name="slideshow_preview_view"
+      class=".common.SlideshowPreviewFolder"
+      template="templates/slideshow_preview_folder.pt"
+      allowed_interface=".interfaces.ITabbedFolder"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATTopic"
+      name="slideshow_preview_view"
+      class=".common.SlideshowPreviewFolder"
+      template="templates/slideshow_preview_folder.pt"
+      allowed_interface=".interfaces.ITabbedFolder"
+      permission="zope2.View"
+      />
+
 
 </configure>

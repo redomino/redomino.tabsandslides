@@ -89,5 +89,25 @@
         factory=".gallerygenerator.GalleryImageTabGenerator"
     />
 
+<!-- Slideshow preview folder -->
+
+    <adapter
+        for="*"
+        provides=".interfaces.ISlideshowPreviewViewAdapter"
+        factory=".tabgenerator.SimpleTabGenerator"
+    />
+
+    <adapter
+        for="Products.ATContentTypes.interface.IATImage"
+        provides=".interfaces.ISlideshowPreviewViewAdapter"
+        factory=".tabgenerator.PreviewTabGeneratorImage"
+    />
+
+    <adapter
+        for="Products.ATContentTypes.interface.IATNewsItem"
+        provides=".interfaces.ISlideshowPreviewViewAdapter"
+        factory=".tabgenerator.PreviewTabGeneratorNews"
+    />
+
 
 </configure>

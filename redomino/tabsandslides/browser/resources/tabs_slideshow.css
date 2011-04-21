@@ -248,4 +248,49 @@ cursor:default;
 /*list-style:none;*/
 }
 
+/*
+**********************************************************************
+ SLIDESHOW PREVIEW FOLDER
+**********************************************************************
+*/
 
+
+/* single slide */
+.slideshow_preview_panes > div {
+	display:none;
+	position:absolute;
+/*	top:0;*/
+/*	left:0;		*/
+/*	margin:7px;*/
+/*	padding:15px 30px 15px 15px;*/
+	height:256px;
+/*	font-size:12px;*/
+/*    width:300px;*/
+/*	width:100%;*/
+    overflow:hidden;
+}
+.slideshow_preview_panes{
+	height:256px;
+}
+
+#content .slideshow_preview_tabs > a {
+    display:block;
+    height:64px;
+    margin-top:10px;
+    border:none;
+}
+
+.slideshow_preview_tabs {
+    float: left;
+    position: relative;
+    width: 70px;
+    z-index: 100;
+    background-color: rgba(160, 160, 160, 0.4);
+	height:256px;
+}
+
+
+#content .slideshow_preview_tabs > a.current {
+    background-color: rgba(160, 160, 160, 0.4);
+    
+}

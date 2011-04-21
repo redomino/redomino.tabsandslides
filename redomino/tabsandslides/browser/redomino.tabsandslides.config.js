@@ -44,5 +44,19 @@ tabsandslides.slideshow.config = {
 tabsandslides.slideshow.slideshow_config = {clickable:false};
 
 
+//
+// SLIDESHOW
+//
+
+tabsandslides.slideshowpreview = {};
+
+tabsandslides.slideshowpreview.config = {
+    // enable "cross-fading" effect
+    effect: 'fade',
+    fadeOutSpeed: "slow",
+    rotate: true
+};
+
+tabsandslides.slideshowpreview.slideshow_config = {clickable:false};
 
 

@@ -66,6 +66,24 @@ jQuery.fn.init_gallery = function (){
 
 };
 
+/*
+*
+* slideshow with previews
+*
+*/
+
+jQuery.fn.init_slideshowpreview = function (){
+    var context = this;
+    var config = tabsandslides.slideshowpreview.config;
+    var slideshow_config = tabsandslides.slideshowpreview.slideshow_config
+
+    jQuery(".slideshow_preview_tabs",context).tabs(".slideshow_preview_panes > div",config).slideshow(slideshow_config);
+    jQuery(".slideshow_preview_tabs",context).each(function (){
+        jQuery(this).data('slideshow').play();
+    });
+
+    return context;
+};
 
 /*
 *
@@ -75,7 +93,7 @@ jQuery.fn.init_gallery = function (){
 
 (function($){
 $(document).ready(function (){
-    $(this).init_slideshow().init_tabs().init_image_tabs().init_gallery();
+    $(this).init_slideshow().init_tabs().init_image_tabs().init_gallery().init_slideshowpreview();
 });
 })(jQuery);
 

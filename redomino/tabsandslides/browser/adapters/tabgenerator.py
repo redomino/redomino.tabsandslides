@@ -170,4 +170,60 @@ class ImagesNewsTabGenerator(PrototypeTabGenerator):
         return "<div><h3>%s</h3><p>%s</p><div>%s</div></div>" % (ctx.Title(), ctx.Description(), ctx.getText())
 
 
+#
+# ISlideshowPreviewViewAdapter adapters
+#
+
+class PreviewTabGeneratorImage(PrototypeTabGenerator):
+    """
+    >>> class Dummy(object):
+    ...    title = 'title'
+    ...    def Title(self):
+    ...        return 'Title'
+    ...    def absolute_url(self):
+    ...        return 'http://nourl'
+    ...    def Description(self):
+    ...        return 'Description'
+    >>> dummy = Dummy()
+    >>> tgi = PreviewTabGeneratorImage(dummy)
+    >>> tgi.getTab()
+    '<a href="http://nourl/view"><img src="http://nourl/@@images/image/tile" /></a>'
+    >>> tgi.getPane()
+    '<a href="http://nourl/view"><img src="http://nourl" /></a>'
+    """
+    def getTab(self):
+        url = self.context.absolute_url()
+        return '<a href="%s/view"><img src="%s/@@images/image/tile" /></a>' % (url,url)
+
+    def getPane(self):
+        url = self.context.absolute_url()
+        return '<a href="%s/view"><img src="%s" /></a>' % (url,url)
+   
+
+class PreviewTabGeneratorNews(PrototypeTabGenerator): 
+    """
+    >>> class Dummy(object):
+    ...    title = 'title'
+    ...    def Title(self):
+    ...        return 'Title'
+    ...    def absolute_url(self):
+    ...        return 'http://nourl'
+    ...    def Description(self):
+    ...        return 'Description'
+    ...    def getText(self):
+    ...        return 'Text'
+    >>> dummy = Dummy()
+    >>> tgi = PreviewTabGeneratorNews(dummy)
+    >>> tgi.getTab()
+    '<a href="http://nourl"><img src="http://nourl/@@images/image/tile" /></a>'
+    >>> tgi.getPane()
+    '<div><h3>Title</h3><p>Description</p><div>Text</div></div>'
+    """
+    def getTab(self):
+        url = self.context.absolute_url()
+        return '<a href="%s"><img src="%s/@@images/image/tile" /></a>' % (url,url)
+
+    def getPane(self):
+        ctx = self.context
+        return "<div><h3>%s</h3><p>%s</p><div>%s</div></div>" % (ctx.Title(), ctx.Description(), ctx.getText())
 
