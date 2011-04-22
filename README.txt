@@ -59,4 +59,17 @@ Credits
 
 Created by Maurizio Lupo for redomino in 2011.
 
-
+TODO
+--------
+1 - delete most of the adapters (leave some example only)
+2 - add a series of content type images to use in galleries and tabbed previews
+3 - substitute adapter with browserviews (In this way I can customize them using a layer interface)
+4 - modify boxscrollable plugin (remember to keep the tests updated):
+    - do not manage left and right buttons 
+    - manage scroll using position relative instead scroll
+    - implement cycle between images
+    - auto resize
+3 - use only 2 templates, use only 2 class
+    - refactor css
+    - refactor js
+4 - use multiadapters to load js (optional)

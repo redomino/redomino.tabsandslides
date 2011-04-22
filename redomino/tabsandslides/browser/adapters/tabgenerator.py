@@ -215,13 +215,13 @@ class PreviewTabGeneratorNews(PrototypeTabGenerator):
     >>> dummy = Dummy()
     >>> tgi = PreviewTabGeneratorNews(dummy)
     >>> tgi.getTab()
-    '<a href="http://nourl"><img src="http://nourl/@@images/image/tile" /></a>'
+    '<div><a href="http://nourl"><img src="http://nourl/@@images/image/tile" /></a></div>'
     >>> tgi.getPane()
     '<div><h3>Title</h3><p>Description</p><div>Text</div></div>'
     """
     def getTab(self):
         url = self.context.absolute_url()
-        return '<a href="%s"><img src="%s/@@images/image/tile" /></a>' % (url,url)
+        return '<div><a href="%s"><img src="%s/@@images/image/tile" /></a></div>' % (url,url)
 
     def getPane(self):
         ctx = self.context
