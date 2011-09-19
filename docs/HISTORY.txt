@@ -4,7 +4,7 @@ Changelog
 0.6.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- changed the whole adapter approach see README for further explanation [sithmel]
 
 
 0.6.4 (2011-04-22)

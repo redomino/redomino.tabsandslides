@@ -13,22 +13,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
+
 from zope.interface import implements, Interface
 
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
-from zope.component import getMultiAdapter, getUtility
-from Products.CMFPlone.utils import getDefaultPage
-from Acquisition import aq_parent, aq_inner
+from zope.component import getMultiAdapter
 from Products.ATContentTypes.interface import IATTopic
+from Acquisition import aq_inner
 
-from redomino.tabsandslides.browser.interfaces import  IImagesTabbedFolder, ITabbedFolder, IGalleryFolder
+from redomino.tabsandslides.browser.interfaces import (ITabGenerator,
+                                                       ITabbedFolder,
+                                                       ISlideshowFolder,
+                                                       IImagesTabbedFolder,
+                                                       IGalleryFolder,
+                                                       ISlideshowPreviewFolder,
+                                                       IBoxView)
 
-from redomino.tabsandslides.browser.adapters.interfaces import IImageTabViewAdapter, ISlideshowViewAdapter, ITabViewAdapter, IGalleryAdapter, ISlideshowPreviewViewAdapter
-
-#
-# abstract class
-#
 
 class BaseTabbedFolderView(BrowserView):
     """
@@ -57,11 +58,7 @@ class BaseTabbedFolderView(BrowserView):
         return contentsMethod
             
     def getViews(self):
-        """return the views:
-
-        DANGER!!!!!
-        If other contents views refer to the same context may happen an infinite loop !!!!
-        The ugly patch: in the adapter I have disabled references to '@@tabbed_folder'
+        """return a tab and a pane for each object:
         """
         contentsMethod = self.contentsMethod()
 
@@ -75,65 +72,23 @@ class BaseTabbedFolderView(BrowserView):
         return out
 
     def getAdapter(self,obj):
-        raise NotImplementedError
+        return getMultiAdapter((obj, self.context, self.request, self), ITabGenerator)
 
 class TabbedFolder(BaseTabbedFolderView):
-    """
-    tabbed_folder browser view
-    """
     implements(ITabbedFolder)
-
-    def getAdapter(self,obj):
-        return ITabViewAdapter(obj)
 
 class SlideshowFolder(BaseTabbedFolderView):
-    """
-    slideshow_folder browser view
-    """
-    implements(ITabbedFolder)
-
-    def getAdapter(self,obj):
-        return ISlideshowViewAdapter(obj)
-
+    implements(ISlideshowFolder)
 
 class ImagesTabbedFolder(BaseTabbedFolderView):
-    """
-    images_tabbed_folder browser view
-    """
     implements(IImagesTabbedFolder)
 
-    def getAdapter(self,obj):
-        return IImageTabViewAdapter(obj)
-
 class GalleryFolder(BaseTabbedFolderView):
-    """
-    images_tabbed_folder browser view
-    """
     implements(IGalleryFolder)
 
-    def getViews(self):
-        """return the views"""
-        contentsMethod = self.contentsMethod()
-
-        out = []
-            
-        for b in contentsMethod():
-            obj = b.getObject()
-            galleryGenerator = self.getAdapter(obj)
-            out.append(galleryGenerator.get())
-
-        return out
-
-    def getAdapter(self,obj):
-        return IGalleryAdapter(obj)
-
 class SlideshowPreviewFolder(BaseTabbedFolderView):
-    """
-    slideshow_preview_view browser view
-    """
-    implements(ITabbedFolder)
+    implements(ISlideshowPreviewFolder)
 
-    def getAdapter(self,obj):
-        return ISlideshowPreviewViewAdapter(obj)
-
+class BoxView(BaseTabbedFolderView):
+    implements(IBoxView)
 

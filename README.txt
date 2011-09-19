@@ -29,9 +29,32 @@ redomino.tabsandslides.portlet
 This is a portlet that show elements of a collection as a slideshow
 
 
-Customization
---------------
-The views can be customized using adapters. Watch the "browser/adapters" folder.
+How to create new views
+------------------------
+It's easy !!!: create a view extending BaseTabbedFolderView (browser/common.py). The view MUST has an interface !!!
+Example:
+class MySpecialView(BaseTabbedFolderView):
+    implements(IMySpecialView)
+
+The template uses this method to getting the objects:
+    tal:repeat="content view/getViews
+
+Every object has a tab and a pane (panel)
+    tal:content="structure content/tab"
+    tal:content="structure content/pane"
+
+How to customize the way the container objects look
+----------------------------------------------------
+Each contained object uses a multiadapter to render its own tab and pane. The multiadapter implements ITabGenerator interface and adapts:
+- a context
+- a container
+- a request 
+- a view
+
+Watch the "browser/adapters.py" for examples.
+
+Customize javascript configuration
+-------------------------------------
 The js configuration is overridable (redomino.tabsandslides.config.js).
 
 
@@ -61,15 +84,10 @@ Created by Maurizio Lupo for redomino in 2011.
 
 TODO
 --------
-1 - delete most of the adapters (leave some example only)
-2 - add a series of content type images to use in galleries and tabbed previews
-3 - substitute adapter with browserviews (In this way I can customize them using a layer interface)
-4 - modify boxscrollable plugin (remember to keep the tests updated):
-    - do not manage left and right buttons 
-    - manage scroll using position relative instead scroll
-    - implement cycle between images
-    - auto resize
-3 - use only 2 templates, use only 2 class
-    - refactor css
-    - refactor js
-4 - use multiadapters to load js (optional)
+- Replace boxscrollable plugin with jcarousel
+- Replace slideshow plugin with something better
+- manage image resizing for mobile sites
+- add views: better gallery, box view
+- fix portlet (crash editing properties )
+- Download panes when requested with ajax (and add a js hook to execute javascript code on pages)
+

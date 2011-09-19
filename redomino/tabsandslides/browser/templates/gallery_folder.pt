@@ -36,7 +36,7 @@
             <div id="content-core" class="jsenhanced">
                 <!-- the gallery -->
                 <div class="imagegallery">
-                    <div tal:repeat="content view/getViews" tal:content="structure content">gallery 1 content</div>
+                    <div tal:repeat="content view/getViews" tal:content="structure content/tab">gallery 1 content</div>
                 </div>
             </div>
             <div class="visualClear"></div>

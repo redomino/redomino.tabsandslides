@@ -259,7 +259,7 @@ cursor:default;
 .slideshow_preview_panes > div {
 	display:none;
 	position:absolute;
-	height:256px;
+/*	height:256px;*/
     overflow:hidden;
 }
 .slideshow_preview_panes{
@@ -268,7 +268,6 @@ cursor:default;
 
 #content .slideshow_preview_tabs > li {
     display:block;
-    height:64px;
     margin-top:10px;
 }
 
@@ -278,10 +277,13 @@ cursor:default;
     width: 70px;
     z-index: 100;
     background-color: rgba(160, 160, 160, 0.4);
-	height:256px;
 	margin-left:0;
 }
 
 #content .slideshow_preview_tabs a.current {
     background-color: rgba(160, 160, 160, 0.4);
+}
+
+#content .slideshow_preview_tabs img {
+    width:68px;
 }

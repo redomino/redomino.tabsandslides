@@ -9,6 +9,7 @@
   <element value="tabbed_summary_view"/>
   <element value="gallery_view"/>
   <element value="slideshow_preview_view"/>
+  <element value="box_view"/>
  </property>
 
 </object>

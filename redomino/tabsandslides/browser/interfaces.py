@@ -17,20 +17,25 @@
 
 from zope.interface import Interface
 
+class ITabGenerator(Interface):
+    """Generate tabs"""
+    def getTab():
+        """return a tab (label, image or whatever)"""
+    def getPane():
+        """return a pane (usually the content)"""
+
 class ITabbedFolder(Interface):
-    """
-    tabbed_folder view interface
-    """
+    """tabbed_folder view interface"""
 
+class ISlideshowFolder(Interface):
+    """slideshow_folder view interface"""
 class IImagesTabbedFolder(Interface):
-    """
-    tabbed_folder view interface
-    """
-
+    """images_tabbed_folder view interface"""
 class IGalleryFolder(Interface):
-    """
-    tabbed_folder view interface
-    """
-
+    """gallery_tabbed_folder view interface"""
+class ISlideshowPreviewFolder(Interface):
+    """slideshow_preview_folder view interface"""
+class IBoxView(Interface):
+    """box view view interface"""
 
 

@@ -10,8 +10,6 @@
 
     <include package="plone.portlet.collection" />
 
-    <include package=".adapters" />
-
    <browser:resourceDirectory
        name="redomino.tabsandslides_resources"
        directory="resources"
@@ -32,7 +30,6 @@
       name="gallery_view"
       class=".common.GalleryFolder"
       template="templates/gallery_folder.pt"
-      allowed_interface=".interfaces.IGalleryFolder"
       permission="zope2.View"
       />
 
@@ -41,7 +38,6 @@
       name="gallery_view"
       class=".common.GalleryFolder"
       template="templates/gallery_folder.pt"
-      allowed_interface=".interfaces.IGalleryFolder"
       permission="zope2.View"
       />
 
@@ -52,7 +48,6 @@
       name="tabbed_view"
       class=".common.TabbedFolder"
       template="templates/tabbed_folder.pt"
-      allowed_interface=".interfaces.ITabbedFolder"
       permission="zope2.View"
       />
 
@@ -61,7 +56,6 @@
       name="tabbed_view"
       class=".common.TabbedFolder"
       template="templates/tabbed_folder.pt"
-      allowed_interface=".interfaces.ITabbedFolder"
       permission="zope2.View"
       />
 
@@ -72,7 +66,6 @@
       name="tabbed_summary_view"
       class=".common.ImagesTabbedFolder"
       template="templates/images_tabbed_folder.pt"
-      allowed_interface=".interfaces.IImagesTabbedFolder"
       permission="zope2.View"
       />
 
@@ -81,7 +74,6 @@
       name="tabbed_summary_view"
       class=".common.ImagesTabbedFolder"
       template="templates/images_tabbed_folder.pt"
-      allowed_interface=".interfaces.IImagesTabbedFolder"
       permission="zope2.View"
       />
 
@@ -92,7 +84,6 @@
       name="slideshow_view"
       class=".common.SlideshowFolder"
       template="templates/slideshow_folder.pt"
-      allowed_interface=".interfaces.ITabbedFolder"
       permission="zope2.View"
       />
 
@@ -101,7 +92,6 @@
       name="slideshow_view"
       class=".common.SlideshowFolder"
       template="templates/slideshow_folder.pt"
-      allowed_interface=".interfaces.ITabbedFolder"
       permission="zope2.View"
       />
 
@@ -112,7 +102,6 @@
       name="slideshow_preview_view"
       class=".common.SlideshowPreviewFolder"
       template="templates/slideshow_preview_folder.pt"
-      allowed_interface=".interfaces.ITabbedFolder"
       permission="zope2.View"
       />
 
@@ -121,8 +110,75 @@
       name="slideshow_preview_view"
       class=".common.SlideshowPreviewFolder"
       template="templates/slideshow_preview_folder.pt"
-      allowed_interface=".interfaces.ITabbedFolder"
       permission="zope2.View"
+      />
+
+<!-- box view -->
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATFolder"
+      name="box_view"
+      class=".common.BoxView"
+      template="templates/box_view.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATTopic"
+      name="box_view"
+      class=".common.BoxView"
+      template="templates/box_view.pt"
+      permission="zope2.View"
+      />
+
+<!-- Adapters for context, container, request, view -->
+
+<!-- genericadapter -->
+  <adapter
+      for="*
+           *
+           *
+           *"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GenericTabGenerator"
+      />
+
+<!-- gallery folder adapter -->
+
+  <adapter
+      for="*
+           *
+           *
+           .interfaces.IGalleryFolder"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
+      />
+
+  <adapter
+      for="*
+           *
+           *
+           .interfaces.IImagesTabbedFolder"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
+      />
+
+  <adapter
+      for="*
+           *
+           *
+           .interfaces.ISlideshowPreviewFolder"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
+      />
+
+  <adapter
+      for="*
+           *
+           *
+           .interfaces.IBoxView"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
       />
 
 

@@ -23,8 +23,8 @@ from plone.portlet.collection.collection import Renderer as CollectionRenderer
 from plone.portlet.collection.collection import Assignment as CollectionAssignment
 from plone.portlet.collection.collection import AddForm as CollectionAddForm
 from plone.portlet.collection.collection import ICollectionPortlet as CollectionICollectionPortlet
+from redomino.tabsandslides.browser.interfaces import ITabGenerator
 
-from redomino.tabsandslides.browser.adapters.interfaces import ITabPortletAdapter
 
 class ICollectionPortlet(CollectionICollectionPortlet):
     """"""
@@ -45,10 +45,14 @@ class Renderer(CollectionRenderer):
             
         for b in self.results():
             obj = b.getObject()
-            tabGenerator = ITabPortletAdapter(obj)
+            tabGenerator = self.getAdapter(obj)
+
             out.append({'tab':tabGenerator.getTab(),'pane':tabGenerator.getPane()})
 
         return out
+
+    def getAdapter(self,obj):
+        return getMultiAdapter((obj, self.context, self.request, self), ITabGenerator)
 
 class Assignment(CollectionAssignment):
     """"""
