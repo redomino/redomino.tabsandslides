@@ -84,10 +84,9 @@ Created by Maurizio Lupo for redomino in 2011.
 
 TODO
 --------
-- Replace boxscrollable plugin with jcarousel
-- Replace slideshow plugin with something better
+- fix jcarousel css
+- add title in folder (tooltip ?)
 - manage image resizing for mobile sites
 - add views: better gallery, box view
 - fix portlet (crash editing properties )
-- Download panes when requested with ajax (and add a js hook to execute javascript code on pages)
 

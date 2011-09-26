@@ -47,7 +47,7 @@ jQuery.fn.init_image_tabs = function (){
 
 
     jQuery(".imagetabs-tabs",context).tabs("> .imagetabs-panes > div",config);
-    jQuery('.imagetabs-tabs',context).boxscrollable(config_boxscrollable);
+    jQuery('.imagetabs-tabs',context).jcarousel(config_boxscrollable);
     return context;
 
 };
@@ -61,7 +61,7 @@ jQuery.fn.init_image_tabs = function (){
 jQuery.fn.init_gallery = function (){
     var context = this;
 
-    jQuery('.imagegallery',context).boxscrollable(tabsandslides.gallery.config_boxscrollable);
+    jQuery('.imagegallery',context).jcarousel(tabsandslides.gallery.config_boxscrollable);
     return context;
 
 };

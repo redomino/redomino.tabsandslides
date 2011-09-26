@@ -36,9 +36,9 @@
             <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>
             <div id="content-core" class="jsenhanced" tal:define="contents view/getViews">
                 <!-- the tabs -->
-                <div class="imagetabs-tabs">
-                    <div tal:repeat="content contents" tal:content="structure content/tab">tab 1 content</div>
-                </div>
+                <ul class="imagetabs-tabs jcarousel-skin-plone">
+                    <li tal:repeat="content contents" tal:content="structure content/tab">tab 1 content</li>
+                </ul>
                 <!-- tab "panes" -->
                 <div class="visualClear"></div>
 

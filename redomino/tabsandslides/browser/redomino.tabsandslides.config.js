@@ -4,22 +4,14 @@ var tabsandslides = {};
 // GALLERY
 //
 tabsandslides.gallery = {};
-tabsandslides.gallery.config_boxscrollable = {horizontal:true,
-//                                            number_items:4, 
-                                              minheight:200, 
-                                              minwidth:220,
-                                              easing:'easeInOutCirc'}
+tabsandslides.gallery.config_boxscrollable = {};
 
 //
 // IMAGE TABS
 //
 tabsandslides.image_tabs = {};
 tabsandslides.image_tabs.config = {};
-tabsandslides.image_tabs.config_boxscrollable = {horizontal:true,
-//                                               number_items:4, 
-                                                 minheight:200, 
-                                                 minwidth:220,
-                                                 easing:'easeInOutCirc'};
+tabsandslides.image_tabs.config_boxscrollable = {};
 
 //
 // TABS

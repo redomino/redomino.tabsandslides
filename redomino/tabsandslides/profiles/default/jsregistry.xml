@@ -33,10 +33,17 @@
     cacheable="False" compression="safe" cookable="False"
     enabled="True" expression=""  inline="False" insert-after="*"/>
 
+<!--
  <javascript
     id="++resource++redomino.tabsandslides_resources/jquery.boxscrollable.js"
     cacheable="False" compression="safe" cookable="False"
     enabled="True" expression=""  inline="False" insert-after="*"/>
+-->
+ <javascript
+    id="++resource++redomino.tabsandslides_resources/jquery.jcarousel.js"
+    cacheable="False" compression="safe" cookable="False"
+    enabled="True" expression=""  inline="False" insert-after="*"/>
+
 
  <javascript
     id="++resource++redomino.tabsandslides_resources/jquery-ui-1.8.6.custom.min.js"

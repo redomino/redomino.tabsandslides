@@ -190,52 +190,53 @@ display:none;
  IMAGE TABS
 **********************************************************************
 */
-.imagetabs-tabs div {
-width:210px;
-height:200px;
-/*list-style:none;*/
-}
-.imagetabs-panes{
-clear:both;
-}
 
-.boxscrollable-next, .boxscrollable-prev{
-    color: transparent;
-    width: 30px;
-    height:30px;
-    cursor:pointer;
-    margin-top:80px;
-}
+/*.imagetabs-tabs div {*/
+/*width:210px;*/
+/*height:200px;*/
+/*/*list-style:none;*/*/
+/*}*/
+/*.imagetabs-panes{*/
+/*clear:both;*/
+/*}*/
 
-.boxscrollable-next {
-    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 -30px transparent;
-    text-indent: -9999em;
-/*    padding-left:3px;*/
-}
-.boxscrollable-prev {
-    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 0 transparent;
-    text-indent: -9999em;
-/*    padding-right:3px;*/
-}
-.boxscrollable-prev:hover {
-    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat -60px 0 transparent;
-}
-.boxscrollable-next:hover {
-    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat -60px -30px transparent;
-}
+/*.boxscrollable-next, .boxscrollable-prev{*/
+/*    color: transparent;*/
+/*    width: 30px;*/
+/*    height:30px;*/
+/*    cursor:pointer;*/
+/*    margin-top:80px;*/
+/*}*/
 
-.boxscrollable-prev.disabled, .boxscrollable-next.disabled{
-visibility:visible;
-opacity:0.5;
-cursor:default;
-}
+/*.boxscrollable-next {*/
+/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 -30px transparent;*/
+/*    text-indent: -9999em;*/
+/*/*    padding-left:3px;*/*/
+/*}*/
+/*.boxscrollable-prev {*/
+/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 0 transparent;*/
+/*    text-indent: -9999em;*/
+/*/*    padding-right:3px;*/*/
+/*}*/
+/*.boxscrollable-prev:hover {*/
+/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat -60px 0 transparent;*/
+/*}*/
+/*.boxscrollable-next:hover {*/
+/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat -60px -30px transparent;*/
+/*}*/
 
-.boxscrollable-next.disabled:hover {
-    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 -30px transparent;
-}
-.boxscrollable-prev.disabled:hover {
-    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 0 transparent;
-}
+/*.boxscrollable-prev.disabled, .boxscrollable-next.disabled{*/
+/*visibility:visible;*/
+/*opacity:0.5;*/
+/*cursor:default;*/
+/*}*/
+
+/*.boxscrollable-next.disabled:hover {*/
+/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 -30px transparent;*/
+/*}*/
+/*.boxscrollable-prev.disabled:hover {*/
+/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 0 transparent;*/
+/*}*/
 
 /*
 **********************************************************************
@@ -287,3 +288,9 @@ cursor:default;
 #content .slideshow_preview_tabs img {
     width:68px;
 }
+
+
+
+
+
+
