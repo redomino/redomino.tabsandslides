@@ -36,13 +36,13 @@
             <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>
             <div id="content-core" class="jsenhanced" tal:define="contents view/getViews">
                 <!-- the tabs -->
-                <ul class="imagetabs-tabs jcarousel-skin-plone">
+                <ul class="imagetabs-tabs jcarousel-skin-plone" tal:condition="contents">
                     <li tal:repeat="content contents" tal:content="structure content/tab">tab 1 content</li>
                 </ul>
                 <!-- tab "panes" -->
                 <div class="visualClear"></div>
 
-                <div class="imagetabs-panes">
+                <div class="imagetabs-panes" tal:condition="contents">
                     <div tal:repeat="content contents" tal:content="structure content/pane">pane 1 content</div>
                 </div>
             </div>

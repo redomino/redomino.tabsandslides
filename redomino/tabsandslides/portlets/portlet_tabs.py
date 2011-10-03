@@ -98,7 +98,7 @@ class Renderer(base.Renderer):
     of this class. Other methods can be added and referenced in the template.
     """
 
-    _template = ViewPageTemplateFile('portlet_slideshow.pt')
+    _template = ViewPageTemplateFile('portlet_tabs.pt')
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)

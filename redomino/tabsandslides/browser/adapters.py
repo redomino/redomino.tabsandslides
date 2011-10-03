@@ -32,7 +32,7 @@ class GenericTabGenerator(object):
         view = self.context.restrictedTraverse(layout)
             
         #danger of infinite recursion
-        if IATTopic.providedBy(self.context):
+        if IATTopic.providedBy(self.context) or IATFolder.providedBy(self.context):
             view = self.context.restrictedTraverse('folder_listing')
 
         self.request['ajax_load'] = "1"
@@ -41,6 +41,11 @@ class GenericTabGenerator(object):
 
         return filterById(html,'content-core',newclass='template_' + layout)
 
+class ImageTabGenerator(GenericTabGenerator):
+    def getPane(self):
+        return '<img src="%s" alt="%s" title="%s"/>' % (self.context.absolute_url(), 
+                                                        self.context.Title(), 
+                                                        self.context.Title())
     
 class GalleryImageTabGenerator(GenericTabGenerator):
 
@@ -53,12 +58,15 @@ class GalleryImageTabGenerator(GenericTabGenerator):
         if IATImage.providedBy(self.context) or IATNewsItem.providedBy(self.context):
             return "%s/@@images/image/mini" % (self.context.absolute_url(),)
         elif IATTopic.providedBy(self.context) or IATFolder.providedBy(self.context):
-            return "%s/++resource++redomino.tabsandslides_resources/folder.png" % (self.portal_url(),)
+            return "%s/++resource++redomino.tabsandslides.folder.png" % (self.portal_url(),)
         else:
-            return "%s/++resource++redomino.tabsandslides_resources/page.png" % (self.portal_url(),)
+            return "%s/++resource++redomino.tabsandslides.page.png" % (self.portal_url(),)
         
     def getTab(self):
-        return '<a href="%s/view"><img src="%s" alt="%s" /></a>' % (self.context.absolute_url(), self.getImage(), self.context.Title() )
+        return '<a href="%s/view"><img src="%s" alt="%s" title="%s"/></a>' % (self.context.absolute_url(),
+                                                                              self.getImage(),
+                                                                              self.context.Title(),
+                                                                              self.context.Title() )
 
     def getPane(self):
         if IATDocument.providedBy(self.context) or IATNewsItem.providedBy(self.context):

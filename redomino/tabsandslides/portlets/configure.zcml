@@ -9,18 +9,27 @@
 
 <!-- slideshow portlet -->
 
-     <!-- Register the portlet -->
+     <!-- Register the portlets -->
      <plone:portlet
-         name="redomino.tabsandslides.portlet"
+         name="redomino.tabsandslides.slideshowportlet"
          interface=".portlet_slideshow.ICollectionPortlet"
          assignment=".portlet_slideshow.Assignment"
          view_permission="zope2.View"
-         edit_permission="plone.portlet.collection.AddCollectionPortlet"
+         edit_permission="cmf.ManagePortal"
          renderer=".portlet_slideshow.Renderer"
          addview=".portlet_slideshow.AddForm"
          editview=".portlet_slideshow.EditForm"
          />
 
-
+     <plone:portlet
+         name="redomino.tabsandslides.tabsportlet"
+         interface=".portlet_tabs.ICollectionPortlet"
+         assignment=".portlet_tabs.Assignment"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         renderer=".portlet_tabs.Renderer"
+         addview=".portlet_tabs.AddForm"
+         editview=".portlet_tabs.EditForm"
+         />
 
 </configure>

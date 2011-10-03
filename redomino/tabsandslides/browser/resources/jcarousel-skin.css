@@ -2,7 +2,7 @@
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
    border-radius: 10px;
-    background: #F0F6F9;
+/*    background: #F0F6F9;*/
     border: 1px solid #346F97;
 }
 
@@ -64,18 +64,18 @@
  */
 .jcarousel-skin-plone .jcarousel-next-horizontal {
     position: absolute;
-    top: 43px;
+    top: 100px;
     right: 5px;
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: transparent url(next-horizontal.png) no-repeat 0 0;
+    background: transparent url(../++resource++redomino.tabsandslides.next-horizontal.png) no-repeat 0 0;
 }
 
 .jcarousel-skin-plone .jcarousel-direction-rtl .jcarousel-next-horizontal {
     left: 5px;
     right: auto;
-    background-image: url(prev-horizontal.png);
+    background-image: url(../++resource++redomino.tabsandslides.prev-horizontal.png);
 }
 
 .jcarousel-skin-plone .jcarousel-next-horizontal:hover,
@@ -97,18 +97,18 @@
 
 .jcarousel-skin-plone .jcarousel-prev-horizontal {
     position: absolute;
-    top: 43px;
+    top: 100px;
     left: 5px;
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: transparent url(prev-horizontal.png) no-repeat 0 0;
+    background: transparent url(../++resource++redomino.tabsandslides.prev-horizontal.png) no-repeat 0 0;
 }
 
 .jcarousel-skin-plone .jcarousel-direction-rtl .jcarousel-prev-horizontal {
     left: auto;
     right: 5px;
-    background-image: url(next-horizontal.png);
+    background-image: url(../++resource++redomino.tabsandslides.next-horizontal.png);
 }
 
 .jcarousel-skin-plone .jcarousel-prev-horizontal:hover, 
@@ -138,7 +138,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: transparent url(next-vertical.png) no-repeat 0 0;
+    background: transparent url(../++resource++redomino.tabsandslides.next-vertical.png) no-repeat 0 0;
 }
 
 .jcarousel-skin-plone .jcarousel-next-vertical:hover,
@@ -165,7 +165,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: transparent url(prev-vertical.png) no-repeat 0 0;
+    background: transparent url(../++resource++redomino.tabsandslides.prev-vertical.png) no-repeat 0 0;
 }
 
 .jcarousel-skin-plone .jcarousel-prev-vertical:hover,
@@ -184,3 +184,5 @@
     cursor: default;
     background-position: 0 -96px;
 }
+
+

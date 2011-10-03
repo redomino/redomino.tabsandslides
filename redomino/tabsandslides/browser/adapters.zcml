@@ -1,0 +1,97 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="redomino.tabsandslides">
+
+
+<!-- Adapters for context, container, request, view -->
+
+<!-- genericadapter -->
+  <adapter
+      for="*
+           *
+           *
+           *"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GenericTabGenerator"
+      />
+
+  <adapter
+      for="Products.ATContentTypes.interface.IATImage
+           *
+           *
+           *"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.ImageTabGenerator"
+      />
+
+<!-- gallery folder adapter -->
+
+  <adapter
+      for="*
+           *
+           *
+           .interfaces.IGalleryFolder"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
+      />
+
+  <adapter
+      for="Products.ATContentTypes.interface.IATImage
+           *
+           *
+           .interfaces.IGalleryFolder"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
+      />
+
+
+  <adapter
+      for="*
+           *
+           *
+           .interfaces.IImagesTabbedFolder"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
+      />
+
+  <adapter
+      for="Products.ATContentTypes.interface.IATImage
+           *
+           *
+           .interfaces.IImagesTabbedFolder"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
+      />
+
+  <adapter
+      for="*
+           *
+           *
+           .interfaces.ISlideshowPreviewFolder"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
+      />
+
+  <adapter
+      for="*
+           *
+           *
+           .interfaces.IBoxView"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
+      />
+
+  <adapter
+      for="Products.ATContentTypes.interface.IATImage
+           *
+           *
+           .interfaces.IBoxView"
+      provides=".interfaces.ITabGenerator"
+      factory=".adapters.GalleryImageTabGenerator"
+      />
+
+
+</configure>

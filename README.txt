@@ -23,15 +23,17 @@ slideshow_preview_view
 ------------------
 Show elements inside a folder (or collection) as a slideshow with a tiny preview.
 
-
-redomino.tabsandslides.portlet
-----------------------------------
+redomino.tabsandslides.slideshowportlet
+---------------------------------------
 This is a portlet that show elements of a collection as a slideshow
 
+redomino.tabsandslides.tabsportlet
+---------------------------------------
+This is a portlet that show elements of a collection using tabs
 
 How to create new views
 ------------------------
-It's easy !!!: create a view extending BaseTabbedFolderView (browser/common.py). The view MUST has an interface !!!
+It's easy !!!: You can create a view extending BaseTabbedFolderView (browser/common.py). The view MUST have an interface !!!
 Example:
 class MySpecialView(BaseTabbedFolderView):
     implements(IMySpecialView)
@@ -43,8 +45,8 @@ Every object has a tab and a pane (panel)
     tal:content="structure content/tab"
     tal:content="structure content/pane"
 
-How to customize the way the container objects look
-----------------------------------------------------
+How to customize the look and feel of a object inside a container
+-----------------------------------------------------------------
 Each contained object uses a multiadapter to render its own tab and pane. The multiadapter implements ITabGenerator interface and adapts:
 - a context
 - a container
@@ -56,6 +58,16 @@ Watch the "browser/adapters.py" for examples.
 Customize javascript configuration
 -------------------------------------
 The js configuration is overridable (redomino.tabsandslides.config.js).
+
+
+Javascript documentation
+-------------------------
+
+Jcarousel
+    - http://sorgalla.com/jcarousel/
+
+JQuerytools tabs
+    - http://flowplayer.org/tools/tabs/index.html
 
 
 Installation
@@ -84,9 +96,7 @@ Created by Maurizio Lupo for redomino in 2011.
 
 TODO
 --------
-- fix jcarousel css
-- add title in folder (tooltip ?)
-- manage image resizing for mobile sites
-- add views: better gallery, box view
-- fix portlet (crash editing properties )
+- fix tests
+- add views: box view
+- manage image resizing for mobile sites (next releases ...)
 

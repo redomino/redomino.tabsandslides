@@ -6,22 +6,11 @@
     i18n_domain="redomino.tabsandslides">
 
 
-<!--    <five:registerPackage package="." /> -->
+  <include package="plone.portlet.collection" />
 
-    <include package="plone.portlet.collection" />
+  <include file="resources.zcml" />
+  <include file="adapters.zcml" />
 
-   <browser:resourceDirectory
-       name="redomino.tabsandslides_resources"
-       directory="resources"
-       />
-
-<!-- javascript config -->
-
-   <browser:resource
-      name="redomino.tabsandslides.config.js"
-      file="redomino.tabsandslides.config.js"
-      permission="zope2.View"
-      />
 
 <!-- gallery view -->
 
@@ -131,55 +120,6 @@
       permission="zope2.View"
       />
 
-<!-- Adapters for context, container, request, view -->
-
-<!-- genericadapter -->
-  <adapter
-      for="*
-           *
-           *
-           *"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GenericTabGenerator"
-      />
-
-<!-- gallery folder adapter -->
-
-  <adapter
-      for="*
-           *
-           *
-           .interfaces.IGalleryFolder"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
-      />
-
-  <adapter
-      for="*
-           *
-           *
-           .interfaces.IImagesTabbedFolder"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
-      />
-
-  <adapter
-      for="*
-           *
-           *
-           .interfaces.ISlideshowPreviewFolder"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
-      />
-
-  <adapter
-      for="*
-           *
-           *
-           .interfaces.IBoxView"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
-      />
 
 
 </configure>

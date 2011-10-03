@@ -11,9 +11,6 @@ border:none;
 display:none;
 }
 
-/*#content a:visited, dl.portlet a:visited {*/
-/*    border-bottom: none;*/
-/*}*/
 
 /*
 **********************************************************************
@@ -66,12 +63,12 @@ display:none;
 }
 
 /* single tab */
-#content .slideshow_tabs a {
+.slideshow_tabs a {
 	width:8px;
 	height:8px;
 	float:left;
 	margin:3px;
-	background:url(navigator.png) 0 0 no-repeat;
+	background:url(../++resource++redomino.tabsandslides.navigator.png) 0 0 no-repeat;
 	display:block;
 	font-size:1px;		
     border-bottom:none;
@@ -80,38 +77,15 @@ display:none;
 }
 
 /* mouseover state */
-#content .slideshow_tabs a:hover {
+.slideshow_tabs a:hover {
 	background-position:0 -8px;      
 }
 
 /* active state (current page state) */
-#content .slideshow_tabs a.current {
+.slideshow_tabs a.current {
 	background-position:0 -16px;     
 } 	
 
-
-/* prev and next buttons */
-.forward, .backward {
-	float:left;
-	margin-top:140px;
-	background:#fff url(hori_large.png) no-repeat;
-	display:block;
-	width:30px;
-	height:30px;
-	cursor:pointer;
-	font-size:1px;
-	text-indent:-9999em;	
-}
-
-/* next */
-.forward 				{ background-position: 0 -30px; clear:right; }
-.forward:hover 		{ background-position:-30px -30px; }
-.forward:active 	 	{ background-position:-60px -30px; } 
-
-
-/* prev */
-.backward:hover  		{ background-position:-30px 0; }
-.backward:active  	{ background-position:-60px 0; }
 
 /* disabled navigational button. is not needed when tabs are configured with rotate: true */
 .disabled {
@@ -267,12 +241,12 @@ display:none;
 	height:256px;
 }
 
-#content .slideshow_preview_tabs > li {
+.slideshow_preview_tabs > li {
     display:block;
     margin-top:10px;
 }
 
-#content .slideshow_preview_tabs {
+.slideshow_preview_tabs {
     float: left;
     position: relative;
     width: 70px;
@@ -281,11 +255,11 @@ display:none;
 	margin-left:0;
 }
 
-#content .slideshow_preview_tabs a.current {
+.slideshow_preview_tabs a.current {
     background-color: rgba(160, 160, 160, 0.4);
 }
 
-#content .slideshow_preview_tabs img {
+.slideshow_preview_tabs img {
     width:68px;
 }
 

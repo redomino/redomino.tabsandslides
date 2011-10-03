@@ -5,7 +5,11 @@ Changelog
 ------------------
 
 - changed the whole adapter approach see README for further explanation [sithmel]
-
+- use JCarousel instead my own plugin [sithmel]
+- added box view [sithmel]
+- from now is easier to customize resources (images, css ...) [sithmel]
+- fix slideshow portlet (it crashed while editing properties ) [sithmel]
+- added tabs portlet
 
 0.6.4 (2011-04-22)
 ------------------

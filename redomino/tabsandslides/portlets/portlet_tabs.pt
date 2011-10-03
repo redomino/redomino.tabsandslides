@@ -16,15 +16,17 @@
     
 
     <tal:events tal:define="contents view/getViews">
+
+        <!-- the tabs -->
+        <dd class="tabs">
+            <tal:block repeat="content contents" tal:content="structure content/tab">Tab1</tal:block>
+        </dd>
+
         <!-- tab "panes" -->
-        <dd class="slideshow_panes">
+        <dd class="panes">
 	        <div tal:repeat="content contents" tal:content="structure content/pane">pane 1 content</div>
         </dd>
 
-        <!-- the tabs -->
-        <dd class="slideshow_tabs">
-            <tal:block repeat="content contents" tal:content="structure content/tab">Tab1</tal:block>
-        </dd>
     </tal:events>
     
     <dd class="portletFooter">

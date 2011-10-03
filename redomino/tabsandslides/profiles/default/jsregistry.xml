@@ -24,29 +24,23 @@
 
 
  <javascript
-    id="++resource++redomino.tabsandslides_resources/tabs.slideshow.min.js"
+    id="++resource++redomino.tabsandslides.tabs.slideshow.min.js"
     cacheable="False" compression="safe" cookable="False"
     enabled="True" expression=""  inline="False" insert-after="*"/>
 
  <javascript
-    id="++resource++redomino.tabsandslides_resources/tabs_and_slide_setup.js"
+    id="++resource++redomino.tabsandslides.tabs_and_slide_setup.js"
     cacheable="False" compression="safe" cookable="False"
     enabled="True" expression=""  inline="False" insert-after="*"/>
 
-<!--
  <javascript
-    id="++resource++redomino.tabsandslides_resources/jquery.boxscrollable.js"
-    cacheable="False" compression="safe" cookable="False"
-    enabled="True" expression=""  inline="False" insert-after="*"/>
--->
- <javascript
-    id="++resource++redomino.tabsandslides_resources/jquery.jcarousel.js"
+    id="++resource++redomino.tabsandslides.jquery.jcarousel.js"
     cacheable="False" compression="safe" cookable="False"
     enabled="True" expression=""  inline="False" insert-after="*"/>
 
 
  <javascript
-    id="++resource++redomino.tabsandslides_resources/jquery-ui-1.8.6.custom.min.js"
+    id="++resource++redomino.tabsandslides.jquery.easing.js"
     cacheable="False" compression="safe" cookable="False"
     enabled="True" expression=""  inline="False"/>
 

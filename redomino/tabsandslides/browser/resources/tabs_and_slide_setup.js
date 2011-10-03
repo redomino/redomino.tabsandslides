@@ -28,7 +28,6 @@ jQuery.fn.init_tabs = function (){
     var context = this;
     var config = tabsandslides.tabs.config;
 
-//    jQuery(".tabs",context).tabs("div.panes > div",config);
     jQuery(".tabs",context).tabs("> .panes > div",config);
     return context;
 
@@ -93,7 +92,7 @@ jQuery.fn.init_slideshowpreview = function (){
 
 (function($){
 $(document).ready(function (){
-    $(this).init_slideshow().init_tabs().init_image_tabs().init_gallery().init_slideshowpreview();
+    $(this).init_image_tabs().init_gallery().init_slideshow().init_tabs().init_slideshowpreview();
 });
 })(jQuery);
 

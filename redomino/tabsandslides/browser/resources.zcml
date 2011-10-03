@@ -1,0 +1,85 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="redomino.tabsandslides">
+
+<!-- javascript config -->
+<!--      permission="zope2.View"-->
+
+   <browser:resource
+      name="redomino.tabsandslides.config.js"
+      file="resources/config.js"
+      />
+
+<!-- javascripts -->
+
+   <browser:resource
+      name="redomino.tabsandslides.jquery.jcarousel.js"
+      file="resources/jquery.jcarousel.js"
+      />
+
+   <browser:resource
+      name="redomino.tabsandslides.jquery.easing.js"
+      file="resources/jquery.easing.js"
+      />
+
+   <browser:resource
+      name="redomino.tabsandslides.tabs.slideshow.min.js"
+      file="resources/tabs.slideshow.min.js"
+      />
+
+   <browser:resource
+      name="redomino.tabsandslides.tabs_and_slide_setup.js"
+      file="resources/tabs_and_slide_setup.js"
+      />
+       
+<!-- css -->
+
+   <browser:resource
+      name="redomino.tabsandslides.jcarousel-skin.css"
+      file="resources/jcarousel-skin.css"
+      />
+
+   <browser:resource
+      name="redomino.tabsandslides.tabs_slideshow.css"
+      file="resources/tabs_slideshow.css"
+      />
+
+<!-- images -->
+
+   <browser:resource
+      name="redomino.tabsandslides.navigator.png"
+      file="resources/navigator.png"
+      />
+
+   <browser:resource
+      name="redomino.tabsandslides.next-horizontal.png"
+      file="resources/next-horizontal.png"
+      />
+
+   <browser:resource
+      name="redomino.tabsandslides.next-vertical.png"
+      file="resources/next-vertical.png"
+      />
+
+   <browser:resource
+      name="redomino.tabsandslides.prev-horizontal.png"
+      file="resources/prev-horizontal.png"
+      />
+
+   <browser:resource
+      name="redomino.tabsandslides.prev-vertical.png"
+      file="resources/prev-vertical.png"
+      />
+
+   <browser:resource
+      name="redomino.tabsandslides.folder.png"
+      file="resources/folder.png"
+      />
+
+   <browser:resource
+      name="redomino.tabsandslides.page.png"
+      file="resources/page.png"
+      />
+
+</configure>
