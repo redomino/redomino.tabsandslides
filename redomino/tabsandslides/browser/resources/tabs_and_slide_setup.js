@@ -47,6 +47,14 @@ jQuery.fn.init_image_tabs = function (){
 
     jQuery(".imagetabs-tabs",context).tabs("> .imagetabs-panes > div",config);
     jQuery('.imagetabs-tabs',context).jcarousel(config_boxscrollable);
+
+    jQuery('.imagetabs-panes .image > a')
+    .prepOverlay({
+         subtype:'image',
+         urlmatch:'/image$',
+         urlreplace:'/image_large'
+        });    
+
     return context;
 
 };
@@ -93,6 +101,7 @@ jQuery.fn.init_slideshowpreview = function (){
 (function($){
 $(document).ready(function (){
     $(this).init_image_tabs().init_gallery().init_slideshow().init_tabs().init_slideshowpreview();
+
 });
 })(jQuery);
 

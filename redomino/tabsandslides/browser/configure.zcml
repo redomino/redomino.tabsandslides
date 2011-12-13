@@ -66,6 +66,25 @@
       permission="zope2.View"
       />
 
+<!-- images tabbed folder 2 -->
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATFolder"
+      name="tabbed_summary_view2"
+      class=".common.ImagesTabbedFolder"
+      template="templates/images_tabbed_folder2.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATTopic"
+      name="tabbed_summary_view2"
+      class=".common.ImagesTabbedFolder"
+      template="templates/images_tabbed_folder2.pt"
+      permission="zope2.View"
+      />
+
+
 <!-- slideshow view -->
 
   <browser:page

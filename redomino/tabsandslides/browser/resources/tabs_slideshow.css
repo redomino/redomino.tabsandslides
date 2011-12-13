@@ -4,12 +4,13 @@
 **********************************************************************
 */
 #content .tab-content-core.template_image_view_fullscreen a:visited{
-border:none;
+    border:none;
 }
 
 #content .tab-content-core.template_image_view_fullscreen span, .tab-content-core.template_image_view_fullscreen br{
-display:none;
+    display:none;
 }
+
 
 
 /*
@@ -58,8 +59,6 @@ display:none;
 /* tabs (those little circles below slides) */
 .slideshow_tabs {
 	clear:both;
-/*	margin-left:115px;*/
-	margin-left:50%;
 }
 
 /* single tab */
@@ -92,7 +91,23 @@ display:none;
 	visibility:hidden ;		
 }
 
+.slideshow_panes img{
+    max-width: 100%;
+}
 
+/*
+**********************************************************************
+ PORTLET SLIDESHOW
+**********************************************************************
+*/
+
+.portletSlideshow .portletHeader{
+    background:none;
+    padding-left:0;
+}
+.portletSlideshow .panes{
+    clear:both;
+}
 /*
 **********************************************************************
  TABS
@@ -159,69 +174,66 @@ display:none;
 	background-color:#ddd;	
 }
 
+.panes img{
+    max-width: 100%;
+}
 /*
 **********************************************************************
- IMAGE TABS
+ IMAGE TABS - IMAGE TABS2
 **********************************************************************
 */
-
-/*.imagetabs-tabs div {*/
-/*width:210px;*/
-/*height:200px;*/
-/*/*list-style:none;*/*/
-/*}*/
-/*.imagetabs-panes{*/
-/*clear:both;*/
-/*}*/
-
-/*.boxscrollable-next, .boxscrollable-prev{*/
-/*    color: transparent;*/
-/*    width: 30px;*/
-/*    height:30px;*/
-/*    cursor:pointer;*/
-/*    margin-top:80px;*/
-/*}*/
-
-/*.boxscrollable-next {*/
-/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 -30px transparent;*/
-/*    text-indent: -9999em;*/
-/*/*    padding-left:3px;*/*/
-/*}*/
-/*.boxscrollable-prev {*/
-/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 0 transparent;*/
-/*    text-indent: -9999em;*/
-/*/*    padding-right:3px;*/*/
-/*}*/
-/*.boxscrollable-prev:hover {*/
-/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat -60px 0 transparent;*/
-/*}*/
-/*.boxscrollable-next:hover {*/
-/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat -60px -30px transparent;*/
-/*}*/
-
-/*.boxscrollable-prev.disabled, .boxscrollable-next.disabled{*/
-/*visibility:visible;*/
-/*opacity:0.5;*/
-/*cursor:default;*/
-/*}*/
-
-/*.boxscrollable-next.disabled:hover {*/
-/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 -30px transparent;*/
-/*}*/
-/*.boxscrollable-prev.disabled:hover {*/
-/*    background: url("++resource++redomino.tabsandslides_resources/hori_large.png") no-repeat 0 0 transparent;*/
-/*}*/
-
 /*
 **********************************************************************
  GALLERY
 **********************************************************************
 */
-.imagegallery div {
-/*width:210px;*/
-/*height:200px;*/
-/*list-style:none;*/
+.template-tabbed_summary_view .imagetabs-panes{
+    width:600px;
+    min-height:400px;
+    background-color:#EEE;
+    margin:10px 40px;
+    padding:10px;
 }
+
+.template-tabbed_summary_view2 .imagetabs-panes{
+    width:600px;
+    height:400px;
+    overflow:hidden;
+    background-color:#EEE;
+    margin:10px 40px;
+    padding:10px;
+}
+
+.template-tabbed_summary_view .image,
+.template-tabbed_summary_view2 .image{
+    text-align:center;
+}
+
+.template-gallery_view #content a:link,
+.template-tabbed_summary_view #content a:link,
+.template-tabbed_summary_view2 #content a:link{
+    border:none;
+}
+
+.template-gallery_view a:focus img,
+.template-tabbed_summary_view a:focus img, 
+.template-tabbed_summary_view2 a:focus img{
+    outline: none;
+}
+
+.template-tabbed_summary_view .jcarousel-item,
+.template-tabbed_summary_view2 .jcarousel-item,
+.template-gallery_view .jcarousel-item{
+    text-align:center;
+}
+
+.template-tabbed_summary_view .current,
+.template-tabbed_summary_view2 .current,
+.template-gallery_view .current{
+    background-color:#EEE;
+}
+
+
 
 /*
 **********************************************************************

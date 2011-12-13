@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="redomino.tabsandslides">
+
+<metal:fill-slot fill-slot="javascript_head_slot">
+
+<script type="text/javascript">
+        setTimeout(function (){
+            $('.jsenhanced').animate({opacity:1});
+        },1000);
+</script>
+
+</metal:fill-slot>
+
+<metal:fill-slot fill-slot="style_slot">
+    <style type="text/css" >
+        .jsenhanced {opacity: 0;}
+        #content-core{
+/*            min-height:670px;*/
+        }
+    </style>
+
+    <noscript>
+        <style type="text/css" >
+            .jsenhanced {opacity: 1 !important;}
+        </style>
+    </noscript>
+</metal:fill-slot>
+
+<body>
+    <div metal:fill-slot="main">
+        <tal:main-macro metal:define-macro="main">
+            <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
+            <div class="documentDescription" tal:content="context/Description"></div>
+            <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>
+            <div id="content-core" class="jsenhanced" tal:define="contents view/getViews">
+
+                <!-- tab "panes" -->
+
+                <div class="imagetabs-panes" tal:condition="contents">
+                    <div tal:repeat="content contents" tal:content="structure content/pane">pane 1 content</div>
+                </div>
+
+                <div class="visualClear"></div>
+                <!-- the tabs -->
+                <ul class="imagetabs-tabs jcarousel-skin-plone" tal:condition="contents">
+                    <li tal:repeat="content contents" tal:content="structure content/tab">tab 1 content</li>
+                </ul>
+            </div>
+
+        </tal:main-macro>
+    </div>
+</body>
+</html>

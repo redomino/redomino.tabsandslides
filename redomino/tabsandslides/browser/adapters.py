@@ -43,9 +43,10 @@ class GenericTabGenerator(object):
 
 class ImageTabGenerator(GenericTabGenerator):
     def getPane(self):
-        return '<img src="%s" alt="%s" title="%s"/>' % (self.context.absolute_url(), 
-                                                        self.context.Title(), 
-                                                        self.context.Title())
+        return '<div class="image"><a href="%s/view"><img src="%s" alt="%s" title="%s"/></a></div>' % (self.context.absolute_url(), 
+                                                                         self.context.absolute_url(), 
+                                                                         self.context.Title(), 
+                                                                         self.context.Title())
     
 class GalleryImageTabGenerator(GenericTabGenerator):
 
@@ -71,4 +72,12 @@ class GalleryImageTabGenerator(GenericTabGenerator):
     def getPane(self):
         if IATDocument.providedBy(self.context) or IATNewsItem.providedBy(self.context):
             return self.context.getText()
+        if IATImage.providedBy(self.context):
+            imageurl = "%s/@@images/image/preview" % (self.context.absolute_url(),)
+            return '<div class="image"><a href="%s/image"><img src="%s" alt="%s" title="%s"/></a></div>' % (self.context.absolute_url(),
+                                                                                  imageurl,
+                                                                                  self.context.Title(),
+                                                                                  self.context.Title() )
+        
+            
         return GenericTabGenerator.getPane(self)
