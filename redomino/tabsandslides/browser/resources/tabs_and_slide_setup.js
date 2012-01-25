@@ -11,7 +11,9 @@ jQuery.fn.init_slideshow = function (){
 
     jQuery(".slideshow_tabs",context).tabs(".slideshow_panes > div",config).slideshow(slideshow_config);
     jQuery(".slideshow_tabs",context).each(function (){
-        jQuery(this).data('slideshow').play();
+        if(jQuery(this).data('slideshow')){
+            jQuery(this).data('slideshow').play();
+        }
     });
 
     return context;
