@@ -30,7 +30,7 @@ Changelog
   [sithmel]
 
 0.5 (first released)
--------------------
+---------------------
 
 - Initial release
 
