@@ -102,7 +102,8 @@ Dependencies
 Credits
 ----------
 
-Created by Maurizio Lupo for redomino in 2011.
+Maurizio Lupo <maurizio.lupo@redomino.com> [sithmel], Author - 2011
+Giacomo Spettoli <giacomo.spettoli@redomino.com> [giacomos]
 
 TODO
 --------
