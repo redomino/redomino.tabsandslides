@@ -1,38 +1,47 @@
 A collection of useful views
 ===================================
+
 The main purpose of this product is to provide series of useful views (and a portlet).
 Every view can be applied to a folder or a collection.
 
 gallery_view
 --------------
+
 Show elements inside a folder (or collection) in a gallery.
 
 tabbed_view
 --------------
+
 Show elements inside a folder (or collection) inside tabs.
 
 tabbed_summary_view
 ----------------------
+
 Show elements inside a folder (or collection) inside tabs. Instead of strings each tab can be a structure of html (scrollable)
 
 slideshow_view
 ------------------
+
 Show elements inside a folder (or collection) as a slideshow.
 
 slideshow_preview_view
-------------------
+-----------------------
+
 Show elements inside a folder (or collection) as a slideshow with a tiny preview.
 
 redomino.tabsandslides.slideshowportlet
 ---------------------------------------
+
 This is a portlet that show elements of a collection as a slideshow
 
 redomino.tabsandslides.tabsportlet
 ---------------------------------------
+
 This is a portlet that show elements of a collection using tabs
 
 How to create new views
 ------------------------
+
 It's easy !!!: You can create a view extending BaseTabbedFolderView (browser/common.py). The view MUST have an interface !!!
 Example:
 class MySpecialView(BaseTabbedFolderView):
@@ -47,7 +56,9 @@ Every object has a tab and a pane (panel)
 
 How to customize the look and feel of a object inside a container
 -----------------------------------------------------------------
+
 Each contained object uses a multiadapter to render its own tab and pane. The multiadapter implements ITabGenerator interface and adapts:
+
 - a context
 - a container
 - a request 
@@ -57,6 +68,7 @@ Watch the "browser/adapters.py" for examples.
 
 Customize javascript configuration
 -------------------------------------
+
 The js configuration is overridable (redomino.tabsandslides.config.js).
 
 
@@ -72,13 +84,12 @@ JQuerytools tabs
 
 Installation
 ------------
-Add the product to buildout as usual.
+Add the product to buildout as usual.::
 
-
-....
-eggs =
-    redomino.tabsandslides
-...
+    ...
+    eggs =
+        redomino.tabsandslides
+    ...
 
 redomino.tabsandslides shows up in the "Add-ons" configuration panel.
 
@@ -96,6 +107,7 @@ Created by Maurizio Lupo for redomino in 2011.
 
 TODO
 --------
+
 - fix tests
 - add views: box view
 - manage image resizing for mobile sites (next releases ...)
