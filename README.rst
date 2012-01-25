@@ -25,12 +25,13 @@ slideshow_view
 Show elements inside a folder (or collection) as a slideshow.
 
 slideshow_preview_view
------------------------
+------------------------
 
 Show elements inside a folder (or collection) as a slideshow with a tiny preview.
 
 redomino.tabsandslides.slideshowportlet
----------------------------------------
+----------------------------------------
+>>>>>>> 09d674ff50e8249b58c3689fb3b8fc5bdd0904e8
 
 This is a portlet that show elements of a collection as a slideshow
 
@@ -55,7 +56,7 @@ Every object has a tab and a pane (panel)
     tal:content="structure content/pane"
 
 How to customize the look and feel of a object inside a container
------------------------------------------------------------------
+------------------------------------------------------------------
 
 Each contained object uses a multiadapter to render its own tab and pane. The multiadapter implements ITabGenerator interface and adapts:
 
@@ -73,7 +74,7 @@ The js configuration is overridable (redomino.tabsandslides.config.js).
 
 
 Javascript documentation
--------------------------
+--------------------------
 
 Jcarousel
     - http://sorgalla.com/jcarousel/
@@ -83,7 +84,6 @@ JQuerytools tabs
 
 
 Installation
-------------
 Add the product to buildout as usual.::
 
     ...
@@ -95,13 +95,13 @@ redomino.tabsandslides shows up in the "Add-ons" configuration panel.
 
 
 Dependencies
-------------
+---------------
 
 - Plone 4.x
 
 
 Credits
--------
+----------
 
 Created by Maurizio Lupo for redomino in 2011.
 
