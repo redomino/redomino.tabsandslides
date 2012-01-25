@@ -6,7 +6,7 @@ version = '0.6.5'
 setup(name='redomino.tabsandslides',
       version=version,
       description="jquerytools tabs and slide implementations",
-      long_description=open("README.rst").read() + "\n" +
+      long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
