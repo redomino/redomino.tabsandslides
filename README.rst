@@ -31,7 +31,6 @@ Show elements inside a folder (or collection) as a slideshow with a tiny preview
 
 redomino.tabsandslides.slideshowportlet
 ----------------------------------------
->>>>>>> 09d674ff50e8249b58c3689fb3b8fc5bdd0904e8
 
 This is a portlet that show elements of a collection as a slideshow
 
