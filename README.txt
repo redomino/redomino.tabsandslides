@@ -24,11 +24,6 @@ slideshow_view
 
 Show elements inside a folder (or collection) as a slideshow.
 
-slideshow_preview_view
-------------------------
-
-Show elements inside a folder (or collection) as a slideshow with a tiny preview.
-
 redomino.tabsandslides.slideshowportlet
 ----------------------------------------
 
@@ -109,6 +104,6 @@ TODO
 --------
 
 - fix tests
-- add views: box view
+- add new views
 - manage image resizing for mobile sites (next releases ...)
 

@@ -1,10 +1,25 @@
-<dl class="portlet portletSlideshow"
+<div tal:condition="view/data/omit_border"
+     tal:attributes="class string:portlet portletSlideshow ${view/css_class}"
+     i18n:domain="plone">
+
+    <tal:events tal:define="contents view/getViews">
+        <!-- tab "panes" -->
+        <div class="slideshow_panes">
+	        <div tal:repeat="content contents" tal:content="structure content/pane">pane 1 content</div>
+        </div>
+
+        <!-- the tabs -->
+        <div class="slideshow_tabs">
+            <tal:block repeat="content contents" tal:content="structure content/tab">Tab1</tal:block>
+        </div>
+    </tal:events>
+
+</div>
+
+<dl tal:condition="not:view/data/omit_border"
+    tal:attributes="class string:portlet portletSlideshow ${view/css_class}"
     i18n:domain="plone"
-    tal:define="collection_url view/collection_url;
-                plone_view context/@@plone;
-                toLocalizedTime nocall:plone_view/toLocalizedTime;
-                viewActions here/portal_properties/site_properties/typesUseViewActionInListings|python:();
-                getIcon nocall:plone_view/getIcon;">
+    tal:define="collection_url view/collection_url">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -15,17 +30,17 @@
     </dt>
     
 
-    <tal:events tal:define="contents view/getViews">
+    <dd tal:define="contents view/getViews">
         <!-- tab "panes" -->
-        <dd class="slideshow_panes">
+        <div class="slideshow_panes">
 	        <div tal:repeat="content contents" tal:content="structure content/pane">pane 1 content</div>
-        </dd>
+        </div>
 
         <!-- the tabs -->
-        <dd class="slideshow_tabs">
+        <div class="slideshow_tabs">
             <tal:block repeat="content contents" tal:content="structure content/tab">Tab1</tal:block>
-        </dd>
-    </tal:events>
+        </div>
+    </dd>
     
     <dd class="portletFooter">
         <span class="portletBottomLeft"></span>

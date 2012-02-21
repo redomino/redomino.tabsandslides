@@ -57,7 +57,7 @@ class GalleryImageTabGenerator(GenericTabGenerator):
         portal_url = self.portal_url()
 
         if IATImage.providedBy(self.context) or IATNewsItem.providedBy(self.context):
-            return "%s/@@images/image/mini" % (self.context.absolute_url(),)
+            return "%s/@@images/image/thumb" % (self.context.absolute_url(),)
         elif IATTopic.providedBy(self.context) or IATFolder.providedBy(self.context):
             return "%s/++resource++redomino.tabsandslides.folder.png" % (self.portal_url(),)
         else:
@@ -71,7 +71,7 @@ class GalleryImageTabGenerator(GenericTabGenerator):
 
     def getPane(self):
         if IATDocument.providedBy(self.context) or IATNewsItem.providedBy(self.context):
-            return self.context.getText()
+            return ''.join(['<div class="text">', self.context.getText(), '</div>'])
         if IATImage.providedBy(self.context):
             imageurl = "%s/@@images/image/preview" % (self.context.absolute_url(),)
             return '<div class="image"><a href="%s/image"><img src="%s" alt="%s" title="%s"/></a></div>' % (self.context.absolute_url(),

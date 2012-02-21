@@ -1,7 +1,15 @@
 Changelog
 =========
 
-0.6.5 (unreleased)
+0.7.1 (unreleased)
+------------------
+
+- fix various style related issues [sithmel]
+- removed the portlets [sithmel]
+- added a new type of portlet with selectable template [sithmel]
+
+
+0.6.5 (2012-01-21)
 ------------------
 
 - changed the whole adapter approach see README for further explanation [sithmel]

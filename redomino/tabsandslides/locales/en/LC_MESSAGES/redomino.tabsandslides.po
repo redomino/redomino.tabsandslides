@@ -1,0 +1,113 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-02-21 15:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: redomino.tabsandslides\n"
+
+#: ./profiles/default/portlets.xml
+msgid "A portlet which displays the results of a collection query with a specific view"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:270
+#: ./portlets/portlet_slideshow.py:229
+#: ./portlets/portlet_tabs.py:229
+msgid "Add Collection Portlet"
+msgstr ""
+
+#: ./profiles/default/portlets.xml
+msgid "Collection portlet tabs"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:288
+#: ./portlets/portlet_slideshow.py:247
+#: ./portlets/portlet_tabs.py:247
+msgid "Edit Collection Portlet"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:54
+#: ./portlets/portlet_slideshow.py:46
+#: ./portlets/portlet_tabs.py:46
+msgid "Find the collection which provides the items to list"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:69
+#: ./portlets/portlet_slideshow.py:60
+#: ./portlets/portlet_tabs.py:60
+msgid "If enabled, items will be selected randomly from the collection, rather than based on its sort order."
+msgstr ""
+
+#: ./portlets/portlet_generic.py:61
+#: ./portlets/portlet_slideshow.py:53
+#: ./portlets/portlet_tabs.py:53
+msgid "Limit"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:83
+msgid "Omit portlet border"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:48
+#: ./portlets/portlet_slideshow.py:40
+#: ./portlets/portlet_tabs.py:40
+msgid "Portlet header"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:68
+#: ./portlets/portlet_slideshow.py:59
+#: ./portlets/portlet_tabs.py:59
+msgid "Select random items"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:62
+#: ./portlets/portlet_slideshow.py:54
+#: ./portlets/portlet_tabs.py:54
+msgid "Specify the maximum number of items to show in the portlet. Leave this blank to show all items."
+msgstr ""
+
+#: ./portlets/portlet_generic.py:53
+#: ./portlets/portlet_slideshow.py:45
+#: ./portlets/portlet_tabs.py:45
+msgid "Target collection"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:271
+#: ./portlets/portlet_slideshow.py:230
+#: ./portlets/portlet_tabs.py:230
+msgid "This portlet display a listing of items from a Collection."
+msgstr ""
+
+#: ./portlets/portlet_generic.py:84
+msgid "Tick this box if you want to render the text above without the standard header, border or footer."
+msgstr ""
+
+#: ./portlets/portlet_generic.py:49
+#: ./portlets/portlet_slideshow.py:41
+#: ./portlets/portlet_tabs.py:41
+msgid "Title of the rendered portlet"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:76
+msgid "label_choose_template"
+msgstr ""
+
+#: ./portlets/portlet_generic.py:42
+msgid "slideshow"
+msgstr "Slideshow"
+
+#: ./portlets/portlet_generic.py:41
+msgid "tabs"
+msgstr "Tabbed View"
+

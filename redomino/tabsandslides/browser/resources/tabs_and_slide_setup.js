@@ -91,6 +91,7 @@ jQuery.fn.init_slideshowpreview = function (){
         jQuery(this).data('slideshow').play();
     });
 
+
     return context;
 };
 
@@ -103,8 +104,26 @@ jQuery.fn.init_slideshowpreview = function (){
 (function($){
 $(document).ready(function (){
     $(this).init_image_tabs().init_gallery().init_slideshow().init_tabs().init_slideshowpreview();
+});
+// fix heights
+$(window).load(function (){
+    $('.slideshow_panes').each(function (){
+    
+        var $this = $(this);
+        var maxh = 0;
+        $this.children().children().each(function (){
+            var h = $(this).outerHeight(true);
+            maxh = h > maxh && h || maxh;
+        });
+        $this.children().height(maxh).css('visibility','visible').css('display','none');
+        $this.height(maxh);
+    });
 
 });
+
+
 })(jQuery);
+
+
 
 

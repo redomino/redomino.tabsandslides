@@ -10,6 +10,19 @@
 <!-- slideshow portlet -->
 
      <!-- Register the portlets -->
+
+     <plone:portlet
+         name="redomino.tabsandslides.tabsgenericportlet"
+         interface=".portlet_generic.ICollectionPortlet"
+         assignment=".portlet_generic.Assignment"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         renderer=".portlet_generic.Renderer"
+         addview=".portlet_generic.AddForm"
+         editview=".portlet_generic.EditForm"
+         />
+
+<!-- deprecated -->
      <plone:portlet
          name="redomino.tabsandslides.slideshowportlet"
          interface=".portlet_slideshow.ICollectionPortlet"

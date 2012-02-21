@@ -1,9 +1,5 @@
 .jcarousel-skin-plone .jcarousel-container {
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-   border-radius: 10px;
-/*    background: #F0F6F9;*/
-    border: 1px solid #346F97;
+
 }
 
 .jcarousel-skin-plone .jcarousel-direction-rtl {
@@ -11,14 +7,10 @@
 }
 
 .jcarousel-skin-plone .jcarousel-container-horizontal {
-    width: 620px;
+/*    width: 532px;*/
+    width: 512px;
     padding: 20px 40px;
-}
-
-.jcarousel-skin-plone .jcarousel-container-vertical {
-    width: 200px;
-    height: 620px;
-    padding: 40px 20px;
+    margin:auto;
 }
 
 .jcarousel-skin-plone .jcarousel-clip {
@@ -26,45 +18,28 @@
 }
 
 .jcarousel-skin-plone .jcarousel-clip-horizontal {
-    width:  620px;
-    height: 200px;
-}
-
-.jcarousel-skin-plone .jcarousel-clip-vertical {
-    width:  200px;
-    height: 620px;
+    width: 512px;
+/*    width:  532px;*/
+    height: 128px;
 }
 
 .jcarousel-skin-plone .jcarousel-item {
-    width: 200px;
-    height: 200px;
+    width: 128px;
+    height: 128px;
 }
 
 .jcarousel-skin-plone .jcarousel-item-horizontal {
 	margin-left: 0;
-    margin-right: 10px;
 }
 
-.jcarousel-skin-plone .jcarousel-direction-rtl .jcarousel-item-horizontal {
-	margin-left: 10px;
-    margin-right: 0;
-}
 
-.jcarousel-skin-plone .jcarousel-item-vertical {
-    margin-bottom: 10px;
-}
-
-.jcarousel-skin-plone .jcarousel-item-placeholder {
-    background: #fff;
-    color: #000;
-}
 
 /**
  *  Horizontal Buttons
  */
 .jcarousel-skin-plone .jcarousel-next-horizontal {
     position: absolute;
-    top: 100px;
+    top: 70px;
     right: 5px;
     width: 32px;
     height: 32px;
@@ -97,7 +72,7 @@
 
 .jcarousel-skin-plone .jcarousel-prev-horizontal {
     position: absolute;
-    top: 100px;
+    top: 70px;
     left: 5px;
     width: 32px;
     height: 32px;
@@ -126,63 +101,6 @@
 .jcarousel-skin-plone .jcarousel-prev-disabled-horizontal:active {
     cursor: default;
     background-position: -96px 0;
-}
-
-/**
- *  Vertical Buttons
- */
-.jcarousel-skin-plone .jcarousel-next-vertical {
-    position: absolute;
-    bottom: 5px;
-    left: 43px;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    background: transparent url(../++resource++redomino.tabsandslides.next-vertical.png) no-repeat 0 0;
-}
-
-.jcarousel-skin-plone .jcarousel-next-vertical:hover,
-.jcarousel-skin-plone .jcarousel-next-vertical:focus {
-    background-position: 0 -32px;
-}
-
-.jcarousel-skin-plone .jcarousel-next-vertical:active {
-    background-position: 0 -64px;
-}
-
-.jcarousel-skin-plone .jcarousel-next-disabled-vertical,
-.jcarousel-skin-plone .jcarousel-next-disabled-vertical:hover,
-.jcarousel-skin-plone .jcarousel-next-disabled-vertical:focus,
-.jcarousel-skin-plone .jcarousel-next-disabled-vertical:active {
-    cursor: default;
-    background-position: 0 -96px;
-}
-
-.jcarousel-skin-plone .jcarousel-prev-vertical {
-    position: absolute;
-    top: 5px;
-    left: 43px;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    background: transparent url(../++resource++redomino.tabsandslides.prev-vertical.png) no-repeat 0 0;
-}
-
-.jcarousel-skin-plone .jcarousel-prev-vertical:hover,
-.jcarousel-skin-plone .jcarousel-prev-vertical:focus {
-    background-position: 0 -32px;
-}
-
-.jcarousel-skin-plone .jcarousel-prev-vertical:active {
-    background-position: 0 -64px;
-}
-
-.jcarousel-skin-plone .jcarousel-prev-disabled-vertical,
-.jcarousel-skin-plone .jcarousel-prev-disabled-vertical:hover,
-.jcarousel-skin-plone .jcarousel-prev-disabled-vertical:focus,
-.jcarousel-skin-plone .jcarousel-prev-disabled-vertical:active {
-    cursor: default;
-    background-position: 0 -96px;
 }
 
 
