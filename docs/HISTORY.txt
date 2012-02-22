@@ -4,13 +4,13 @@ Changelog
 0.7.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- added permissions dependencies for plone4.1 [sithmel]
 
 
 0.7.2 (2012-02-21)
 ------------------
 
-- added MANIFEST.in for release on pypi
+- added MANIFEST.in for release on pypi [sithmel]
 
 
 0.7.1 (2012-02-21)
