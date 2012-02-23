@@ -53,23 +53,13 @@
       />
 
    <browser:resource
-      name="redomino.tabsandslides.next-horizontal.png"
-      file="resources/next-horizontal.png"
+      name="redomino.tabsandslides.next.png"
+      file="resources/next.png"
       />
 
    <browser:resource
-      name="redomino.tabsandslides.next-vertical.png"
-      file="resources/next-vertical.png"
-      />
-
-   <browser:resource
-      name="redomino.tabsandslides.prev-horizontal.png"
-      file="resources/prev-horizontal.png"
-      />
-
-   <browser:resource
-      name="redomino.tabsandslides.prev-vertical.png"
-      file="resources/prev-vertical.png"
+      name="redomino.tabsandslides.prev.png"
+      file="resources/prev.png"
       />
 
    <browser:resource

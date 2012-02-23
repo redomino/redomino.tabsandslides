@@ -105,22 +105,28 @@ jQuery.fn.init_slideshowpreview = function (){
 $(document).ready(function (){
     $(this).init_image_tabs().init_gallery().init_slideshow().init_tabs().init_slideshowpreview();
 });
+
+
+var fix_heigths = function (){
+    var $this = $(this);
+    var maxh = 0;
+    $this.children().each(function (){
+        var h = $(this).outerHeight(true);
+        maxh = h > maxh && h || maxh;
+    });
+    $this.height(maxh);
+};
+
+
 // fix heights
 $(window).load(function (){
-    $('.slideshow_panes').each(function (){
-    
-        var $this = $(this);
-        var maxh = 0;
-        $this.children().children().each(function (){
-            var h = $(this).outerHeight(true);
-            maxh = h > maxh && h || maxh;
-        });
-        $this.children().height(maxh).css('visibility','visible').css('display','none');
-        $this.height(maxh);
-    });
-
+    var $sp = $('.slideshow_panes');
+    $sp.each(fix_heigths);
 });
-
+$(window).resize(function (){
+    var $sp = $('.slideshow_panes');
+    $sp.each(fix_heigths);
+});
 
 })(jQuery);
 

@@ -5,10 +5,9 @@
     <tal:events tal:define="contents view/getViews">
 
         <!-- the tabs -->
-        <div class="tabs">
-            <tal:block repeat="content contents" tal:content="structure content/tab">Tab1</tal:block>
-        </div>
-
+        <ul class="tabs">
+            <li tal:repeat="content contents" tal:content="structure content/tab">Tab1</li>
+        </ul>
         <!-- tab "panes" -->
         <div class="panes">
 	        <div tal:repeat="content contents" tal:content="structure content/pane">pane 1 content</div>
@@ -35,9 +34,9 @@
     <dd tal:define="contents view/getViews">
 
         <!-- the tabs -->
-        <div class="tabs">
-            <tal:block repeat="content contents" tal:content="structure content/tab">Tab1</tal:block>
-        </div>
+        <ul class="tabs">
+            <li tal:repeat="content contents" tal:content="structure content/tab">Tab1</li>
+        </ul>
 
         <!-- tab "panes" -->
         <div class="panes">

@@ -11,8 +11,6 @@
     display:none;
 }
 
-
-
 /*
 **********************************************************************
  SLIDES
@@ -32,11 +30,10 @@
 
 /* single slide */
 .slideshow_panes > div {
-    visibility:hidden;
+    display:none;
 	position:absolute;
 	top:0;
 	left:0;		
-	height:256px;
 	font-size:12px;
 	width:100%;
 }
@@ -98,21 +95,21 @@
  TABS
 **********************************************************************
 */
-
+.panes{
+    clear:both;
+}
 
 /* root element for tabs  */
 .tabs {  
 	margin:0 !important; 
 	padding:0;
 	height:30px;
-	border-bottom:1px solid #666;	 	
 }
 
 /* single tab */
 .tabs li {  
-	float:left;	 
 	padding:0; 
-	margin:0;  
+	margin:0 !important;  
 	list-style-type:none;	
 }
 
@@ -121,20 +118,24 @@
 	float:left;
 	font-size:13px;
 	display:block;
-	padding:5px 30px;	
+	padding:5px 10px;	
 	text-decoration:none;
-	border:1px solid #666;	
-	border-bottom:0px;
-	height:18px;
+	border-bottom:0px !important;
 	background-color:#efefef;
 	color:#777;
 	margin-right:2px;
 	position:relative;
 	top:1px;	
 	outline:0;
-	-moz-border-radius:4px 4px 0 0;	
-	-webkit-border-radius:4px 4px 0 0;	
-	border-radius:4px 4px 0 0;	
+
+
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    height:32px;    
+    margin-top:3px;
 }
 
 .tabs a:hover {
@@ -145,7 +146,7 @@
 /* selected tab */
 .tabs a.current {
 	background-color:#ddd;
-	border-bottom:1px solid #ddd;	
+	border-bottom:1px solid #ddd !important;	
 	color:#000;	
 	cursor:default;
 }
@@ -154,9 +155,7 @@
 /* tab pane */
 .panes > div {
 	display:none;
-	border:1px solid #666;
-	border-width:0 1px 1px 1px;
-	min-height:150px;
+	min-height:200px;
 	padding:15px 20px;
 	background-color:#ddd;	
 }
@@ -175,14 +174,12 @@
 **********************************************************************
 */
 .template-tabbed_summary_view .imagetabs-panes{
-    background-color:#EEE;
     margin:10px 0px;
     padding:10px;
 }
 
 .template-tabbed_summary_view2 .imagetabs-panes{
     overflow:hidden;
-    background-color:#EEE;
     margin:10px 0px;
     padding:10px;
 }
@@ -228,7 +225,6 @@
 .slideshow_preview_panes > div {
 	display:none;
 	position:absolute;
-/*	height:256px;*/
     overflow:hidden;
 }
 .slideshow_preview_panes{
@@ -256,9 +252,5 @@
 .slideshow_preview_tabs img {
     width:68px;
 }
-
-
-
-
 
 
