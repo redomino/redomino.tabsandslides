@@ -35,8 +35,8 @@
             <div class="documentDescription" tal:content="context/Description"></div>
             <div id="content-core" class="jsenhanced">
                 <!-- the gallery -->
-                <ul class="imagegallery jcarousel-skin-plone" tal:define="contents view/getViews" tal:condition="contents">
-                    <li tal:repeat="content contents" tal:content="structure content/tab">gallery 1 content</li>
+                <ul class="imagegallery jcarousel-skin-plone" tal:define="objs view/getObjects" tal:condition="objs">
+                    <li tal:repeat="obj objs" tal:content="structure obj/@@gallery_adapter">gallery 1 content</li>
                 </ul>
             </div>
             <div class="visualClear"></div>

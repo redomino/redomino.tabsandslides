@@ -34,12 +34,12 @@ from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import BoundPageTemplate
 
-from redomino.tabsandslides.browser.interfaces import ITabGenerator
-
-
 viewsVocabulary = SimpleVocabulary(
-    [SimpleTerm(value=u'portlet_tabs.pt', title=_(u'tabs')),
-     SimpleTerm(value=u'portlet_slideshow.pt', title=_(u'slideshow'))]
+    [
+     SimpleTerm(value=u'portlet_tabs.pt', title=_(u'tabs')),
+     SimpleTerm(value=u'portlet_slideshow.pt', title=_(u'slideshow')),
+     SimpleTerm(value=u'portlet_gallery.pt', title=_(u'gallery'))
+     ]
     )
     
 class ICollectionPortlet(IPortletDataProvider):
@@ -241,19 +241,8 @@ class Renderer(base.Renderer):
             collection_path = str(collection_path)
         return portal.restrictedTraverse(collection_path, default=None)
 
-    def getViews(self):
-        out = []
-            
-        for b in self.results():
-            obj = b.getObject()
-            tabGenerator = self.getAdapter(obj)
-
-            out.append({'tab':tabGenerator.getTab(),'pane':tabGenerator.getPane()})
-
-        return out
-
-    def getAdapter(self,obj):
-        return getMultiAdapter((obj, self.context, self.request, self), ITabGenerator)
+    def getObjects(self):
+        return [b.getObject() for b in self.results()]
 
 
 

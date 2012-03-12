@@ -17,21 +17,12 @@
 from zope.interface import implements, Interface
 
 from Products.Five import BrowserView
-from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 from Products.ATContentTypes.interface import IATTopic
 from Acquisition import aq_inner
+from plone.memoize.view import memoize
 
-from redomino.tabsandslides.browser.interfaces import (ITabGenerator,
-                                                       ITabbedFolder,
-                                                       ISlideshowFolder,
-                                                       IImagesTabbedFolder,
-                                                       IGalleryFolder,
-                                                       ISlideshowPreviewFolder,
-                                                       IBoxView)
-
-
-class BaseTabbedFolderView(BrowserView):
+class BaseView(BrowserView):
     """
     base implementation: It is the base of all collection/folder based class with tab or slides
     """
@@ -40,15 +31,6 @@ class BaseTabbedFolderView(BrowserView):
     def portal_catalog(self):
         return getMultiAdapter((self.context,self.request),name=u"plone_tools").catalog()
 
-    @property
-    def portal_types(self):
-        return getMultiAdapter((self.context,self.request),name=u"plone_tools").types()
-
-
-    @property
-    def portal(self):
-        return getToolByName(self.context, 'portal_url').getPortalObject()
-
     def contentsMethod(self):
         context = aq_inner(self.context)
         if IATTopic.providedBy(context):
@@ -56,39 +38,12 @@ class BaseTabbedFolderView(BrowserView):
         else:
             contentsMethod = context.getFolderContents
         return contentsMethod
-            
-    def getViews(self):
-        """return a tab and a pane for each object:
+
+    @memoize   
+    def getObjects(self):
+        """return all the objects
         """
         contentsMethod = self.contentsMethod()
+        return [b.getObject() for b in contentsMethod()]
 
-        out = []
-            
-        for b in contentsMethod():
-            obj = b.getObject()
-            tabGenerator = self.getAdapter(obj)
-            out.append({'tab':tabGenerator.getTab(),'pane':tabGenerator.getPane()})
-
-        return out
-
-    def getAdapter(self,obj):
-        return getMultiAdapter((obj, self.context, self.request, self), ITabGenerator)
-
-class TabbedFolder(BaseTabbedFolderView):
-    implements(ITabbedFolder)
-
-class SlideshowFolder(BaseTabbedFolderView):
-    implements(ISlideshowFolder)
-
-class ImagesTabbedFolder(BaseTabbedFolderView):
-    implements(IImagesTabbedFolder)
-
-class GalleryFolder(BaseTabbedFolderView):
-    implements(IGalleryFolder)
-
-class SlideshowPreviewFolder(BaseTabbedFolderView):
-    implements(ISlideshowPreviewFolder)
-
-class BoxView(BaseTabbedFolderView):
-    implements(IBoxView)
 

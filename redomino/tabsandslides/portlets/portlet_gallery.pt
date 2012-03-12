@@ -43,6 +43,7 @@
         <div class="panes">
 	        <div tal:repeat="obj objects" tal:content="structure obj/@@tabs_pane">pane 1 content</div>
         </div>
+
     </dd>
     
     <dd class="portletFooter">

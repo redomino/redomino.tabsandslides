@@ -5,93 +5,131 @@
     xmlns:five="http://namespaces.zope.org/five"
     i18n_domain="redomino.tabsandslides">
 
-
-<!-- Adapters for context, container, request, view -->
-
-<!-- genericadapter -->
-  <adapter
-      for="*
-           *
-           *
-           *"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GenericTabGenerator"
-      />
-
-  <adapter
-      for="Products.ATContentTypes.interface.IATImage
-           *
-           *
-           *"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.ImageTabGenerator"
-      />
-
 <!-- gallery folder adapter -->
 
-  <adapter
-      for="*
-           *
-           *
-           .interfaces.IGalleryFolder"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
+  <browser:page
+      for="*"
+      name="gallery_adapter"
+      class=".adapters.Gallery"
+      permission="zope2.View"
       />
 
-  <adapter
-      for="Products.ATContentTypes.interface.IATImage
-           *
-           *
-           .interfaces.IGalleryFolder"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
+<!-- images tabbed folder adapter -->
+
+  <browser:page
+      for="*"
+      name="images_tabbed_adapter_tab"
+      class=".adapters.Gallery"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="*"
+      name="images_tabbed_adapter_pane"
+      class=".adapters.GalleryPane"
+      permission="zope2.View"
+      />
+
+<!-- slideshow adapter -->
+
+  <browser:page
+      for="*"
+      name="slideshow_tab"
+      class=".adapters.TabsTab"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="*"
+      name="slideshow_pane"
+      class=".adapters.ImageTab"
+      permission="zope2.View"
       />
 
 
-  <adapter
-      for="*
-           *
-           *
-           .interfaces.IImagesTabbedFolder"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
+<!-- tab adapter -->
+
+  <browser:page
+      for="*"
+      name="tabs_tab"
+      class=".adapters.TabsTab"
+      permission="zope2.View"
       />
 
-  <adapter
-      for="Products.ATContentTypes.interface.IATImage
-           *
-           *
-           .interfaces.IImagesTabbedFolder"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
+  <browser:page
+      for="*"
+      name="tabs_pane"
+      class=".adapters.GenericPane"
+      permission="zope2.View"
       />
 
-  <adapter
-      for="*
-           *
-           *
-           .interfaces.ISlideshowPreviewFolder"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
-      />
+<!--dddddddddddddddddddd-->
 
-  <adapter
-      for="*
-           *
-           *
-           .interfaces.IBoxView"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
-      />
+<!--  <browser:page-->
+<!--      for="Products.ATContentTypes.interface.IATImage"-->
+<!--      name="gallery_adapter"-->
+<!--      class=".adapters.GenericPane"-->
+<!--      permission="zope2.View"-->
+<!--      />-->
 
-  <adapter
-      for="Products.ATContentTypes.interface.IATImage
-           *
-           *
-           .interfaces.IBoxView"
-      provides=".interfaces.ITabGenerator"
-      factory=".adapters.GalleryImageTabGenerator"
-      />
+
+
+<!--  <adapter-->
+<!--      for="*-->
+<!--           *-->
+<!--           *-->
+<!--           *"-->
+<!--      provides=".interfaces.ITabGenerator"-->
+<!--      factory=".adapters.GenericTabGenerator"-->
+<!--      />-->
+
+<!--  <adapter-->
+<!--      for="Products.ATContentTypes.interface.IATImage-->
+<!--           *-->
+<!--           *-->
+<!--           *"-->
+<!--      provides=".interfaces.ITabGenerator"-->
+<!--      factory=".adapters.ImageTabGenerator"-->
+<!--      />-->
+
+
+<!--  <adapter-->
+<!--      for="*-->
+<!--           *-->
+<!--           *-->
+<!--           .interfaces.IGalleryFolder"-->
+<!--      provides=".interfaces.ITabGenerator"-->
+<!--      factory=".adapters.GalleryImageTabGenerator"-->
+<!--      />-->
+
+<!--  <adapter-->
+<!--      for="Products.ATContentTypes.interface.IATImage-->
+<!--           *-->
+<!--           *-->
+<!--           .interfaces.IGalleryFolder"-->
+<!--      provides=".interfaces.ITabGenerator"-->
+<!--      factory=".adapters.GalleryImageTabGenerator"-->
+<!--      />-->
+
+
+<!--  <adapter-->
+<!--      for="*-->
+<!--           *-->
+<!--           *-->
+<!--           .interfaces.IImagesTabbedFolder"-->
+<!--      provides=".interfaces.ITabGenerator"-->
+<!--      factory=".adapters.GalleryImageTabGenerator"-->
+<!--      />-->
+
+<!--  <adapter-->
+<!--      for="Products.ATContentTypes.interface.IATImage-->
+<!--           *-->
+<!--           *-->
+<!--           .interfaces.IImagesTabbedFolder"-->
+<!--      provides=".interfaces.ITabGenerator"-->
+<!--      factory=".adapters.GalleryImageTabGenerator"-->
+<!--      />-->
+
 
 
 </configure>

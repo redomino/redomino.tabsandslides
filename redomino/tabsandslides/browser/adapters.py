@@ -15,19 +15,15 @@
 from redomino.tabsandslides.utility import filterById
 from Products.ATContentTypes.interface import IATTopic, IATFolder, IATDocument, IATFile, IATImage, IATNewsItem
 from zope.component import getMultiAdapter
+from Products.Five import BrowserView
 
-class GenericTabGenerator(object):
-
-    def __init__(self,context, container, request, view):
-        self.context = context
-        self.container = container
-        self.request = request
-        self.view = view
-
-    def getTab(self):
+class TabsTab(BrowserView):
+    def __call__(self):
         return '<a href="%s/view">%s</a>' % (self.context.absolute_url(), self.context.Title())
 
-    def getPane(self):
+
+class GenericPane(BrowserView):
+    def __call__(self):
         layout = self.context.getLayout()
         view = self.context.restrictedTraverse(layout)
             
@@ -41,15 +37,31 @@ class GenericTabGenerator(object):
 
         return filterById(html,'content-core',newclass='template_' + layout)
 
-class ImageTabGenerator(GenericTabGenerator):
-    def getPane(self):
+
+class ImageTab(BrowserView):
+    def __call__(self):
         return '<div class="image"><a href="%s/view"><img src="%s" alt="%s" title="%s"/></a></div>' % (self.context.absolute_url(), 
                                                                          self.context.absolute_url(), 
                                                                          self.context.Title(), 
                                                                          self.context.Title())
     
-class GalleryImageTabGenerator(GenericTabGenerator):
 
+class GalleryPane(GenericPane):
+
+    def __call__(self):
+        if IATDocument.providedBy(self.context) or IATNewsItem.providedBy(self.context):
+            return ''.join(['<div class="text">', self.context.getText(), '</div>'])
+        if IATImage.providedBy(self.context):
+            imageurl = "%s/@@images/image/preview" % (self.context.absolute_url(),)
+            return '<div class="image"><a href="%s/image"><img src="%s" alt="%s" title="%s"/></a></div>' % (self.context.absolute_url(),
+                                                                                  imageurl,
+                                                                                  self.context.Title(),
+                                                                                  self.context.Title() )
+        
+            
+        return GenericPane.__call__(self)
+
+class Gallery(BrowserView):
     def portal_url(self):
         return getMultiAdapter((self.context,self.request),name=u"plone_portal_state").portal_url()
         
@@ -63,21 +75,3 @@ class GalleryImageTabGenerator(GenericTabGenerator):
         else:
             return "%s/++resource++redomino.tabsandslides.page.png" % (self.portal_url(),)
         
-    def getTab(self):
-        return '<a href="%s/view"><img src="%s" alt="%s" title="%s"/></a>' % (self.context.absolute_url(),
-                                                                              self.getImage(),
-                                                                              self.context.Title(),
-                                                                              self.context.Title() )
-
-    def getPane(self):
-        if IATDocument.providedBy(self.context) or IATNewsItem.providedBy(self.context):
-            return ''.join(['<div class="text">', self.context.getText(), '</div>'])
-        if IATImage.providedBy(self.context):
-            imageurl = "%s/@@images/image/preview" % (self.context.absolute_url(),)
-            return '<div class="image"><a href="%s/image"><img src="%s" alt="%s" title="%s"/></a></div>' % (self.context.absolute_url(),
-                                                                                  imageurl,
-                                                                                  self.context.Title(),
-                                                                                  self.context.Title() )
-        
-            
-        return GenericTabGenerator.getPane(self)

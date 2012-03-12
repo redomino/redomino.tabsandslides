@@ -2,15 +2,15 @@
      tal:attributes="class string:portlet portletSlideshow ${view/css_class}"
      i18n:domain="plone">
 
-    <tal:events tal:define="contents view/getViews">
+    <tal:events tal:define="objects view/getObjects">
         <!-- tab "panes" -->
         <div class="slideshow_panes">
-	        <div tal:repeat="content contents" tal:content="structure content/pane">pane 1 content</div>
+	        <div tal:repeat="obj objects" tal:content="structure obj/@@slideshow_pane">pane 1 content</div>
         </div>
 
         <!-- the tabs -->
         <div class="slideshow_tabs">
-            <tal:block repeat="content contents" tal:content="structure content/tab">Tab1</tal:block>
+            <tal:block repeat="obj objects" tal:content="structure obj/@@slideshow_tab">Tab1</tal:block>
         </div>
     </tal:events>
 
@@ -30,15 +30,15 @@
     </dt>
     
 
-    <dd tal:define="contents view/getViews">
+    <dd tal:define="objects view/getObjects">
         <!-- tab "panes" -->
         <div class="slideshow_panes">
-	        <div tal:repeat="content contents" tal:content="structure content/pane">pane 1 content</div>
+	        <div tal:repeat="obj objects" tal:content="structure obj/@@slideshow_pane">pane 1 content</div>
         </div>
 
         <!-- the tabs -->
         <div class="slideshow_tabs">
-            <tal:block repeat="content contents" tal:content="structure content/tab">Tab1</tal:block>
+            <tal:block repeat="obj objects" tal:content="structure obj/@@slideshow_tab">Tab1</tal:block>
         </div>
     </dd>
     

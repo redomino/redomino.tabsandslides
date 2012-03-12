@@ -21,7 +21,7 @@
   <browser:page
       for="Products.ATContentTypes.interface.IATFolder"
       name="gallery_view"
-      class=".common.GalleryFolder"
+      class=".common.BaseView"
       template="templates/gallery_folder.pt"
       permission="zope2.View"
       />
@@ -29,7 +29,7 @@
   <browser:page
       for="Products.ATContentTypes.interface.IATTopic"
       name="gallery_view"
-      class=".common.GalleryFolder"
+      class=".common.BaseView"
       template="templates/gallery_folder.pt"
       permission="zope2.View"
       />
@@ -49,7 +49,7 @@
   <browser:page
       for="Products.ATContentTypes.interface.IATFolder"
       name="tabbed_view"
-      class=".common.TabbedFolder"
+      class=".common.BaseView"
       template="templates/tabbed_folder.pt"
       permission="zope2.View"
       />
@@ -57,7 +57,7 @@
   <browser:page
       for="Products.ATContentTypes.interface.IATTopic"
       name="tabbed_view"
-      class=".common.TabbedFolder"
+      class=".common.BaseView"
       template="templates/tabbed_folder.pt"
       permission="zope2.View"
       />
@@ -78,7 +78,7 @@
   <browser:page
       for="Products.ATContentTypes.interface.IATFolder"
       name="tabbed_summary_view"
-      class=".common.ImagesTabbedFolder"
+      class=".common.BaseView"
       template="templates/images_tabbed_folder.pt"
       permission="zope2.View"
       />
@@ -86,7 +86,7 @@
   <browser:page
       for="Products.ATContentTypes.interface.IATTopic"
       name="tabbed_summary_view"
-      class=".common.ImagesTabbedFolder"
+      class=".common.BaseView"
       template="templates/images_tabbed_folder.pt"
       permission="zope2.View"
       />
@@ -106,7 +106,7 @@
   <browser:page
       for="Products.ATContentTypes.interface.IATFolder"
       name="tabbed_summary_view2"
-      class=".common.ImagesTabbedFolder"
+      class=".common.BaseView"
       template="templates/images_tabbed_folder2.pt"
       permission="zope2.View"
       />
@@ -114,7 +114,7 @@
   <browser:page
       for="Products.ATContentTypes.interface.IATTopic"
       name="tabbed_summary_view2"
-      class=".common.ImagesTabbedFolder"
+      class=".common.BaseView"
       template="templates/images_tabbed_folder2.pt"
       permission="zope2.View"
       />
@@ -134,7 +134,7 @@
   <browser:page
       for="Products.ATContentTypes.interface.IATFolder"
       name="slideshow_view"
-      class=".common.SlideshowFolder"
+      class=".common.BaseView"
       template="templates/slideshow_folder.pt"
       permission="zope2.View"
       />
@@ -142,7 +142,7 @@
   <browser:page
       for="Products.ATContentTypes.interface.IATTopic"
       name="slideshow_view"
-      class=".common.SlideshowFolder"
+      class=".common.BaseView"
       template="templates/slideshow_folder.pt"
       permission="zope2.View"
       />
@@ -156,42 +156,6 @@
             description=""
             />
     </browser:menuItems>
-
-<!-- slideshow with preview view -->
-
-  <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
-      name="slideshow_preview_view"
-      class=".common.SlideshowPreviewFolder"
-      template="templates/slideshow_preview_folder.pt"
-      permission="zope2.View"
-      />
-
-  <browser:page
-      for="Products.ATContentTypes.interface.IATTopic"
-      name="slideshow_preview_view"
-      class=".common.SlideshowPreviewFolder"
-      template="templates/slideshow_preview_folder.pt"
-      permission="zope2.View"
-      />
-
-<!-- box view -->
-
-  <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
-      name="box_view"
-      class=".common.BoxView"
-      template="templates/box_view.pt"
-      permission="zope2.View"
-      />
-
-  <browser:page
-      for="Products.ATContentTypes.interface.IATTopic"
-      name="box_view"
-      class=".common.BoxView"
-      template="templates/box_view.pt"
-      permission="zope2.View"
-      />
 
 
 </configure>
