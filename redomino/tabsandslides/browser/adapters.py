@@ -38,13 +38,17 @@ class GenericPane(BrowserView):
         return filterById(html,'content-core',newclass='template_' + layout)
 
 
-class ImageTab(BrowserView):
+class ImageTab(GenericPane):
     def __call__(self):
-        return '<div class="image"><a href="%s/view"><img src="%s" alt="%s" title="%s"/></a></div>' % (self.context.absolute_url(), 
-                                                                         self.context.absolute_url(), 
-                                                                         self.context.Title(), 
-                                                                         self.context.Title())
+        if IATDocument.providedBy(self.context) or IATNewsItem.providedBy(self.context):
+            return ''.join(['<div class="text">', self.context.getText(), '</div>'])
+        if IATImage.providedBy(self.context):
+            return '<div class="image"><a href="%s/view"><img src="%s" alt="%s" title="%s"/></a></div>' % (self.context.absolute_url(), 
+                                                                             self.context.absolute_url(), 
+                                                                             self.context.Title(), 
+                                                                             self.context.Title())
     
+        return GenericPane.__call__(self)
 
 class GalleryPane(GenericPane):
 
@@ -74,4 +78,10 @@ class Gallery(BrowserView):
             return "%s/++resource++redomino.tabsandslides.folder.png" % (self.portal_url(),)
         else:
             return "%s/++resource++redomino.tabsandslides.page.png" % (self.portal_url(),)
+
         
+    def __call__(self):
+        return '<a href="%s/view"><img src="%s" alt="%s" title="%s"/></a>' % (self.context.absolute_url(),
+                                                                              self.getImage(),
+                                                                              self.context.Title(),
+                                                                              self.context.Title() )        

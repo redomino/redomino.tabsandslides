@@ -59,76 +59,10 @@
   <browser:page
       for="*"
       name="tabs_pane"
-      class=".adapters.GenericPane"
+      class=".adapters.ImageTab"
       permission="zope2.View"
       />
 
-<!--dddddddddddddddddddd-->
-
-<!--  <browser:page-->
-<!--      for="Products.ATContentTypes.interface.IATImage"-->
-<!--      name="gallery_adapter"-->
-<!--      class=".adapters.GenericPane"-->
-<!--      permission="zope2.View"-->
-<!--      />-->
-
-
-
-<!--  <adapter-->
-<!--      for="*-->
-<!--           *-->
-<!--           *-->
-<!--           *"-->
-<!--      provides=".interfaces.ITabGenerator"-->
-<!--      factory=".adapters.GenericTabGenerator"-->
-<!--      />-->
-
-<!--  <adapter-->
-<!--      for="Products.ATContentTypes.interface.IATImage-->
-<!--           *-->
-<!--           *-->
-<!--           *"-->
-<!--      provides=".interfaces.ITabGenerator"-->
-<!--      factory=".adapters.ImageTabGenerator"-->
-<!--      />-->
-
-
-<!--  <adapter-->
-<!--      for="*-->
-<!--           *-->
-<!--           *-->
-<!--           .interfaces.IGalleryFolder"-->
-<!--      provides=".interfaces.ITabGenerator"-->
-<!--      factory=".adapters.GalleryImageTabGenerator"-->
-<!--      />-->
-
-<!--  <adapter-->
-<!--      for="Products.ATContentTypes.interface.IATImage-->
-<!--           *-->
-<!--           *-->
-<!--           .interfaces.IGalleryFolder"-->
-<!--      provides=".interfaces.ITabGenerator"-->
-<!--      factory=".adapters.GalleryImageTabGenerator"-->
-<!--      />-->
-
-
-<!--  <adapter-->
-<!--      for="*-->
-<!--           *-->
-<!--           *-->
-<!--           .interfaces.IImagesTabbedFolder"-->
-<!--      provides=".interfaces.ITabGenerator"-->
-<!--      factory=".adapters.GalleryImageTabGenerator"-->
-<!--      />-->
-
-<!--  <adapter-->
-<!--      for="Products.ATContentTypes.interface.IATImage-->
-<!--           *-->
-<!--           *-->
-<!--           .interfaces.IImagesTabbedFolder"-->
-<!--      provides=".interfaces.ITabGenerator"-->
-<!--      factory=".adapters.GalleryImageTabGenerator"-->
-<!--      />-->
 
 
 

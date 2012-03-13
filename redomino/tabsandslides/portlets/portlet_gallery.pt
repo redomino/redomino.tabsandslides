@@ -4,15 +4,10 @@
 
     <tal:events tal:define="objects view/getObjects">
 
-        <!-- the tabs -->
-        <ul class="tabs">
-            <li tal:repeat="obj objects" tal:content="structure obj/@@tabs_tab">Tab1</li>
-        </ul>
 
-        <!-- tab "panes" -->
-        <div class="panes">
-	        <div tal:repeat="obj objects" tal:content="structure obj/@@tabs_pane">pane 1 content</div>
-        </div>
+        <ul class="imagegallery jcarousel-skin-plone" tal:define="objs view/getObjects" tal:condition="objs">
+            <li tal:repeat="obj objs" tal:content="structure obj/@@gallery_adapter">gallery 1 content</li>
+        </ul>
 
     </tal:events>
 
@@ -34,15 +29,9 @@
 
     <dd tal:define="objects view/getObjects">
 
-        <!-- the tabs -->
-        <ul class="tabs">
-            <li tal:repeat="obj objects" tal:content="structure obj/@@tabs_tab">Tab1</li>
+        <ul class="imagegallery jcarousel-skin-plone" tal:define="objs view/getObjects" tal:condition="objs">
+            <li tal:repeat="obj objs" tal:content="structure obj/@@gallery_adapter">gallery 1 content</li>
         </ul>
-
-        <!-- tab "panes" -->
-        <div class="panes">
-	        <div tal:repeat="obj objects" tal:content="structure obj/@@tabs_pane">pane 1 content</div>
-        </div>
 
     </dd>
     
