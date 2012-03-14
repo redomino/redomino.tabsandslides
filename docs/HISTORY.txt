@@ -4,13 +4,13 @@ Changelog
 0.7.5 (unreleased)
 ------------------
 
-- added a gallery portlet (to complete) [sithmel]
-- changed the adapter for the content types (to complete almost done ... some fix) [sithmel]
+- added a gallery portlet  [sithmel]
+- changed the adapter for the content types [sithmel]
+- fix the random function for the portlet collections [sithmel]
 - update the readme (to do) [sithmel]
-- added a portlet for the folder (todo) [sithmel]
-- fix the random function for the portlet collections (to do) [sithmel]
-- keep the template vocab outside the portlet file [sithmel]
-
+- put the template vocab outside the portlet file [sithmel]
+- added a portlet for the folder (work in progress) [sithmel]
+- fix i18n [sithmel]
 
 0.7.4 (2012-02-23)
 ------------------

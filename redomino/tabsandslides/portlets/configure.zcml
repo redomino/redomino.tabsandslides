@@ -8,7 +8,11 @@
     <include package="plone.portlet.collection" />
 
      <!-- Register the portlets -->
-
+    <utility
+        component=".templates.TemplatesAvailable"
+        name="redomino.tabsandslides.portlettemplates"
+        />
+        
      <plone:portlet
          name="redomino.tabsandslides.tabsgenericportlet"
          interface=".portlet_generic.ICollectionPortlet"
@@ -16,6 +20,15 @@
          renderer=".portlet_generic.Renderer"
          addview=".portlet_generic.AddForm"
          editview=".portlet_generic.EditForm"
+         />
+
+     <plone:portlet
+         name="redomino.tabsandslides.tabsgenericportletfolder"
+         interface=".portlet_generic_folder.IFolderPortlet"
+         assignment=".portlet_generic_folder.Assignment"
+         renderer=".portlet_generic_folder.Renderer"
+         addview=".portlet_generic_folder.AddForm"
+         editview=".portlet_generic_folder.EditForm"
          />
 <!--
          view_permission="zope2.View"

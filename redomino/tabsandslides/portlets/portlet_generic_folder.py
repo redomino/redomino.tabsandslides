@@ -14,7 +14,6 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
-import random
 from zope import schema
 from zope.formlib import form
 from zope.interface import implements
@@ -22,48 +21,28 @@ from zope.component import getUtility, getMultiAdapter
 from plone.memoize.instance import memoize
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.portlet.collection import PloneMessageFactory as _
 from plone.app.portlets.portlets import base
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from Products.ATContentTypes.interface import IATTopic
 from plone.i18n.normalizer.interfaces import IIDNormalizer
-from plone.app.vocabularies.catalog import SearchableTextSourceBinder
+
 
 from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import BoundPageTemplate
-
     
-class ICollectionPortlet(IPortletDataProvider):
+class IFolderPortlet(IPortletDataProvider):
     """"""
     header = schema.TextLine(
         title=_(u"Portlet header"),
         description=_(u"Title of the rendered portlet"),
         required=True)
 
-    target_collection = schema.Choice(
-        title=_(u"Target collection"),
-        description=_(u"Find the collection which provides the items to list"),
-        required=True,
-        source=SearchableTextSourceBinder(
-            {'object_provides': IATTopic.__identifier__},
-            default_query='path:'))
-
-    limit = schema.Int(
-        title=_(u"Limit"),
-        description=_(u"Specify the maximum number of items to show in the "
-                      u"portlet. Leave this blank to show all items."),
-        default=6,
+    talexp = schema.TextLine(
+        title=_(u"Tal expression"),
+        description=_(u""),
         required=False)
-
-    random = schema.Bool(
-        title=_(u"Select random items"),
-        description=_(u"If enabled, items will be selected randomly from the "
-                      u"collection, rather than based on its sort order."),
-        required=True,
-        default=False)
-
 
     target_view = schema.Choice(
         title=_(u"label_choose_template"),
@@ -88,19 +67,14 @@ class Assignment(base.Assignment):
     with columns.
     """
 
-    implements(ICollectionPortlet)
+    implements(IFolderPortlet)
 
     header = u""
-    target_collection = None
     limit = None
-    random = False
 
-    def __init__(self, header=u"", target_collection=None, limit=None,
-                 random=False, target_view="portlet_tabs.pt", omit_border=False):
+    def __init__(self, header=u"", talexp='', target_view="portlet_tabs.pt", omit_border=False):
         self.header = header
-        self.limit = limit
-        self.target_collection = target_collection
-        self.random = random
+        self.talexp = talexp
         self.target_view = target_view
         self.omit_border = omit_border
 
@@ -152,88 +126,12 @@ class Renderer(base.Renderer):
     def available(self):
         return len(self.results())
 
-    def collection_url(self):
-        collection = self.collection()
-        if collection is None:
-            return None
-        else:
-            return collection.absolute_url()
 
     def results(self):
         """ Get the actual result brains from the collection.
             This is a wrapper so that we can memoize if and only if we aren't
             selecting random items."""
-        if self.data.random:
-            return self._random_results()
-        else:
-            return self._standard_results()
-
-    @memoize
-    def _standard_results(self):
-        results = []
-        collection = self.collection()
-        if collection is not None:
-            results = collection.queryCatalog()
-            if self.data.limit and self.data.limit > 0:
-                results = results[:self.data.limit]
-        return results
-
-    # intentionally non-memoized
-    def _random_results(self):
-        results = []
-        collection = self.collection()
-        if collection is not None:
-            """
-            Kids, do not try this at home.
-
-            We're poking at the internals of the (lazy) catalog
-            results to avoid instantiating catalog brains
-            unnecessarily.
-
-            We're expecting a LazyCat wrapping two LazyMaps as the
-            return value from
-            Products.ATContentTypes.content.topic.ATTopic.queryCatalog.
-            The second of these contains the results of the catalog
-            query.  We force sorting off because it's unnecessary and
-            might result in a different structure of lazy objects.
-
-            Using the correct LazyMap (results._seq[1]), we randomly
-            pick a catalog index and then retrieve it as a catalog
-            brain using the _func method.
-            """
-
-            results = collection.queryCatalog(sort_on=None)
-            if results is None:
-                return []
-            limit = self.data.limit and min(len(results), self.data.limit) or 1
-
-            if len(results) < limit:
-                limit = len(results)
-            results = random.sample(results, limit)
-
-        return results
-
-    @memoize
-    def collection(self):
-        """ get the collection the portlet is pointing to"""
-
-        collection_path = self.data.target_collection
-        if not collection_path:
-            return None
-
-        if collection_path.startswith('/'):
-            collection_path = collection_path[1:]
-
-        if not collection_path:
-            return None
-
-        portal_state = getMultiAdapter((self.context, self.request),
-                                       name=u'plone_portal_state')
-        portal = portal_state.portal()
-        if isinstance(collection_path, unicode):
-            #restrictedTraverse accept only strings
-            collection_path = str(collection_path)
-        return portal.restrictedTraverse(collection_path, default=None)
+        return self.context.getFolderContents()
 
     def getObjects(self):
         return [b.getObject() for b in self.results()]
@@ -247,8 +145,7 @@ class AddForm(base.AddForm):
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
-    form_fields = form.Fields(ICollectionPortlet)
-    form_fields['target_collection'].custom_widget = UberSelectionWidget
+    form_fields = form.Fields(IFolderPortlet)
 
     label = _(u"Add Collection Portlet")
     description = _(u"This portlet display a listing of items from a "
@@ -265,8 +162,7 @@ class EditForm(base.EditForm):
     zope.formlib which fields to display.
     """
 
-    form_fields = form.Fields(ICollectionPortlet)
-    form_fields['target_collection'].custom_widget = UberSelectionWidget
+    form_fields = form.Fields(IFolderPortlet)
 
     label = _(u"Edit Collection Portlet")
     description = _(u"This portlet display a listing of items from a "
