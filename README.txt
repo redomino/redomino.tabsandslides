@@ -105,5 +105,4 @@ TODO
 
 - fix tests
 - add new views
-- manage image resizing for mobile sites (next releases ...)
 

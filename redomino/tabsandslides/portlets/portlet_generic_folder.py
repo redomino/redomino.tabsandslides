@@ -26,7 +26,8 @@ from plone.app.portlets.portlets import base
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from Products.ATContentTypes.interface import IATTopic
 from plone.i18n.normalizer.interfaces import IIDNormalizer
-
+from Acquisition import aq_inner, aq_parent
+from Products.CMFCore.Expression import Expression, getExprContext
 
 from plone.portlets.interfaces import IPortletDataProvider
 
@@ -126,17 +127,42 @@ class Renderer(base.Renderer):
     def available(self):
         return len(self.results())
 
+    @memoize
+    def get_context(self):
+        context = aq_inner(self.context)
+        ctxstate =  getMultiAdapter((context, self.request), name=u'plone_context_state')
+        if not ctxstate.is_folderish():
+            context = aq_parent(context)
+        return context
 
     def results(self):
-        """ Get the actual result brains from the collection.
-            This is a wrapper so that we can memoize if and only if we aren't
-            selecting random items."""
-        return self.context.getFolderContents()
+        """ Get the actual result brains from the folder"""
+        return self.get_context().getFolderContents()
+
+    def evaluate_exp(self, ctx, expression):
+        expression_context = getExprContext(self, ctx)
+        # works but It's not perfectly clear how
+        # http://collective-docs.readthedocs.org/en/latest/functionality/expressions.html
+        value = expression(expression_context)
+        if hasattr(value, 'strip') and value.strip() == "":
+            # Usually empty expression field means that
+            # expression should be True
+            value = True
+        if value:
+            # Expression succeeded
+            return True
+        else:
+            return False
 
     def getObjects(self):
-        return [b.getObject() for b in self.results()]
+        objects = [b.getObject() for b in self.results()]
+        if self.data.talexp and self.data.talexp.strip():
+            expression = Expression(self.data.talexp)
+            objects = [ctx for ctx in objects if self.evaluate_exp(ctx, expression)]
+        return objects
 
-
+    def collection_url(self):
+        return self.get_context().absolute_url()
 
 class AddForm(base.AddForm):
     """Portlet add form.
