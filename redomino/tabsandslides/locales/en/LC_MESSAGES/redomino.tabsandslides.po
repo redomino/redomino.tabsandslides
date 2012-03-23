@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-02-21 15:49+0000\n"
+"POT-Creation-Date: 2012-03-23 09:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,96 +18,50 @@ msgstr ""
 "Domain: redomino.tabsandslides\n"
 
 #: ./profiles/default/portlets.xml
-msgid "A portlet which displays the results of a collection query with a specific view"
-msgstr ""
-
-#: ./portlets/portlet_generic.py:270
-#: ./portlets/portlet_slideshow.py:229
-#: ./portlets/portlet_tabs.py:229
-msgid "Add Collection Portlet"
-msgstr ""
+msgid "A portlet that displays the content of a folder with a specific view"
+msgstr "A portlet that displays the content of a folder with a specific view"
 
 #: ./profiles/default/portlets.xml
-msgid "Collection portlet tabs"
-msgstr ""
+msgid "A portlet that displays the results of a collection with a specific view"
+msgstr "A portlet that displays the results of a collection with a specific view"
 
-#: ./portlets/portlet_generic.py:288
-#: ./portlets/portlet_slideshow.py:247
-#: ./portlets/portlet_tabs.py:247
-msgid "Edit Collection Portlet"
-msgstr ""
+#: ./portlets/portlet_generic_folder.py:182
+msgid "Add a Folder Portlet"
+msgstr "Add a Folder Portlet"
 
-#: ./portlets/portlet_generic.py:54
-#: ./portlets/portlet_slideshow.py:46
-#: ./portlets/portlet_tabs.py:46
-msgid "Find the collection which provides the items to list"
-msgstr ""
+#: ./portlets/portlet_generic_folder.py:199
+msgid "Edit Folder Portlet"
+msgstr "Edit Folder Portlet"
 
-#: ./portlets/portlet_generic.py:69
-#: ./portlets/portlet_slideshow.py:60
-#: ./portlets/portlet_tabs.py:60
-msgid "If enabled, items will be selected randomly from the collection, rather than based on its sort order."
-msgstr ""
+#: ./portlets/portlet_generic_folder.py:47
+msgid "For example: python:object.portal_type == 'News Item'"
+msgstr "For example: python:object.portal_type == 'News Item'"
 
-#: ./portlets/portlet_generic.py:61
-#: ./portlets/portlet_slideshow.py:53
-#: ./portlets/portlet_tabs.py:53
-msgid "Limit"
-msgstr ""
+#: ./profiles/default/portlets.xml
+msgid "TabsAndSlides Collection portlet"
+msgstr "TabsAndSlides Collection portlet"
 
-#: ./portlets/portlet_generic.py:83
-msgid "Omit portlet border"
-msgstr ""
+#: ./profiles/default/portlets.xml
+msgid "TabsAndSlides Folder portlet"
+msgstr "TabsAndSlides Folder portlet"
 
-#: ./portlets/portlet_generic.py:48
-#: ./portlets/portlet_slideshow.py:40
-#: ./portlets/portlet_tabs.py:40
-msgid "Portlet header"
-msgstr ""
+#: ./portlets/portlet_generic_folder.py:46
+msgid "Tal expression"
+msgstr "Tal expression"
 
-#: ./portlets/portlet_generic.py:68
-#: ./portlets/portlet_slideshow.py:59
-#: ./portlets/portlet_tabs.py:59
-msgid "Select random items"
-msgstr ""
+#: ./portlets/portlet_generic_folder.py:183
+msgid "This portlet display items from the current Folder."
+msgstr "This portlet display items from the current Folder."
 
-#: ./portlets/portlet_generic.py:62
-#: ./portlets/portlet_slideshow.py:54
-#: ./portlets/portlet_tabs.py:54
-msgid "Specify the maximum number of items to show in the portlet. Leave this blank to show all items."
-msgstr ""
+#: ./portlets/templates.py:11
+msgid "gallery"
+msgstr "Gallery"
 
-#: ./portlets/portlet_generic.py:53
-#: ./portlets/portlet_slideshow.py:45
-#: ./portlets/portlet_tabs.py:45
-msgid "Target collection"
-msgstr ""
-
-#: ./portlets/portlet_generic.py:271
-#: ./portlets/portlet_slideshow.py:230
-#: ./portlets/portlet_tabs.py:230
-msgid "This portlet display a listing of items from a Collection."
-msgstr ""
-
-#: ./portlets/portlet_generic.py:84
-msgid "Tick this box if you want to render the text above without the standard header, border or footer."
-msgstr ""
-
-#: ./portlets/portlet_generic.py:49
-#: ./portlets/portlet_slideshow.py:41
-#: ./portlets/portlet_tabs.py:41
-msgid "Title of the rendered portlet"
-msgstr ""
-
-#: ./portlets/portlet_generic.py:76
-msgid "label_choose_template"
-msgstr ""
-
-#: ./portlets/portlet_generic.py:42
+#: ./portlets/templates.py:10
 msgid "slideshow"
 msgstr "Slideshow"
 
-#: ./portlets/portlet_generic.py:41
+#: ./portlets/templates.py:9
 msgid "tabs"
-msgstr "Tabbed View"
+msgstr "Tabs"
 

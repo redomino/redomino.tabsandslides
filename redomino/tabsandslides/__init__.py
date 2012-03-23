@@ -15,5 +15,11 @@
 # 02111-1307, USA.
 #  # -*- extra stuff goes here -*- 
 
+
+from zope.i18nmessageid import MessageFactory
+
+tabsandslidesMessageFactory = MessageFactory('redomino.tabsandslides')
+
+
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""

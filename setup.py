@@ -34,6 +34,6 @@ setup(name='redomino.tabsandslides',
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      setup_requires=["PasteScript"],
+#      setup_requires=["PasteScript"],
 #      paster_plugins=["ZopeSkel"],
       )

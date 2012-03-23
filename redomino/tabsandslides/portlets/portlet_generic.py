@@ -23,7 +23,7 @@ from plone.memoize.instance import memoize
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
-from plone.portlet.collection import PloneMessageFactory as _
+from plone.portlet.collection import PloneMessageFactory as _plone
 from plone.app.portlets.portlets import base
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from Products.ATContentTypes.interface import IATTopic
@@ -38,44 +38,43 @@ from Products.Five.browser.pagetemplatefile import BoundPageTemplate
 class ICollectionPortlet(IPortletDataProvider):
     """"""
     header = schema.TextLine(
-        title=_(u"Portlet header"),
-        description=_(u"Title of the rendered portlet"),
+        title=_plone(u"Portlet header"),
+        description=_plone(u"Title of the rendered portlet"),
         required=True)
 
     target_collection = schema.Choice(
-        title=_(u"Target collection"),
-        description=_(u"Find the collection which provides the items to list"),
+        title=_plone(u"Target collection"),
+        description=_plone(u"Find the collection which provides the items to list"),
         required=True,
         source=SearchableTextSourceBinder(
             {'object_provides': IATTopic.__identifier__},
             default_query='path:'))
 
     limit = schema.Int(
-        title=_(u"Limit"),
-        description=_(u"Specify the maximum number of items to show in the "
+        title=_plone(u"Limit"),
+        description=_plone(u"Specify the maximum number of items to show in the "
                       u"portlet. Leave this blank to show all items."),
         default=6,
         required=False)
 
     random = schema.Bool(
-        title=_(u"Select random items"),
-        description=_(u"If enabled, items will be selected randomly from the "
+        title=_plone(u"Select random items"),
+        description=_plone(u"If enabled, items will be selected randomly from the "
                       u"collection, rather than based on its sort order."),
         required=True,
         default=False)
 
 
     target_view = schema.Choice(
-        title=_(u"label_choose_template"),
-#        description=_(u"Find the collection which provides the items to list"),
+        title=_plone(u"label_choose_template"),
         required=True, 
         vocabulary="redomino.tabsandslides.portlettemplates", 
         #default=u'portlet_tabs.pt')
         )
 
     omit_border = schema.Bool(
-        title=_(u"Omit portlet border"),
-        description=_(u"Tick this box if you want to render the text above "
+        title=_plone(u"Omit portlet border"),
+        description=_plone(u"Tick this box if you want to render the text above "
                       "without the standard header, border or footer."),
         required=True,
         default=False)
@@ -140,7 +139,7 @@ class Renderer(base.Renderer):
         """
         header = self.data.header
         normalizer = getUtility(IIDNormalizer)
-        return "portlet-tabs-%s" % normalizer.normalize(header)
+        return "portlet-tabsandslides-%s" % normalizer.normalize(header)
 
     def render(self):
         _template = ViewPageTemplateFile(self.data.target_view)
@@ -152,7 +151,7 @@ class Renderer(base.Renderer):
     def available(self):
         return len(self.results())
 
-    def collection_url(self):
+    def object_url(self):
         collection = self.collection()
         if collection is None:
             return None
@@ -250,8 +249,8 @@ class AddForm(base.AddForm):
     form_fields = form.Fields(ICollectionPortlet)
     form_fields['target_collection'].custom_widget = UberSelectionWidget
 
-    label = _(u"Add Collection Portlet")
-    description = _(u"This portlet display a listing of items from a "
+    label = _plone(u"Add Collection Portlet")
+    description = _plone(u"This portlet display a listing of items from a "
                     u"Collection.")
 
     def create(self, data):
@@ -268,6 +267,6 @@ class EditForm(base.EditForm):
     form_fields = form.Fields(ICollectionPortlet)
     form_fields['target_collection'].custom_widget = UberSelectionWidget
 
-    label = _(u"Edit Collection Portlet")
-    description = _(u"This portlet display a listing of items from a "
+    label = _plone(u"Edit Collection Portlet")
+    description = _plone(u"This portlet display a listing of items from a "
                     u"Collection.")

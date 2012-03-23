@@ -33,13 +33,6 @@ def test_suite():
         #    'README.txt', package='ceflasuite.common',
         #    setUp=testing.setUp, tearDown=testing.tearDown),
 
-        doctestunit.DocTestSuite(
-           module='redomino.tabsandslides.browser.adapters.tabgenerator',
-           setUp=testing.setUp, tearDown=testing.tearDown),
-        doctestunit.DocTestSuite(
-           module='redomino.tabsandslides.browser.adapters.gallerygenerator',
-           setUp=testing.setUp, tearDown=testing.tearDown),
-
 
         # Integration tests that use PloneTestCase
         #ztc.ZopeDocFileSuite(

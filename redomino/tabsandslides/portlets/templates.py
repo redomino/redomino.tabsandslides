@@ -1,7 +1,7 @@
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from zope.interface import implements, directlyProvides
-from plone.portlet.collection import PloneMessageFactory as _
+from redomino.tabsandslides import tabsandslidesMessageFactory as _
 
 def TemplatesAvailable(context):
     return SimpleVocabulary(

@@ -95,7 +95,7 @@
         for="*"
         menu="plone_displayviews">
         <browser:menuItem
-            title="Tabs with images (Image bottom)"
+            title="Gallery with preview (Image bottom)"
             action="tabbed_summary_view"
             description=""
             />
@@ -123,7 +123,7 @@
         for="*"
         menu="plone_displayviews">
         <browser:menuItem
-            title="Tabs with images (Image top)"
+            title="Gallery with preview (Image top)"
             action="tabbed_summary_view2"
             description=""
             />

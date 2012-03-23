@@ -1,65 +1,61 @@
-A collection of useful views
-===================================
+A collection of useful views and portlets
+=========================================
 
-The main purpose of this product is to provide series of useful views (and a portlet).
-Every view can be applied to a folder or a collection.
+The main purpose of this product is to provide series of useful views and portlets.
+Each of these can be applied to a folder or a collection.
 
-gallery_view
+Views
 --------------
 
-Show elements inside a folder (or collection) in a gallery.
+- **Gallery**: A scrollable carousel.
+- **Tabs**: Show the contents inside a tab.
+- **Gallery with preview (image bottom or Image top)**: A scrollable carousel that shows a preview of each content.
+- **Slideshow**: Shows elements inside a folder (or collection) as a slideshow.
 
-tabbed_view
---------------
+Portlets
+------------
+This product provides two portlets.For each portlet you can choose among three different views:
 
-Show elements inside a folder (or collection) inside tabs.
+- **Gallery**
+- **Tabs**
+- **Slideshow**
 
-tabbed_summary_view
-----------------------
+The portlets are:
 
-Show elements inside a folder (or collection) inside tabs. Instead of strings each tab can be a structure of html (scrollable)
+- **TabsAndSlides Collection portlet**: Show the items of a collection. You can limit the elements to show, randomize the order of the items, show the border of the portlet or not.
+- **TabsAndSlides Folder portlet**: Show the items inside a folder. If you assign this portlet to a non folderish content type It will show the siblings of the content. The content can be optionally filtered using a tal expression. This is a good reference: http://www.owlfish.com/software/simpleTAL/tal-guide.html
 
-slideshow_view
-------------------
+Customize the views
+-------------------
 
-Show elements inside a folder (or collection) as a slideshow.
+It's very easy customize the look and feel of the views !!!
+For example each of the content use a browserview to show its rappresentation. The browserview are registered in the adapters.zcml (inside the browser package)::
 
-redomino.tabsandslides.slideshowportlet
-----------------------------------------
+    <browser:page
+        for="*"
+        name="gallery_adapter"
+        class=".adapters.Gallery"
+        permission="zope2.View"
+        />
 
-This is a portlet that show elements of a collection as a slideshow
+You can customize the apperance using a more specific Interface::
 
-redomino.tabsandslides.tabsportlet
----------------------------------------
+    <browser:page
+        for=".interfaces.IMyCustomContent"
+        name="gallery_adapter"
+        class=".adapters.Gallery"
+        permission="zope2.View"
+        />
 
-This is a portlet that show elements of a collection using tabs
+or a layer interface::
 
-How to create new views
-------------------------
-
-It's easy !!!: You can create a view extending BaseTabbedFolderView (browser/common.py). The view MUST have an interface !!!
-Example:
-class MySpecialView(BaseTabbedFolderView):
-    implements(IMySpecialView)
-
-The template uses this method to getting the objects:
-    tal:repeat="content view/getViews
-
-Every object has a tab and a pane (panel)
-    tal:content="structure content/tab"
-    tal:content="structure content/pane"
-
-How to customize the look and feel of a object inside a container
-------------------------------------------------------------------
-
-Each contained object uses a multiadapter to render its own tab and pane. The multiadapter implements ITabGenerator interface and adapts:
-
-- a context
-- a container
-- a request 
-- a view
-
-Watch the "browser/adapters.py" for examples.
+    <browser:page
+        for="*"
+        name="gallery_adapter"
+        class=".adapters.Gallery"
+        permission="zope2.View"
+        layer=".interfaces.IThemeSpecific"
+        />
 
 Customize javascript configuration
 -------------------------------------
@@ -100,9 +96,4 @@ Credits
 Maurizio Lupo <maurizio.lupo@redomino.com> [sithmel], Author - 2011
 Giacomo Spettoli <giacomo.spettoli@redomino.com> [giacomos]
 
-TODO
---------
-
-- fix tests
-- add new views
 

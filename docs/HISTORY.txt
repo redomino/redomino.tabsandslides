@@ -9,9 +9,8 @@ Changelog
 - fix the random function for the portlet collections [sithmel]
 - put the template vocab outside the portlet file [sithmel]
 - added a portlet for the folder [sithmel]
-- update the readme (to do) [sithmel]
-- polish and optimize code (todo)[sithmel]
-- fix i18n (todo)[sithmel]
+- updated readme [sithmel]
+- added i18n (english and italian) [sithmel]
 
 0.7.4 (2012-02-23)
 ------------------

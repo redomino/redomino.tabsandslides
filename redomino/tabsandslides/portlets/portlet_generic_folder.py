@@ -21,7 +21,9 @@ from zope.component import getUtility, getMultiAdapter
 from plone.memoize.instance import memoize
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.portlet.collection import PloneMessageFactory as _
+from plone.portlet.collection import PloneMessageFactory as _plone
+from redomino.tabsandslides import tabsandslidesMessageFactory as _
+
 from plone.app.portlets.portlets import base
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from Products.ATContentTypes.interface import IATTopic
@@ -36,26 +38,25 @@ from Products.Five.browser.pagetemplatefile import BoundPageTemplate
 class IFolderPortlet(IPortletDataProvider):
     """"""
     header = schema.TextLine(
-        title=_(u"Portlet header"),
-        description=_(u"Title of the rendered portlet"),
+        title=_plone(u"Portlet header"),
+        description=_plone(u"Title of the rendered portlet"),
         required=True)
 
     talexp = schema.TextLine(
         title=_(u"Tal expression"),
-        description=_(u""),
+        description=_(u"For example: python:object.portal_type == 'News Item'"),
         required=False)
 
     target_view = schema.Choice(
-        title=_(u"label_choose_template"),
-#        description=_(u"Find the collection which provides the items to list"),
+        title=_plone(u"label_choose_template"),
         required=True, 
         vocabulary="redomino.tabsandslides.portlettemplates", 
         #default=u'portlet_tabs.pt')
         )
 
     omit_border = schema.Bool(
-        title=_(u"Omit portlet border"),
-        description=_(u"Tick this box if you want to render the text above "
+        title=_plone(u"Omit portlet border"),
+        description=_plone(u"Tick this box if you want to render the text above "
                       "without the standard header, border or footer."),
         required=True,
         default=False)
@@ -115,7 +116,7 @@ class Renderer(base.Renderer):
         """
         header = self.data.header
         normalizer = getUtility(IIDNormalizer)
-        return "portlet-tabs-%s" % normalizer.normalize(header)
+        return "portlet-tabsandslides-%s" % normalizer.normalize(header)
 
     def render(self):
         _template = ViewPageTemplateFile(self.data.target_view)
@@ -137,6 +138,7 @@ class Renderer(base.Renderer):
 
     def results(self):
         """ Get the actual result brains from the folder"""
+        
         return self.get_context().getFolderContents()
 
     def evaluate_exp(self, ctx, expression):
@@ -156,12 +158,16 @@ class Renderer(base.Renderer):
 
     def getObjects(self):
         objects = [b.getObject() for b in self.results()]
+        
+        #exclude self
+        objects = [o for o in objects if o != self.context]
+        
         if self.data.talexp and self.data.talexp.strip():
             expression = Expression(self.data.talexp)
             objects = [ctx for ctx in objects if self.evaluate_exp(ctx, expression)]
         return objects
 
-    def collection_url(self):
+    def object_url(self):
         return self.get_context().absolute_url()
 
 class AddForm(base.AddForm):
@@ -173,9 +179,9 @@ class AddForm(base.AddForm):
     """
     form_fields = form.Fields(IFolderPortlet)
 
-    label = _(u"Add Collection Portlet")
-    description = _(u"This portlet display a listing of items from a "
-                    u"Collection.")
+    label = _(u"Add a Folder Portlet")
+    description = _(u"This portlet display items from the current "
+                    u"Folder.")
 
     def create(self, data):
         return Assignment(**data)
@@ -190,6 +196,7 @@ class EditForm(base.EditForm):
 
     form_fields = form.Fields(IFolderPortlet)
 
-    label = _(u"Edit Collection Portlet")
-    description = _(u"This portlet display a listing of items from a "
-                    u"Collection.")
+    label = _(u"Edit Folder Portlet")
+    description = _(u"This portlet display items from the current "
+                    u"Folder.")
+
