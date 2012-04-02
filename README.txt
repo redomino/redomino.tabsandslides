@@ -14,7 +14,7 @@ Views
 
 Portlets
 ------------
-This product provides two portlets.For each portlet you can choose among three different views:
+This product provides two portlets. For each portlet you can choose among three different views:
 
 - **Gallery**
 - **Tabs**
@@ -22,14 +22,14 @@ This product provides two portlets.For each portlet you can choose among three d
 
 The portlets are:
 
-- **TabsAndSlides Collection portlet**: Show the items of a collection. You can limit the elements to show, randomize the order of the items, show the border of the portlet or not.
-- **TabsAndSlides Folder portlet**: Show the items inside a folder. If you assign this portlet to a non folderish content type It will show the siblings of the content. The content can be optionally filtered using a tal expression. This is a good reference: http://www.owlfish.com/software/simpleTAL/tal-guide.html
+- **TabsAndSlides Collection portlet**: Show the items of a collection. You can limit the elements to be shown, randomize the order of the items, show or not the border of the portlet.
+- **TabsAndSlides Folder portlet**: Show the items inside a folder. If you assign this portlet to a non-folderish content type, it will show the siblings of the content. The content can be optionally filtered using a tal expression. This is a good reference: http://www.owlfish.com/software/simpleTAL/tal-guide.html
 
 Customize the views
 -------------------
 
-It's very easy customize the look and feel of the views !!!
-For example each of the content use a browserview to show its rappresentation. The browserview are registered in the adapters.zcml (inside the browser package)::
+It's very easy to customize the look and feel of the views !!!
+For example each of the content use a browserview to show its representation. The browserview are registered in the adapters.zcml (inside the browser package)::
 
     <browser:page
         for="*"
