@@ -74,7 +74,7 @@ class Assignment(base.Assignment):
     header = u""
     limit = None
 
-    def __init__(self, header=u"", talexp='', target_view="portlet_tabs.pt", omit_border=False):
+    def __init__(self, header=u"", talexp='', target_view="templates/portlet_tabs.pt", omit_border=False):
         self.header = header
         self.talexp = talexp
         self.target_view = target_view
@@ -119,7 +119,7 @@ class Renderer(base.Renderer):
         return "portlet-tabsandslides-%s" % normalizer.normalize(header)
 
     def render(self):
-        _template = ViewPageTemplateFile(self.data.target_view)
+        _template = ViewPageTemplateFile("templates/%s" % self.data.target_view)
         return BoundPageTemplate(_template, self)()
 
 #    render = _template

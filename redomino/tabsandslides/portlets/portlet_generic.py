@@ -95,7 +95,7 @@ class Assignment(base.Assignment):
     random = False
 
     def __init__(self, header=u"", target_collection=None, limit=None,
-                 random=False, target_view="portlet_tabs.pt", omit_border=False):
+                 random=False, target_view="templates/portlet_tabs.pt", omit_border=False):
         self.header = header
         self.limit = limit
         self.target_collection = target_collection
@@ -142,7 +142,7 @@ class Renderer(base.Renderer):
         return "portlet-tabsandslides-%s" % normalizer.normalize(header)
 
     def render(self):
-        _template = ViewPageTemplateFile(self.data.target_view)
+        _template = ViewPageTemplateFile('templates/%s' % self.data.target_view)
         return BoundPageTemplate(_template, self)()
 
 #    render = _template

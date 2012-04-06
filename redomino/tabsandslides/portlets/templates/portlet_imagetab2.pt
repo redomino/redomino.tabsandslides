@@ -1,0 +1,57 @@
+<div tal:condition="view/data/omit_border"
+     tal:attributes="class string:portlet portletImageTab ${view/css_class}"
+     i18n:domain="plone">
+
+    <tal:events tal:define="objects view/getObjects">
+
+        <!-- the tabs -->
+        <ul class="imagetabs-tabs jcarousel-skin-plone" tal:condition="objects">
+            <li tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_tab">tab 1 content</li>
+        </ul>
+        <!-- tab "panes" -->
+        <div class="visualClear"></div>
+
+        <div class="imagetabs-panes" tal:condition="objects">
+            <div tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_pane">pane 1 content</div>
+        </div>
+
+
+    </tal:events>
+
+</div>
+
+<dl tal:condition="not:view/data/omit_border"
+    tal:attributes="class string:portlet portletImageTab ${view/css_class}"
+    i18n:domain="plone"
+    tal:define="object_url view/object_url">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a tal:attributes="href object_url">
+            <span tal:content="view/data/header" />
+        </a>
+        <span class="portletTopRight"></span>
+    </dt>
+    
+
+    <dd tal:define="objects view/getObjects">
+        <!-- the tabs -->
+        <ul class="imagetabs-tabs jcarousel-skin-plone" tal:condition="objects">
+            <li tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_tab">tab 1 content</li>
+        </ul>
+        <!-- tab "panes" -->
+        <div class="visualClear"></div>
+
+        <div class="imagetabs-panes" tal:condition="objects">
+            <div tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_pane">pane 1 content</div>
+        </div>
+    </dd>
+    
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span>
+        </span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>

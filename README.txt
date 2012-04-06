@@ -19,6 +19,8 @@ This product provides two portlets. For each portlet you can choose among three 
 - **Gallery**
 - **Tabs**
 - **Slideshow**
+- **Gallery with preview (image top)**
+- **Gallery with preview (image bottom)**
 
 The portlets are:
 
@@ -43,7 +45,7 @@ You can customize the apperance using a more specific Interface::
     <browser:page
         for=".interfaces.IMyCustomContent"
         name="gallery_adapter"
-        class=".adapters.Gallery"
+        template="mygallery_adapter.pt"
         permission="zope2.View"
         />
 
@@ -52,7 +54,7 @@ or a layer interface::
     <browser:page
         for="*"
         name="gallery_adapter"
-        class=".adapters.Gallery"
+        template="mygallery_adapter.pt"
         permission="zope2.View"
         layer=".interfaces.IThemeSpecific"
         />

@@ -253,4 +253,6 @@
     width:68px;
 }
 
-
+.imagetabs-panes > div{
+	display:none;
+}

@@ -5,6 +5,7 @@ var tabsandslides = {};
 //
 tabsandslides.gallery = {};
 tabsandslides.gallery.config_boxscrollable = {scroll:1};
+//http://sorgalla.com/projects/jcarousel/
 
 //
 // IMAGE TABS
@@ -12,6 +13,7 @@ tabsandslides.gallery.config_boxscrollable = {scroll:1};
 tabsandslides.image_tabs = {};
 tabsandslides.image_tabs.config = {};
 tabsandslides.image_tabs.config_boxscrollable = {scroll:1};
+//http://sorgalla.com/projects/jcarousel/
 
 //
 // TABS

@@ -1,0 +1,31 @@
+<tal:block define="iinfo context/@@plone_interface_info;
+                   portal_state context/@@plone_portal_state;
+                   portal_url   portal_state/portal_url;
+                   is_image python:iinfo.provides('Products.ATContentTypes.interface.IATImage');
+                   is_news python:iinfo.provides('Products.ATContentTypes.interface.IATNewsItem');
+                   is_collection python:iinfo.provides('Products.ATContentTypes.interface.IATTopic');
+                   is_folder python:iinfo.provides('Products.ATContentTypes.interface.IATFolder')">
+
+    <tal:image condition="python: is_image or is_news">
+        <a tal:attributes="href string:${context/absolute_url}/view">
+            <img tal:attributes="src string:${context/absolute_url}/@@images/image/thumb;
+                                 alt context/Title;
+                                 title context/Title"/>
+        </a>
+    </tal:image>
+    <tal:folder condition="python: is_collection or is_folder">
+        <a tal:attributes="href string:${context/absolute_url}/view">
+            <img tal:attributes="src string:${portal_url}/++resource++redomino.tabsandslides.folder.png;
+                                 alt context/Title;
+                                 title context/Title"/>
+        </a>
+    </tal:folder>
+    <tal:folder condition="not:python:  is_collection or is_folder or is_image or is_news">
+        <a tal:attributes="href string:${context/absolute_url}/view">
+            <img tal:attributes="src string:${portal_url}/++resource++redomino.tabsandslides.page.png;
+                                 alt context/Title;
+                                 title context/Title"/>
+        </a>
+    </tal:folder>
+
+</tal:block>

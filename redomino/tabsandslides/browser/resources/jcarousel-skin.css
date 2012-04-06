@@ -1,3 +1,8 @@
+.jcarousel-skin-plone{
+    height: 128px;
+    overflow:hidden;
+}
+
 .jcarousel-skin-plone .jcarousel-container {
 
 }
@@ -28,6 +33,7 @@
 .jcarousel-skin-plone .jcarousel-item {
     width: 128px;
     height: 128px;
+    white-space: nowrap;
 }
 
 .jcarousel-skin-plone .jcarousel-item-horizontal {

@@ -18,9 +18,11 @@ from zope.interface import implements, Interface
 
 from Products.Five import BrowserView
 from zope.component import getMultiAdapter
-from Products.ATContentTypes.interface import IATTopic
+from redomino.tabsandslides.utility import filterById
+from Products.ATContentTypes.interface import IATTopic, IATFolder
 from Acquisition import aq_inner
 from plone.memoize.view import memoize
+
 
 class BaseView(BrowserView):
     """
@@ -45,5 +47,20 @@ class BaseView(BrowserView):
         """
         contentsMethod = self.contentsMethod()
         return [b.getObject() for b in contentsMethod()]
+
+class OriginalView(BrowserView):
+    def __call__(self):
+        layout = self.context.getLayout()
+        view = self.context.restrictedTraverse(layout)
+            
+        #danger of infinite recursion
+        if IATTopic.providedBy(self.context) or IATFolder.providedBy(self.context):
+            view = self.context.restrictedTraverse('folder_listing')
+
+        self.request['ajax_load'] = "1"
+
+        html = view()    
+
+        return filterById(html,'content-core',newclass='template_' + layout)
 
 

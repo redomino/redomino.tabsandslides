@@ -5,12 +5,22 @@
     xmlns:five="http://namespaces.zope.org/five"
     i18n_domain="redomino.tabsandslides">
 
+
+<!-- original view  -->
+
+  <browser:page
+      for="*"
+      name="original_view"
+      class=".common.OriginalView"
+      permission="zope2.View"
+      />
+
 <!-- gallery folder adapter -->
 
   <browser:page
       for="*"
       name="gallery_adapter"
-      class=".adapters.Gallery"
+      template="adapters/gallery_adapter.pt"
       permission="zope2.View"
       />
 
@@ -19,14 +29,14 @@
   <browser:page
       for="*"
       name="images_tabbed_adapter_tab"
-      class=".adapters.Gallery"
+      template="adapters/gallery_adapter.pt"
       permission="zope2.View"
       />
 
   <browser:page
       for="*"
       name="images_tabbed_adapter_pane"
-      class=".adapters.GalleryPane"
+      template="adapters/gallerypane_adapter.pt"
       permission="zope2.View"
       />
 
@@ -35,14 +45,14 @@
   <browser:page
       for="*"
       name="slideshow_tab"
-      class=".adapters.TabsTab"
+      template="adapters/tab_adapter.pt"
       permission="zope2.View"
       />
 
   <browser:page
       for="*"
       name="slideshow_pane"
-      class=".adapters.ImageTab"
+      template="adapters/imagetab_adapter.pt"
       permission="zope2.View"
       />
 
@@ -52,14 +62,14 @@
   <browser:page
       for="*"
       name="tabs_tab"
-      class=".adapters.TabsTab"
+      template="adapters/tab_adapter.pt"
       permission="zope2.View"
       />
 
   <browser:page
       for="*"
       name="tabs_pane"
-      class=".adapters.ImageTab"
+      template="adapters/imagetab_adapter.pt"
       permission="zope2.View"
       />
 

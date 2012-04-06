@@ -1,0 +1,28 @@
+<tal:block define="iinfo context/@@plone_interface_info;
+                   portal_state context/@@plone_portal_state;
+                   portal_url   portal_state/portal_url;
+                   is_image python:iinfo.provides('Products.ATContentTypes.interface.IATImage');
+                   is_news python:iinfo.provides('Products.ATContentTypes.interface.IATNewsItem');
+                   is_document python:iinfo.provides('Products.ATContentTypes.interface.IATDocument')">
+
+
+
+    <tal:page condition="python: is_document or is_news">
+        <div class="text" tal:content="structure context/getText"></div>
+    </tal:page>
+
+    <tal:image condition="python: is_image">
+        <div class="image">
+            <a tal:attributes="href string:${context/absolute_url}/image">
+                <img tal:attributes="src string:${context/absolute_url};
+                                     alt context/Title;
+                                     title context/Title"/>
+            </a>
+        </div>
+    </tal:image>
+
+    <tal:generic condition="not:python:  is_document or is_news or is_image">
+        <div tal:replace="structure context/@@original_view" />
+    </tal:generic>
+
+</tal:block>

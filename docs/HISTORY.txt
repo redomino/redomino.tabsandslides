@@ -4,7 +4,10 @@ Changelog
 0.8.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- fix css on galleries white-space:nowrap [sithmel]
+- added new templates for portlets: galleries with preview [sithmel]
+- from now the adapters are browserview with templates:
+  they are much easier to customize TTW [sithmel]
 
 
 0.8.0 (2012-03-23)
@@ -21,7 +24,7 @@ Changelog
 0.7.4 (2012-02-23)
 ------------------
 
-- Nothing changed yet.
+- Fix style [sithmel]
 
 
 0.7.3 (2012-02-22)

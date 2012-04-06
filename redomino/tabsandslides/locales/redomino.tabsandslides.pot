@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-03-23 09:57+0000\n"
+"POT-Creation-Date: 2012-04-06 10:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,14 @@ msgstr ""
 
 #: ./portlets/portlet_generic_folder.py:47
 msgid "For example: python:object.portal_type == 'News Item'"
+msgstr ""
+
+#: ./portlets/templates.py:13
+msgid "Gallery with preview (Image bottom)"
+msgstr ""
+
+#: ./portlets/templates.py:12
+msgid "Gallery with preview (Image top)"
 msgstr ""
 
 #: ./profiles/default/portlets.xml
