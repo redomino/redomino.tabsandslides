@@ -19,10 +19,7 @@
 
 /* container for slides */
 .slideshow_panes {
-	position:relative;	
-	height:300px;
 	width:100%;
-	float:left;	
 	margin-bottom:15px;
 	cursor:pointer;
     overflow:hidden;	
@@ -31,11 +28,13 @@
 /* single slide */
 .slideshow_panes > div {
     display:none;
-	position:absolute;
-	top:0;
-	left:0;		
 	font-size:12px;
-	width:100%;
+    /*faux positioning. It keeps the heights of elements*/
+    float:left;
+    left:100%;
+    position:relative;
+    width:100%;
+    margin-left:-100%;
 }
 
 .slideshow_panes a{
@@ -213,46 +212,3 @@
 }
 
 
-
-/*
-**********************************************************************
- SLIDESHOW PREVIEW FOLDER
-**********************************************************************
-*/
-
-
-/* single slide */
-.slideshow_preview_panes > div {
-	display:none;
-	position:absolute;
-    overflow:hidden;
-}
-.slideshow_preview_panes{
-	height:256px;
-}
-
-.slideshow_preview_tabs > li {
-    display:block;
-    margin-top:10px;
-}
-
-.slideshow_preview_tabs {
-    float: left;
-    position: relative;
-    width: 70px;
-    z-index: 100;
-    background-color: rgba(160, 160, 160, 0.4);
-	margin-left:0;
-}
-
-.slideshow_preview_tabs a.current {
-    background-color: rgba(160, 160, 160, 0.4);
-}
-
-.slideshow_preview_tabs img {
-    width:68px;
-}
-
-.imagetabs-panes > div{
-	display:none;
-}

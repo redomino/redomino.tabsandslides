@@ -107,27 +107,6 @@ $(document).ready(function (){
 });
 
 
-var fix_heigths = function (){
-    var $this = $(this);
-    var maxh = 0;
-    $this.children().each(function (){
-        var h = $(this).outerHeight(true);
-        maxh = h > maxh && h || maxh;
-    });
-    $this.height(maxh);
-};
-
-
-// fix heights
-$(window).load(function (){
-    var $sp = $('.slideshow_panes');
-    $sp.each(fix_heigths);
-});
-$(window).resize(function (){
-    var $sp = $('.slideshow_panes');
-    $sp.each(fix_heigths);
-});
-
 })(jQuery);
 
 
