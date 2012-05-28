@@ -154,7 +154,7 @@
 /* tab pane */
 .panes > div {
 	display:none;
-	min-height:200px;
+/*	min-height:200px;*/
 	padding:15px 20px;
 	background-color:#ddd;	
 }
