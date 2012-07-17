@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.8.4 (unreleased)
+0.8.4 (2012-07-17)
 ------------------
 
 - removed useless classes in templates. Now it validate even on XHTML Strict
