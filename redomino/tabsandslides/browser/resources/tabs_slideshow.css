@@ -177,6 +177,17 @@
     padding:10px;
 }
 
+.no-js .imagetabs-panes > div,
+.no-js .imagetabs-panes > div{
+    display: block !important;
+}
+
+.imagetabs-panes > div,
+.imagetabs-panes > div{
+    display: none;
+}
+
+
 .template-tabbed_summary_view2 .imagetabs-panes{
     overflow:hidden;
     margin:10px 0px;

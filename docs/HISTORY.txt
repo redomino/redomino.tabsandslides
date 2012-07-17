@@ -4,7 +4,8 @@ Changelog
 0.8.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- removed useless classes in templates. Now it validate even on XHTML Strict
+  [sithmel]
 
 
 0.8.3 (2012-06-05)
