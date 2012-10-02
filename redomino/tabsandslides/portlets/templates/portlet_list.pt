@@ -1,0 +1,49 @@
+<div tal:condition="view/data/omit_border"
+     tal:attributes="class string:portlet portletSlideshow ${view/css_class}"
+     i18n:domain="plone">
+
+    <tal:events tal:define="objects view/getObjects">
+
+        <ul class="tabsandslides-list">
+            <li tal:repeat="obj objects" tal:content="structure obj/@@tabsandslides-list">Tab1</li>
+        </ul>
+
+    </tal:events>
+
+    <tal:footer tal:replace="structure view/footer | nothing">
+    </tal:footer>
+
+</div>
+
+<dl tal:condition="not:view/data/omit_border"
+    tal:attributes="class string:portlet portletTab ${view/css_class}"
+    i18n:domain="plone"
+    tal:define="object_url view/object_url">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a tal:attributes="href object_url">
+            <span tal:content="view/data/header" />
+        </a>
+        <span class="portletTopRight"></span>
+    </dt>
+    
+
+    <dd tal:define="objects view/getObjects">
+
+        <ul class="tabsandslides-list">
+            <li tal:repeat="obj objects" tal:content="structure obj/@@tabsandslides-list">Tab1</li>
+        </ul>
+
+    </dd>
+    
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span>
+            <tal:footer tal:replace="structure view/footer | nothing">
+            </tal:footer>
+        </span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>

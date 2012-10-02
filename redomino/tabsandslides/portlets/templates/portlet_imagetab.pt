@@ -3,21 +3,32 @@
      i18n:domain="plone">
 
     <tal:events tal:define="objects view/getObjects">
-        <!-- tab "panes" -->
-        <div class="imagetabs-panes" tal:condition="objects">
-            <div tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_pane">pane 1 content</div>
-        </div>
+        <tal:block tal:condition="python: len(objects) > 1">
 
-        <div class="visualClear"></div>
+            <!-- tab "panes" -->
+            <div class="imagetabs-panes" tal:condition="objects">
+                <div tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_pane">pane 1 content</div>
+            </div>
 
-        <!-- the tabs -->
-        <ul class="imagetabs-tabs jcarousel-skin-plone" tal:condition="objects">
-            <li tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_tab">tab 1 content</li>
-        </ul>
+            <div class="visualClear"></div>
+
+            <!-- the tabs -->
+            <ul class="imagetabs-tabs jcarousel-skin-plone" tal:condition="objects">
+                <li tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_tab">tab 1 content</li>
+            </ul>
+        </tal:block>
+
+        <tal:block tal:condition="python: len(objects) == 1">
+            <div class="singleitem">
+	            <div tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_pane">pane 1 content</div>
+            </div>
+        </tal:block>
 
 
 
     </tal:events>
+    <tal:footer tal:replace="structure view/footer | nothing">
+    </tal:footer>
 
 </div>
 
@@ -36,20 +47,30 @@
     
 
     <dd tal:define="objects view/getObjects">
-        <!-- tab "panes" -->
-        <div class="imagetabs-panes" tal:condition="objects">
-            <div tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_pane">pane 1 content</div>
-        </div>
-        <div class="visualClear"></div>
-        <!-- the tabs -->
-        <ul class="imagetabs-tabs jcarousel-skin-plone" tal:condition="objects">
-            <li tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_tab">tab 1 content</li>
-        </ul>
+        <tal:block tal:condition="python: len(objects) > 1">
+            <!-- tab "panes" -->
+            <div class="imagetabs-panes" tal:condition="objects">
+                <div tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_pane">pane 1 content</div>
+            </div>
+            <div class="visualClear"></div>
+            <!-- the tabs -->
+            <ul class="imagetabs-tabs jcarousel-skin-plone" tal:condition="objects">
+                <li tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_tab">tab 1 content</li>
+            </ul>
+        </tal:block>
+
+        <tal:block tal:condition="python: len(objects) == 1">
+            <div class="singleitem">
+	            <div tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_pane">pane 1 content</div>
+            </div>
+        </tal:block>
     </dd>
     
     <dd class="portletFooter">
         <span class="portletBottomLeft"></span>
         <span>
+            <tal:footer tal:replace="structure view/footer | nothing">
+            </tal:footer>
         </span>
         <span class="portletBottomRight"></span>
     </dd>

@@ -4,12 +4,22 @@
 
     <tal:events tal:define="objects view/getObjects">
 
+        <tal:block tal:condition="python: len(objects) > 1">
+            <ul class="imagegallery jcarousel-skin-plone" tal:define="objs view/getObjects" tal:condition="objs">
+                <li tal:repeat="obj objs" tal:content="structure obj/@@gallery_adapter">gallery 1 content</li>
+            </ul>
+        </tal:block>
 
-        <ul class="imagegallery jcarousel-skin-plone" tal:define="objs view/getObjects" tal:condition="objs">
-            <li tal:repeat="obj objs" tal:content="structure obj/@@gallery_adapter">gallery 1 content</li>
-        </ul>
+        <tal:block tal:condition="python: len(objects) == 1">
+            <div class="singleitem">
+	            <div tal:repeat="obj objects" tal:content="structure obj/@@gallery_adapter">gallery 1 content</div>
+            </div>
+        </tal:block>
+
 
     </tal:events>
+    <tal:footer tal:replace="structure view/footer | nothing">
+    </tal:footer>
 
 </div>
 
@@ -29,15 +39,25 @@
 
     <dd tal:define="objects view/getObjects">
 
-        <ul class="imagegallery jcarousel-skin-plone" tal:define="objs view/getObjects" tal:condition="objs">
-            <li tal:repeat="obj objs" tal:content="structure obj/@@gallery_adapter">gallery 1 content</li>
-        </ul>
+        <tal:block tal:condition="python: len(objects) > 1">
+            <ul class="imagegallery jcarousel-skin-plone" tal:define="objs view/getObjects" tal:condition="objs">
+                <li tal:repeat="obj objs" tal:content="structure obj/@@gallery_adapter">gallery 1 content</li>
+            </ul>
+        </tal:block>
+
+        <tal:block tal:condition="python: len(objects) == 1">
+            <div class="singleitem">
+	            <div tal:repeat="obj objects" tal:content="structure obj/@@gallery_adapter">gallery 1 content</div>
+            </div>
+        </tal:block>
 
     </dd>
     
     <dd class="portletFooter">
         <span class="portletBottomLeft"></span>
         <span>
+            <tal:footer tal:replace="structure view/footer | nothing">
+            </tal:footer>
         </span>
         <span class="portletBottomRight"></span>
     </dd>

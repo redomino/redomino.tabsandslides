@@ -73,7 +73,23 @@
       permission="zope2.View"
       />
 
+<!-- list adapter-->
 
+  <browser:page
+      for="*"
+      name="tabsandslides-list"
+      template="adapters/tab_adapter.pt"
+      permission="zope2.View"
+      />
+
+<!-- allitems adapter-->
+
+  <browser:page
+      for="*"
+      name="tabsandslides-allitems"
+      template="adapters/imagetab_adapter.pt"
+      permission="zope2.View"
+      />
 
 
 </configure>

@@ -157,5 +157,18 @@
             />
     </browser:menuItems>
 
+  <browser:page
+      for="Products.ATContentTypes.interface.IATTopic"
+      name="tabsandslides_view"
+      class=".common.BaseView"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATFolder"
+      name="tabsandslides_view"
+      class=".common.BaseView"
+      permission="zope2.View"
+      />
 
 </configure>

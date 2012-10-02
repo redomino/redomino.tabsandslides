@@ -4,7 +4,9 @@ Changelog
 0.8.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fixed the portlet templates in case of one element collection [sithmel]
+- portlet collection: added a link to the collection on the footer [sithmel]
+- added contextual content portlet [sithmel]
 
 
 0.8.4 (2012-07-17)

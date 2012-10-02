@@ -20,4 +20,12 @@
                     description"
    />
  
+  <portlet
+   addview="redomino.tabsandslides.tabsgenericportletcontent"
+   title="TabsAndSlides Content portlet"
+   description="A portlet that displays a content with a specific view"
+   i18n:attributes="title;
+                    description"
+   />
+
 </portlets>

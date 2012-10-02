@@ -4,17 +4,28 @@
 
     <tal:events tal:define="objects view/getObjects">
 
-        <!-- the tabs -->
-        <ul class="tabs">
-            <li tal:repeat="obj objects" tal:content="structure obj/@@tabs_tab">Tab1</li>
-        </ul>
+        <tal:block tal:condition="python: len(objects) > 1">
+            <!-- the tabs -->
+            <ul class="tabs">
+                <li tal:repeat="obj objects" tal:content="structure obj/@@tabs_tab">Tab1</li>
+            </ul>
 
-        <!-- tab "panes" -->
-        <div class="panes">
-	        <div tal:repeat="obj objects" tal:content="structure obj/@@tabs_pane">pane 1 content</div>
-        </div>
+            <!-- tab "panes" -->
+            <div class="panes">
+	            <div tal:repeat="obj objects" tal:content="structure obj/@@tabs_pane">pane 1 content</div>
+            </div>
+        </tal:block>
+
+        <tal:block tal:condition="python: len(objects) == 1">
+            <div class="singleitem">
+	            <div tal:repeat="obj objects" tal:content="structure obj/@@tabs_pane">pane 1 content</div>
+            </div>
+        </tal:block>
 
     </tal:events>
+
+    <tal:footer tal:replace="structure view/footer | nothing">
+    </tal:footer>
 
 </div>
 
@@ -34,20 +45,31 @@
 
     <dd tal:define="objects view/getObjects">
 
-        <!-- the tabs -->
-        <ul class="tabs">
-            <li tal:repeat="obj objects" tal:content="structure obj/@@tabs_tab">Tab1</li>
-        </ul>
+        <tal:block tal:condition="python: len(objects) > 1">
+            <!-- the tabs -->
+            <ul class="tabs">
+                <li tal:repeat="obj objects" tal:content="structure obj/@@tabs_tab">Tab1</li>
+            </ul>
 
-        <!-- tab "panes" -->
-        <div class="panes">
-	        <div tal:repeat="obj objects" tal:content="structure obj/@@tabs_pane">pane 1 content</div>
-        </div>
+            <!-- tab "panes" -->
+            <div class="panes">
+	            <div tal:repeat="obj objects" tal:content="structure obj/@@tabs_pane">pane 1 content</div>
+            </div>
+        </tal:block>
+
+        <tal:block tal:condition="python: len(objects) == 1">
+            <div class="singleitem">
+	            <div tal:repeat="obj objects" tal:content="structure obj/@@tabs_pane">pane 1 content</div>
+            </div>
+        </tal:block>
+
     </dd>
     
     <dd class="portletFooter">
         <span class="portletBottomLeft"></span>
         <span>
+            <tal:footer tal:replace="structure view/footer | nothing">
+            </tal:footer>
         </span>
         <span class="portletBottomRight"></span>
     </dd>

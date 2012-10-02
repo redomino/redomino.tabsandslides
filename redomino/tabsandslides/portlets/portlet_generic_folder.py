@@ -31,6 +31,9 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Acquisition import aq_inner, aq_parent
 from Products.CMFCore.Expression import Expression, getExprContext
 
+from AccessControl import getSecurityManager
+from Products.CMFCore.permissions import ModifyPortalContent
+
 from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import BoundPageTemplate
@@ -60,7 +63,6 @@ class IFolderPortlet(IPortletDataProvider):
                       "without the standard header, border or footer."),
         required=True,
         default=False)
-
 
 class Assignment(base.Assignment):
     """
@@ -125,8 +127,12 @@ class Renderer(base.Renderer):
 #    render = _template
 
     @property
+    def footer(self):
+        return None
+
+    @property
     def available(self):
-        return len(self.results())
+        return len(self.results()) or self.footer
 
     @memoize
     def get_context(self):

@@ -10,7 +10,9 @@ def TemplatesAvailable(context):
          SimpleTerm(value=u'portlet_slideshow.pt', title=_(u'slideshow')),
          SimpleTerm(value=u'portlet_gallery.pt', title=_(u'gallery')),
          SimpleTerm(value=u'portlet_imagetab.pt', title=_(u'Gallery with preview (Image top)')),
-         SimpleTerm(value=u'portlet_imagetab2.pt', title=_(u'Gallery with preview (Image bottom)'))
+         SimpleTerm(value=u'portlet_imagetab2.pt', title=_(u'Gallery with preview (Image bottom)')),
+         SimpleTerm(value=u'portlet_list.pt', title=_(u'List')),
+         SimpleTerm(value=u'portlet_allitems.pt', title=_(u'All Items'))
          ]
         )
 

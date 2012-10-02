@@ -13,6 +13,11 @@
         name="redomino.tabsandslides.portlettemplates"
         />
         
+    <utility
+        component=".contenttypes.ContentTypes"
+        name="redomino.tabsandslides.contenttypes"
+        />
+
      <plone:portlet
          name="redomino.tabsandslides.tabsgenericportlet"
          interface=".portlet_generic.ICollectionPortlet"
@@ -30,6 +35,16 @@
          addview=".portlet_generic_folder.AddForm"
          editview=".portlet_generic_folder.EditForm"
          />
+
+     <plone:portlet
+         name="redomino.tabsandslides.tabsgenericportletcontent"
+         interface=".portlet_generic_content.IContentPortlet"
+         assignment=".portlet_generic_content.Assignment"
+         renderer=".portlet_generic_content.Renderer"
+         addview=".portlet_generic_content.AddForm"
+         editview=".portlet_generic_content.EditForm"
+         />
+
 <!--
          view_permission="zope2.View"
          edit_permission="cmf.ManagePortal"

@@ -20,15 +20,21 @@ from zope.formlib import form
 from zope.interface import implements
 from zope.component import getUtility, getMultiAdapter
 from plone.memoize.instance import memoize
+from Products.CMFCore.utils import getToolByName
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.portlet.collection import PloneMessageFactory as _plone
+from Products.CMFPlone import PloneMessageFactory as _plonebase
+
 from plone.app.portlets.portlets import base
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from Products.ATContentTypes.interface import IATTopic
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
+
+from AccessControl import getSecurityManager
+from Products.CMFCore.permissions import ModifyPortalContent
 
 from plone.portlets.interfaces import IPortletDataProvider
 
@@ -78,6 +84,7 @@ class ICollectionPortlet(IPortletDataProvider):
                       "without the standard header, border or footer."),
         required=True,
         default=False)
+
 
 
 class Assignment(base.Assignment):
@@ -146,10 +153,31 @@ class Renderer(base.Renderer):
         return BoundPageTemplate(_template, self)()
 
 #    render = _template
+    @property
+    def footer(self):
+        sm = getSecurityManager()       
+        context = self.collection()
+        if context is not None:
+            
+            if sm.checkPermission(ModifyPortalContent, context):
+
+                portal_state = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+                current_language = portal_state.language()
+                # get tool
+                tool = getToolByName(context, 'translation_service')
+
+                # this returns type unicode
+                editstring = tool.translate(u"edit",
+                               'plone',
+                                context=context,
+                                target_language=current_language) + " " + self.data.header
+                
+                return u'<div class="managePortletsLink editContent"><a href="%s">%s</a></div>' % (context.absolute_url(), editstring)
+        return None
 
     @property
     def available(self):
-        return len(self.results())
+        return len(self.results()) or self.footer
 
     def object_url(self):
         collection = self.collection()
