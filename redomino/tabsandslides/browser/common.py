@@ -23,6 +23,14 @@ from Products.ATContentTypes.interface import IATTopic, IATFolder
 from Acquisition import aq_inner
 from plone.memoize.view import memoize
 
+class SingleView(BrowserView):
+    """utility view for non folderish content (used in content portlet)"""
+
+    @memoize   
+    def getObjects(self):
+        """return the context
+        """
+        return [self.context]
 
 class BaseView(BrowserView):
     """
@@ -47,6 +55,7 @@ class BaseView(BrowserView):
         """
         contentsMethod = self.contentsMethod()
         return [b.getObject() for b in contentsMethod()]
+
 
 class OriginalView(BrowserView):
     def __call__(self):

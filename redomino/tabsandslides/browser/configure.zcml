@@ -19,7 +19,7 @@
 <!-- gallery view -->
 
   <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
+      for="Products.CMFCore.interfaces.IFolderish"
       name="gallery_view"
       class=".common.BaseView"
       template="templates/gallery_folder.pt"
@@ -47,7 +47,7 @@
 <!-- tabbed folder -->
 
   <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
+      for="Products.CMFCore.interfaces.IFolderish"
       name="tabbed_view"
       class=".common.BaseView"
       template="templates/tabbed_folder.pt"
@@ -76,7 +76,7 @@
 <!-- images tabbed folder -->
 
   <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
+      for="Products.CMFCore.interfaces.IFolderish"
       name="tabbed_summary_view"
       class=".common.BaseView"
       template="templates/images_tabbed_folder.pt"
@@ -104,7 +104,7 @@
 <!-- images tabbed folder 2 -->
 
   <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
+      for="Products.CMFCore.interfaces.IFolderish"
       name="tabbed_summary_view2"
       class=".common.BaseView"
       template="templates/images_tabbed_folder2.pt"
@@ -132,7 +132,7 @@
 <!-- slideshow view -->
 
   <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
+      for="Products.CMFCore.interfaces.IFolderish"
       name="slideshow_view"
       class=".common.BaseView"
       template="templates/slideshow_folder.pt"
@@ -157,6 +157,15 @@
             />
     </browser:menuItems>
 
+<!-- generic utility view -->
+
+  <browser:page
+      for="*"
+      name="tabsandslides_view"
+      class=".common.SingleView"
+      permission="zope2.View"
+      />
+
   <browser:page
       for="Products.ATContentTypes.interface.IATTopic"
       name="tabsandslides_view"
@@ -165,7 +174,7 @@
       />
 
   <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
+      for="Products.CMFCore.interfaces.IFolderish"
       name="tabsandslides_view"
       class=".common.BaseView"
       permission="zope2.View"
