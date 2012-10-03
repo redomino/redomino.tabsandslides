@@ -172,7 +172,7 @@ class Renderer(base.Renderer):
                                 context=context,
                                 target_language=current_language) + " " + self.data.header
                 
-                return u'<div class="managePortletsLink editContent"><a href="%s">%s</a></div>' % (context.absolute_url(), editstring)
+                return u'<div class="managePortletsLink editContent visualClear"><a href="%s">%s</a></div>' % (context.absolute_url(), editstring)
         return None
 
     @property

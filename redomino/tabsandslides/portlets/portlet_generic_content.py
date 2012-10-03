@@ -163,14 +163,14 @@ class Renderer(base.Renderer):
                                'plone',
                                 context=context,
                                 target_language=current_language) + " " + self.data.header
-                return u'<div class="managePortletsLink editContent"><a href="%s/view">%s</a></div>' % (self.object_url(), editstring)
+                return u'<div class="managePortletsLink editContent visualClear"><a href="%s/view">%s</a></div>' % (self.object_url(), editstring)
             else:
                 addstring = tool.translate(u"add",
                                'plone',
                                 context=context,
                                 target_language=current_language) + " " + self.data.header
 
-                return u'<div class="managePortletsLink editContent"><a href="%s/createObject?type_name=%s&id=%s">%s</a></div>' % (
+                return u'<div class="managePortletsLink editContent visualClear"><a href="%s/createObject?type_name=%s&id=%s">%s</a></div>' % (
                         context.absolute_url(),
                         self.data.contentType,
                         self.data.content_id,
