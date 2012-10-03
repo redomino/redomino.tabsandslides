@@ -26,11 +26,10 @@ from plone.portlet.collection import PloneMessageFactory as _plone
 from redomino.tabsandslides import tabsandslidesMessageFactory as _
 
 from plone.app.portlets.portlets import base
-from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from Products.ATContentTypes.interface import IATTopic
+from plone.app.layout.navigation.interfaces import INavigationRoot 
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Acquisition import aq_inner, aq_parent
-from Products.CMFCore.Expression import Expression, getExprContext
 from Products.Archetypes.utils import shasattr
 from plone.app.layout.navigation.defaultpage import isDefaultPage
 
@@ -53,15 +52,9 @@ class IContentPortlet(IPortletDataProvider):
         description=_(u"The id of the content."),
         required=True)
 
-    is_folder = schema.Bool(
-        title=_(u"The content will be a folder"),
-        description=_(u"If you check this box the portlet will display all the items inside the content, otherwise the portlet will show the content itself"),
-        required=True,
-        default=False)
-
     contentType = schema.Choice(
         title=_(u"Which content type"),
-        description=_(u"Pick the content type you want to add to this portlet"),
+        description=_(u"Pick the content type you want to add to this portlet. If you choose a folderish content the portlet show the elements inside. If you choose a collection the portlet shows the objects that fit the criteria."),
         vocabulary="redomino.tabsandslides.contenttypes", 
         required=True,
 #        default=False
@@ -101,10 +94,9 @@ class Assignment(base.Assignment):
     header = u""
     limit = None
 
-    def __init__(self, header=u"", content_id='', is_folder=False, contentType='Document',relative_to_contenttype=None, target_view="templates/portlet_tabs.pt", omit_border=False):
+    def __init__(self, header=u"", content_id='', contentType='Document',relative_to_contenttype=None, target_view="templates/portlet_tabs.pt", omit_border=False):
         self.header = header
         self.content_id = content_id
-        self.is_folder = is_folder
         self.contentType = contentType
         self.relative_to_contenttype = relative_to_contenttype
         self.target_view = target_view
@@ -158,39 +150,32 @@ class Renderer(base.Renderer):
     def footer(self):
         sm = getSecurityManager()       
         context = self.get_context()
-        if shasattr(context, self.data.content_id):
-            
-            if sm.checkPermission(ModifyPortalContent, context):
 
-                portal_state = getMultiAdapter((context, self.request), name=u'plone_portal_state')
-                current_language = portal_state.language()
-                # get tool
-                tool = getToolByName(context, 'translation_service')
-
-                # this returns type unicode
-                editstring = tool.translate(u"edit",
-                               'plone',
-                                context=context,
-                                target_language=current_language) + " " + self.data.header
-                
-                return u'<div class="managePortletsLink editContent"><a href="%s/view">%s</a></div>' % (self.object_url(), editstring)
         if sm.checkPermission(ModifyPortalContent, context):
             portal_state = getMultiAdapter((context, self.request), name=u'plone_portal_state')
             current_language = portal_state.language()
             # get tool
             tool = getToolByName(context, 'translation_service')
 
-            # this returns type unicode
-            addstring = tool.translate(u"add",
-                           'plone',
-                            context=context,
-                            target_language=current_language) + " " + self.data.header
+            if shasattr(context, self.data.content_id):
+                # this returns type unicode
+                editstring = tool.translate(u"edit",
+                               'plone',
+                                context=context,
+                                target_language=current_language) + " " + self.data.header
+                return u'<div class="managePortletsLink editContent"><a href="%s/view">%s</a></div>' % (self.object_url(), editstring)
+            else:
+                addstring = tool.translate(u"add",
+                               'plone',
+                                context=context,
+                                target_language=current_language) + " " + self.data.header
 
-            return u'<div class="managePortletsLink editContent"><a href="%s/createObject?type_name=%s&id=%s">%s</a></div>' % (
-                context.absolute_url(),
-                self.data.contentType,
-                self.data.content_id,
-                addstring)
+                return u'<div class="managePortletsLink editContent"><a href="%s/createObject?type_name=%s&id=%s">%s</a></div>' % (
+                        context.absolute_url(),
+                        self.data.contentType,
+                        self.data.content_id,
+                        addstring)
+
         return None
 
     @property
@@ -213,8 +198,9 @@ class Renderer(base.Renderer):
             context = container
 
         if self.data.relative_to_contenttype:
-            while context.portal_type != self.data.relative_to_contenttype
+            while context.portal_type != self.data.relative_to_contenttype or INavigationRoot.providedBy(context):
                 context = aq_parent(context)
+
         return context
 
     def get_item(self):
@@ -226,12 +212,11 @@ class Renderer(base.Renderer):
     def getObjects(self):
         """ Get the actual result brains from the folder"""
         context = self.get_item()
+
         if context:
-            if self.data.is_folder:
-                view = getMultiAdapter(context, self.request),name=u'tabsandslides_view')
-                return [b.getObject() for b in view.getObjects()]
-            else:
-                return [context]
+            view = getMultiAdapter((context, self.request),name=u'tabsandslides_view')
+            return view.getObjects()
+
         return []
 
     def object_url(self):
