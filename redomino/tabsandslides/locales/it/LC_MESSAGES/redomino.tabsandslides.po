@@ -47,7 +47,7 @@ msgstr "Id del contenuto"
 
 #: ./portlets/portlet_generic_content.py:64
 msgid "Context content type"
-msgstr ""
+msgstr "Tipo di contenuto del contesto"
 
 #: ./portlets/portlet_generic_content.py:250
 msgid "Edit Content Portlet"
@@ -75,7 +75,7 @@ msgstr "Gallery con anteprima (Immagine sopra)"
 
 #: ./portlets/portlet_generic_content.py:65
 msgid "If you use this option, the portlet picks the content relative to the closest parent of the specified content type. If not, the content is relative to the current object."
-msgstr ""
+msgstr "Se si utilizza questa opzione, il portlet prenderà il contenuto relativo al contenuto padre più vicino del tipo specificato. Altrimenti, il contenuto sarà relativo all'oggetto corrente"
 
 #: ./portlets/templates.py:14
 msgid "List"
@@ -83,23 +83,23 @@ msgstr "Lista"
 
 #: ./portlets/portlet_generic_content.py:57
 msgid "Pick the content type you want to add to this portlet. If you choose a folderish content the portlet show the elements inside. If you choose a collection the portlet shows the objects that fit the criteria."
-msgstr ""
+msgstr "Seleziona il tipo di contenuto da aggiungere a questa portlet."
 
 #: ./profiles/default/portlets.xml
 msgid "TabsAndSlides Collection portlet"
-msgstr "TabsAndSlides Portlet Collezione"
+msgstr "TabsAndSlides: Portlet Collezione"
 
 #: ./profiles/default/portlets.xml
 msgid "TabsAndSlides Content portlet"
-msgstr ""
+msgstr "TabsAndSlides: Portlet Contenuto"
 
 #: ./profiles/default/portlets.xml
 msgid "TabsAndSlides Folder portlet"
-msgstr "TabsAndSlides Portlet Cartella"
+msgstr "TabsAndSlides: Portlet Cartella"
 
 #: ./profiles/default/portlets.xml
 msgid "TabsAndSlides TalExp portlet"
-msgstr ""
+msgstr "TabsAndSlides: Portlet TALExp"
 
 #: ./portlets/portlet_generic_folder.py:49
 #: ./portlets/portlet_generic_talexp.py:45
