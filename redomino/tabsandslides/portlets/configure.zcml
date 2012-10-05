@@ -45,6 +45,14 @@
          editview=".portlet_generic_content.EditForm"
          />
 
+     <plone:portlet
+         name="redomino.tabsandslides.tabsgenericportlettalexp"
+         interface=".portlet_generic_talexp.ITalExpPortlet"
+         assignment=".portlet_generic_talexp.Assignment"
+         renderer=".portlet_generic_talexp.Renderer"
+         addview=".portlet_generic_talexp.AddForm"
+         editview=".portlet_generic_talexp.EditForm"
+         />
 <!--
          view_permission="zope2.View"
          edit_permission="cmf.ManagePortal"

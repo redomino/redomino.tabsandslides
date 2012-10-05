@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-04-06 10:14+0000\n"
+"POT-Creation-Date: 2012-10-05 12:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,10 @@ msgstr ""
 "Domain: redomino.tabsandslides\n"
 
 #: ./profiles/default/portlets.xml
+msgid "A portlet that displays a content with a specific view"
+msgstr ""
+
+#: ./profiles/default/portlets.xml
 msgid "A portlet that displays the content of a folder with a specific view"
 msgstr ""
 
@@ -25,16 +29,40 @@ msgstr ""
 msgid "A portlet that displays the results of a collection with a specific view"
 msgstr ""
 
-#: ./portlets/portlet_generic_folder.py:182
+#: ./portlets/portlet_generic_content.py:234
+msgid "Add a Content Portlet"
+msgstr ""
+
+#: ./portlets/portlet_generic_folder.py:188
 msgid "Add a Folder Portlet"
 msgstr ""
 
-#: ./portlets/portlet_generic_folder.py:199
+#: ./portlets/templates.py:15
+msgid "All Items"
+msgstr ""
+
+#: ./portlets/portlet_generic_content.py:51
+msgid "Content Id"
+msgstr ""
+
+#: ./portlets/portlet_generic_content.py:64
+msgid "Context content type"
+msgstr ""
+
+#: ./portlets/portlet_generic_content.py:250
+msgid "Edit Content Portlet"
+msgstr ""
+
+#: ./portlets/portlet_generic_folder.py:205
 msgid "Edit Folder Portlet"
 msgstr ""
 
-#: ./portlets/portlet_generic_folder.py:47
+#: ./portlets/portlet_generic_folder.py:50
 msgid "For example: python:object.portal_type == 'News Item'"
+msgstr ""
+
+#: ./portlets/portlet_generic_talexp.py:46
+msgid "For example: python:portal.portal_catalog.searchResults(Subject=object.Subject())"
 msgstr ""
 
 #: ./portlets/templates.py:13
@@ -45,20 +73,53 @@ msgstr ""
 msgid "Gallery with preview (Image top)"
 msgstr ""
 
+#: ./portlets/portlet_generic_content.py:65
+msgid "If you use this option, the portlet picks the content relative to the closest parent of the specified content type. If not, the content is relative to the current object."
+msgstr ""
+
+#: ./portlets/templates.py:14
+msgid "List"
+msgstr ""
+
+#: ./portlets/portlet_generic_content.py:57
+msgid "Pick the content type you want to add to this portlet. If you choose a folderish content the portlet show the elements inside. If you choose a collection the portlet shows the objects that fit the criteria."
+msgstr ""
+
 #: ./profiles/default/portlets.xml
 msgid "TabsAndSlides Collection portlet"
+msgstr ""
+
+#: ./profiles/default/portlets.xml
+msgid "TabsAndSlides Content portlet"
 msgstr ""
 
 #: ./profiles/default/portlets.xml
 msgid "TabsAndSlides Folder portlet"
 msgstr ""
 
-#: ./portlets/portlet_generic_folder.py:46
+#: ./profiles/default/portlets.xml
+msgid "TabsAndSlides TalExp portlet"
+msgstr ""
+
+#: ./portlets/portlet_generic_folder.py:49
+#: ./portlets/portlet_generic_talexp.py:45
 msgid "Tal expression"
 msgstr ""
 
-#: ./portlets/portlet_generic_folder.py:183
+#: ./portlets/portlet_generic_content.py:52
+msgid "The id of the content."
+msgstr ""
+
+#: ./portlets/portlet_generic_folder.py:189
 msgid "This portlet display items from the current Folder."
+msgstr ""
+
+#: ./portlets/portlet_generic_content.py:235
+msgid "This portlet display one item or all items inside a folder."
+msgstr ""
+
+#: ./portlets/portlet_generic_content.py:56
+msgid "Which content type"
 msgstr ""
 
 #: ./portlets/templates.py:11

@@ -1,0 +1,199 @@
+#!/usr/bin/env python
+# Authors: Giacomo Spettoli <giacomo.spettoli@redomino.com> and contributors (see docs/CONTRIBUTORS.txt)
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2 as published
+# by the Free Software Foundation.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+# 02111-1307, USA.
+
+import random
+from zope import schema
+from zope.formlib import form
+from zope.interface import implements
+from zope.component import getUtility
+
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from plone.portlet.collection import PloneMessageFactory as _plone
+
+from plone.app.portlets.portlets import base
+from plone.i18n.normalizer.interfaces import IIDNormalizer
+
+from Products.CMFCore.Expression import Expression, getExprContext
+
+from plone.portlets.interfaces import IPortletDataProvider
+
+from Products.Five.browser.pagetemplatefile import BoundPageTemplate
+from redomino.tabsandslides import tabsandslidesMessageFactory as _
+from Products.ZCatalog.Lazy import LazyMap
+    
+class ITalExpPortlet(IPortletDataProvider):
+    """"""
+    header = schema.TextLine(
+        title=_plone(u"Portlet header"),
+        description=_plone(u"Title of the rendered portlet"),
+        required=True)
+
+    talexp = schema.TextLine(
+        title=_(u"Tal expression"),
+        description=_(u"For example: python:portal.portal_catalog.searchResults(Subject=object.Subject())"),
+        required=False)
+
+    limit = schema.Int(
+        title=_plone(u"Limit"),
+        description=_plone(u"Specify the maximum number of items to show in the "
+                      u"portlet. Leave this blank to show all items."),
+        default=15,
+        required=False)
+
+    random = schema.Bool(
+        title=_plone(u"Select random items"),
+        description=_plone(u"If enabled, items will be selected randomly from the "
+                      u"TAL expression, rather than based on its sort order."),
+        required=True,
+        default=False)
+
+
+    target_view = schema.Choice(
+        title=_plone(u"label_choose_template"),
+        required=True, 
+        vocabulary="redomino.tabsandslides.portlettemplates", 
+        #default=u'portlet_tabs.pt')
+        )
+
+    omit_border = schema.Bool(
+        title=_plone(u"Omit portlet border"),
+        description=_plone(u"Tick this box if you want to render the text above "
+                      "without the standard header, border or footer."),
+        required=True,
+        default=False)
+
+
+
+class Assignment(base.Assignment):
+    """
+    Portlet assignment.
+    This is what is actually managed through the portlets UI and associated
+    with columns.
+    """
+
+    implements(ITalExpPortlet)
+
+    header = u""
+    talexp = False
+    limit = None
+    random = False
+
+    def __init__(self, header=u"", talexp='', limit=None,
+                 random=False, target_view="templates/portlet_tabs.pt", omit_border=False):
+        self.header = header
+        self.limit = limit
+        self.talexp = talexp
+        self.random = random
+        self.target_view = target_view
+        self.omit_border = omit_border
+
+
+    @property
+    def title(self):
+        """This property is used to give the title of the portlet in the
+        "manage portlets" screen. Here, we use the title that the user gave.
+        """
+        return self.header
+
+class Renderer(base.Renderer):
+    """Portlet renderer.
+
+    This is registered in configure.zcml. The referenced page template is
+    rendered, and the implicit variable 'view' will refer to an instance
+    of this class. Other methods can be added and referenced in the template.
+    """
+
+#    _template = ViewPageTemplateFile('portlet_tabs.pt')
+    
+# 
+    def __init__(self, *args):
+        base.Renderer.__init__(self, *args)
+
+    def css_class(self):
+        """Generate a CSS class from the portlet header
+        """
+        header = self.data.header
+        normalizer = getUtility(IIDNormalizer)
+        return "portlet-tabsandslides-%s" % normalizer.normalize(header)
+
+    def render(self):
+        _template = ViewPageTemplateFile('templates/%s' % self.data.target_view)
+        return BoundPageTemplate(_template, self)()
+
+    @property
+    def available(self):
+        return len(self.results())
+
+    def object_url(self):
+        return None
+
+    def results(self):
+        """ Get the actual result brains from the collection.
+            This is a wrapper so that we can memoize if and only if we aren't
+            selecting random items."""
+        results = []
+        if self.data.talexp and self.data.talexp.strip():
+            context = self.context.aq_inner
+            expression = Expression(self.data.talexp)
+            expression_context = getExprContext(context, object = context)
+            expresult = expression(expression_context)
+            if isinstance(expresult, LazyMap):
+                results = [brain.getObject() for brain in expresult]
+                results = [res for res in results if res.UID() != context.UID()]
+        return results
+
+    def getObjects(self):
+        limit = self.data.limit
+
+        results = self.results()
+
+        if self.data.random:
+            if len(results) < limit:
+                limit = len(results)
+            results = random.sample(results, limit)
+        
+        return results[:limit]
+
+class AddForm(base.AddForm):
+    """Portlet add form.
+
+    This is registered in configure.zcml. The form_fields variable tells
+    zope.formlib which fields to display. The create() method actually
+    constructs the assignment that is being added.
+    """
+    form_fields = form.Fields(ITalExpPortlet)
+#    form_fields['target_collection'].custom_widget = UberSelectionWidget
+
+    label = _plone(u"Add TalExp Portlet")
+    description = _plone(u"This portlet display a listing of items from a "
+                    u"TAL expression.")
+
+    def create(self, data):
+        return Assignment(**data)
+
+
+class EditForm(base.EditForm):
+    """Portlet edit form.
+
+    This is registered with configure.zcml. The form_fields variable tells
+    zope.formlib which fields to display.
+    """
+
+    form_fields = form.Fields(ITalExpPortlet)
+
+    label = _plone(u"Edit Collection Portlet")
+    description = _plone(u"This portlet display a listing of items from a "
+                    u"TAL expression.")
