@@ -22,9 +22,14 @@ from zope.component import getUtility
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.portlet.collection import PloneMessageFactory as _plone
+from plone.memoize.instance import memoize
 
 from plone.app.portlets.portlets import base
 from plone.i18n.normalizer.interfaces import IIDNormalizer
+
+from plone.app.layout.navigation.interfaces import INavigationRoot 
+from Acquisition import aq_inner, aq_parent
+from plone.app.layout.navigation.defaultpage import isDefaultPage
 
 from Products.CMFCore.Expression import Expression, getExprContext
 
@@ -46,6 +51,13 @@ class ITalExpPortlet(IPortletDataProvider):
         description=_(u"For example: python:portal.portal_catalog.searchResults(Subject=object.Subject())"),
         required=False)
 
+    relative_to_contenttype = schema.Choice(
+        title=_(u"Context content type"),
+        description=_(u"If you use this option, the portlet picks the content relative to the closest parent of the specified content type. If not, the content is relative to the current object."),
+        vocabulary="redomino.tabsandslides.contenttypes", 
+        required=False
+#        default=False
+)
     limit = schema.Int(
         title=_plone(u"Limit"),
         description=_plone(u"Specify the maximum number of items to show in the "
@@ -91,11 +103,12 @@ class Assignment(base.Assignment):
     limit = None
     random = False
 
-    def __init__(self, header=u"", talexp='', limit=None,
+    def __init__(self, header=u"", talexp='', relative_to_contenttype = None, limit=None,
                  random=False, target_view="templates/portlet_tabs.pt", omit_border=False):
         self.header = header
         self.limit = limit
         self.talexp = talexp
+        self.relative_to_contenttype = relative_to_contenttype
         self.random = random
         self.target_view = target_view
         self.omit_border = omit_border
@@ -140,13 +153,16 @@ class Renderer(base.Renderer):
     def object_url(self):
         return None
 
+    @memoize
     def results(self):
         """ Get the actual result brains from the collection.
             This is a wrapper so that we can memoize if and only if we aren't
             selecting random items."""
         results = []
-        if self.data.talexp and self.data.talexp.strip():
-            context = self.context.aq_inner
+        context = self.get_context()
+
+        if self.data.talexp and self.data.talexp.strip() and context:
+            context = self.get_context()
             expression = Expression(self.data.talexp)
             expression_context = getExprContext(context, object = context)
             expresult = expression(expression_context)
@@ -155,6 +171,7 @@ class Renderer(base.Renderer):
                 results = [res for res in results if res.UID() != context.UID()]
         return results
 
+    @memoize
     def getObjects(self):
         limit = self.data.limit
 
@@ -166,6 +183,23 @@ class Renderer(base.Renderer):
             results = random.sample(results, limit)
         
         return results[:limit]
+
+    @memoize
+    def get_context(self):
+        context = aq_inner(self.context)
+        container = aq_parent(context)
+
+        if isDefaultPage(container, context):
+            context = container
+
+        if self.data.relative_to_contenttype:
+            while context.portal_type != self.data.relative_to_contenttype:
+                if INavigationRoot.providedBy(context):
+                    return None # parent not found
+                context = aq_parent(context)
+
+        return context
+
 
 class AddForm(base.AddForm):
     """Portlet add form.

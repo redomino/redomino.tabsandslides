@@ -14,6 +14,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
+import random
 from zope import schema
 from zope.formlib import form
 from zope.interface import implements
@@ -67,6 +68,19 @@ class IContentPortlet(IPortletDataProvider):
         required=False
 #        default=False
 )
+    limit = schema.Int(
+        title=_plone(u"Limit"),
+        description=_plone(u"Specify the maximum number of items to show in the "
+                      u"portlet. Leave this blank to show all items."),
+        default=15,
+        required=False)
+
+    random = schema.Bool(
+        title=_plone(u"Select random items"),
+        description=_plone(u"If enabled, items will be selected randomly from the "
+                      u"collection, rather than based on its sort order."),
+        required=True,
+        default=False)
 
     target_view = schema.Choice(
         title=_plone(u"label_choose_template"),
@@ -94,11 +108,15 @@ class Assignment(base.Assignment):
     header = u""
     limit = None
 
-    def __init__(self, header=u"", content_id='', contentType='Document',relative_to_contenttype=None, target_view="templates/portlet_tabs.pt", omit_border=False):
+    def __init__(self, header=u"", content_id='', contentType='Document',
+                 relative_to_contenttype=None, 
+                 limit = 15, random = None, target_view="templates/portlet_tabs.pt", omit_border=False):
         self.header = header
         self.content_id = content_id
         self.contentType = contentType
         self.relative_to_contenttype = relative_to_contenttype
+        self.limit = limit
+        self.random = random
         self.target_view = target_view
         self.omit_border = omit_border
 
@@ -186,7 +204,6 @@ class Renderer(base.Renderer):
         context_state = getMultiAdapter((self.get_context(), self.request), name=u'plone_context_state')
         if not context_state.is_folderish():
             return False # show for folderish content type only
-
         return len(self.getObjects()) or self.footer
 
     @memoize
@@ -198,9 +215,11 @@ class Renderer(base.Renderer):
             context = container
 
         if self.data.relative_to_contenttype:
-            while context.portal_type != self.data.relative_to_contenttype or INavigationRoot.providedBy(context):
+            while context.portal_type != self.data.relative_to_contenttype:
+                if INavigationRoot.providedBy(context):
+                    return None # parent not found
                 context = aq_parent(context)
-
+            
         return context
 
     def get_item(self):
@@ -214,9 +233,15 @@ class Renderer(base.Renderer):
         context = self.get_item()
 
         if context:
+            limit = self.data.limit
             view = getMultiAdapter((context, self.request),name=u'tabsandslides_view')
-            return view.getObjects()
-
+            results = view.getObjects()
+            if self.data.random:
+                if len(results) < limit:
+                    limit = len(results)
+                results = random.sample(results, limit)
+        
+            return results[:limit]
         return []
 
     def object_url(self):

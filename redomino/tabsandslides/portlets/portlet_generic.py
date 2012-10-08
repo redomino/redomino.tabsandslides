@@ -60,7 +60,7 @@ class ICollectionPortlet(IPortletDataProvider):
         title=_plone(u"Limit"),
         description=_plone(u"Specify the maximum number of items to show in the "
                       u"portlet. Leave this blank to show all items."),
-        default=6,
+        default=15,
         required=False)
 
     random = schema.Bool(

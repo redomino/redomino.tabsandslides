@@ -14,6 +14,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
+import random
 from zope import schema
 from zope.formlib import form
 from zope.interface import implements
@@ -50,6 +51,20 @@ class IFolderPortlet(IPortletDataProvider):
         description=_(u"For example: python:object.portal_type == 'News Item'"),
         required=False)
 
+    limit = schema.Int(
+        title=_plone(u"Limit"),
+        description=_plone(u"Specify the maximum number of items to show in the "
+                      u"portlet. Leave this blank to show all items."),
+        default=15,
+        required=False)
+
+    random = schema.Bool(
+        title=_plone(u"Select random items"),
+        description=_plone(u"If enabled, items will be selected randomly from the "
+                      u"collection, rather than based on its sort order."),
+        required=True,
+        default=False)
+
     target_view = schema.Choice(
         title=_plone(u"label_choose_template"),
         required=True, 
@@ -76,9 +91,12 @@ class Assignment(base.Assignment):
     header = u""
     limit = None
 
-    def __init__(self, header=u"", talexp='', target_view="templates/portlet_tabs.pt", omit_border=False):
+    def __init__(self, header=u"", talexp='', 
+                 limit = 15, random = None, target_view="templates/portlet_tabs.pt", omit_border=False):
         self.header = header
         self.talexp = talexp
+        self.limit = limit
+        self.random = random
         self.target_view = target_view
         self.omit_border = omit_border
 
@@ -171,6 +189,13 @@ class Renderer(base.Renderer):
         if self.data.talexp and self.data.talexp.strip():
             expression = Expression(self.data.talexp)
             objects = [ctx for ctx in objects if self.evaluate_exp(ctx, expression)]
+
+        limit = self.data.limit
+        if self.data.random:
+            if len(objects) < limit:
+                limit = len(objects)
+            objects = random.sample(objects, limit)
+        
         return objects
 
     def object_url(self):
