@@ -48,7 +48,15 @@ class ITalExpPortlet(IPortletDataProvider):
 
     talexp = schema.TextLine(
         title=_(u"Tal expression"),
-        description=_(u"For example: python:portal.portal_catalog.searchResults(Subject=object.Subject())"),
+        description=_(u"Tal expression description", default="""This tal expression can returns a list of brain or objects. For example:
+- subject example:  python:portal.portal_catalog.searchResults(Subject=object.Subject())
+- path example:  python:portal.portal_catalog.searchResults(path='/'.join(object.getPhysicalPath()))
+- path example2: python:portal.portal_catalog.searchResults(path={query='/'.join(object.getPhysicalPath(), depth = 1}))
+- type example:  python: portal.portal_catalog.searchResults(Type='Document')
+- sort example:  portal.portal_catalog.searchResults(sort_order="reverse", sort_limit = 5, sort_on="Date")
+- related items: python: context.getRelatedItems()
+- related backreference: python: [ b.getSourceObject() for b in portal.reference_catalog.getBackReferences(object, relationship="relatesTo")]
+"""),
         required=False)
 
     relative_to_contenttype = schema.Choice(
@@ -166,9 +174,11 @@ class Renderer(base.Renderer):
             expression = Expression(self.data.talexp)
             expression_context = getExprContext(context, object = context)
             expresult = expression(expression_context)
-            if isinstance(expresult, LazyMap):
+            if isinstance(expresult, LazyMap): # case 1: talexp returns brains
                 results = [brain.getObject() for brain in expresult]
-                results = [res for res in results if res.UID() != context.UID()]
+            else:
+                results = expresult # case 2: talexp returns objects
+            results = [res for res in results if res.UID() != context.UID()]
         return results
 
     @memoize

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-10-08 08:32+0000\n"
+"POT-Creation-Date: 2012-10-09 09:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,11 +29,11 @@ msgstr "A portlet that displays the content of a folder with a specific view"
 msgid "A portlet that displays the results of a collection with a specific view"
 msgstr "A portlet that displays the results of a collection with a specific view"
 
-#: ./portlets/portlet_generic_content.py:234
+#: ./portlets/portlet_generic_content.py:259
 msgid "Add a Content Portlet"
 msgstr ""
 
-#: ./portlets/portlet_generic_folder.py:188
+#: ./portlets/portlet_generic_folder.py:213
 msgid "Add a Folder Portlet"
 msgstr "Add a Folder Portlet"
 
@@ -41,29 +41,26 @@ msgstr "Add a Folder Portlet"
 msgid "All Items"
 msgstr ""
 
-#: ./portlets/portlet_generic_content.py:51
+#: ./portlets/portlet_generic_content.py:52
 msgid "Content Id"
 msgstr ""
 
-#: ./portlets/portlet_generic_content.py:64
+#: ./portlets/portlet_generic_content.py:65
+#: ./portlets/portlet_generic_talexp.py:63
 msgid "Context content type"
 msgstr ""
 
-#: ./portlets/portlet_generic_content.py:250
+#: ./portlets/portlet_generic_content.py:275
 msgid "Edit Content Portlet"
 msgstr ""
 
-#: ./portlets/portlet_generic_folder.py:205
+#: ./portlets/portlet_generic_folder.py:230
 msgid "Edit Folder Portlet"
 msgstr "Edit Folder Portlet"
 
-#: ./portlets/portlet_generic_folder.py:50
+#: ./portlets/portlet_generic_folder.py:51
 msgid "For example: python:object.portal_type == 'News Item'"
 msgstr "For example: python:object.portal_type == 'News Item'"
-
-#: ./portlets/portlet_generic_talexp.py:46
-msgid "For example: python:portal.portal_catalog.searchResults(Subject=object.Subject())"
-msgstr ""
 
 #: ./portlets/templates.py:13
 msgid "Gallery with preview (Image bottom)"
@@ -73,7 +70,8 @@ msgstr "Gallery with preview (Image bottom)"
 msgid "Gallery with preview (Image top)"
 msgstr "Gallery with preview (Image top)"
 
-#: ./portlets/portlet_generic_content.py:65
+#: ./portlets/portlet_generic_content.py:66
+#: ./portlets/portlet_generic_talexp.py:64
 msgid "If you use this option, the portlet picks the content relative to the closest parent of the specified content type. If not, the content is relative to the current object."
 msgstr ""
 
@@ -81,7 +79,7 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: ./portlets/portlet_generic_content.py:57
+#: ./portlets/portlet_generic_content.py:58
 msgid "Pick the content type you want to add to this portlet. If you choose a folderish content the portlet show the elements inside. If you choose a collection the portlet shows the objects that fit the criteria."
 msgstr ""
 
@@ -101,24 +99,29 @@ msgstr "TabsAndSlides Folder portlet"
 msgid "TabsAndSlides TalExp portlet"
 msgstr ""
 
-#: ./portlets/portlet_generic_folder.py:49
-#: ./portlets/portlet_generic_talexp.py:45
+#: ./portlets/portlet_generic_folder.py:50
+#: ./portlets/portlet_generic_talexp.py:50
 msgid "Tal expression"
 msgstr "Tal expression"
 
-#: ./portlets/portlet_generic_content.py:52
+#. Default: "This tal expression can returns a list of brain or objects. For example:\n- subject example:  python:portal.portal_catalog.searchResults(Subject=object.Subject())\n- path example:  python:portal.portal_catalog.searchResults(path='/'.join(object.getPhysicalPath()))\n- path example2: python:portal.portal_catalog.searchResults(path={query='/'.join(object.getPhysicalPath(), depth = 1}))\n- type example:  python: portal.portal_catalog.searchResults(Type='Document')\n- sort example:  portal.portal_catalog.searchResults(sort_order=\"reverse\", sort_limit = 5, sort_on=\"Date\")\n- related items: python: context.getRelatedItems()\n- related backreference: python: [ b.getSourceObject() for b in portal.reference_catalog.getBackReferences(object, relationship=\"relatesTo\")]\n"
+#: ./portlets/portlet_generic_talexp.py:51
+msgid "Tal expression description"
+msgstr ""
+
+#: ./portlets/portlet_generic_content.py:53
 msgid "The id of the content."
 msgstr ""
 
-#: ./portlets/portlet_generic_folder.py:189
+#: ./portlets/portlet_generic_folder.py:214
 msgid "This portlet display items from the current Folder."
 msgstr "This portlet display items from the current Folder."
 
-#: ./portlets/portlet_generic_content.py:235
+#: ./portlets/portlet_generic_content.py:260
 msgid "This portlet display one item or all items inside a folder."
 msgstr ""
 
-#: ./portlets/portlet_generic_content.py:56
+#: ./portlets/portlet_generic_content.py:57
 msgid "Which content type"
 msgstr ""
 
