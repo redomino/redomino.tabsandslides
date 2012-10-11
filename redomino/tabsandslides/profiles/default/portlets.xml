@@ -12,6 +12,7 @@
                     description"
    />
 
+<!-- not needed anymore: I keep the class for compatibility reason
   <portlet
    addview="redomino.tabsandslides.tabsgenericportletfolder"
    title="TabsAndSlides Folder portlet"
@@ -19,7 +20,8 @@
    i18n:attributes="title;
                     description"
    />
- 
+ -->
+
   <portlet
    addview="redomino.tabsandslides.tabsgenericportletcontent"
    title="TabsAndSlides Content portlet"

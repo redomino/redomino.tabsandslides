@@ -67,7 +67,7 @@ class ICollectionPortlet(IPortletDataProvider):
         title=_plone(u"Select random items"),
         description=_plone(u"If enabled, items will be selected randomly from the "
                       u"collection, rather than based on its sort order."),
-        required=True,
+        required=False,
         default=False)
 
 
@@ -82,7 +82,7 @@ class ICollectionPortlet(IPortletDataProvider):
         title=_plone(u"Omit portlet border"),
         description=_plone(u"Tick this box if you want to render the text above "
                       "without the standard header, border or footer."),
-        required=True,
+        required=False,
         default=False)
 
 

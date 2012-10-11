@@ -54,7 +54,7 @@ class ITalExpPortlet(IPortletDataProvider):
 - path example2: python:portal.portal_catalog.searchResults(path={query='/'.join(object.getPhysicalPath(), depth = 1}))
 - type example:  python: portal.portal_catalog.searchResults(Type='Document')
 - sort example:  portal.portal_catalog.searchResults(sort_order="reverse", sort_limit = 5, sort_on="Date")
-- related items: python: context.getRelatedItems()
+- related items: python: object.getRelatedItems()
 - related backreference: python: [ b.getSourceObject() for b in portal.reference_catalog.getBackReferences(object, relationship="relatesTo")]
 """),
         required=False)
@@ -77,7 +77,7 @@ class ITalExpPortlet(IPortletDataProvider):
         title=_plone(u"Select random items"),
         description=_plone(u"If enabled, items will be selected randomly from the "
                       u"TAL expression, rather than based on its sort order."),
-        required=True,
+        required=False,
         default=False)
 
 
@@ -92,7 +92,7 @@ class ITalExpPortlet(IPortletDataProvider):
         title=_plone(u"Omit portlet border"),
         description=_plone(u"Tick this box if you want to render the text above "
                       "without the standard header, border or footer."),
-        required=True,
+        required=False,
         default=False)
 
 

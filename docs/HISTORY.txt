@@ -7,6 +7,7 @@ Changelog
 - Fixed the portlet templates in case of one element collection [sithmel]
 - portlet collection: added a link to the collection on the footer [sithmel]
 - added contextual content portlet [sithmel]
+- changed the tabbed view template: moved the text above the tabs [sithmel]
 
 
 0.8.4 (2012-07-17)

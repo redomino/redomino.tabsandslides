@@ -114,7 +114,7 @@ msgstr ""
 "- path example2: python:portal.portal_catalog.searchResults(path={query='/'.join(object.getPhysicalPath(), depth = 1}))"
 "- type example:  python: portal.portal_catalog.searchResults(Type='Document')"
 "- sort example:  portal.portal_catalog.searchResults(sort_order='reverse', sort_limit = 5, sort_on='Date')"
-"- contenuti correlati: python: context.getRelatedItems()"
+"- contenuti correlati: python: object.getRelatedItems()"
 "- backreference contenuti correlati: python: [ b.getSourceObject() for b in portal.reference_catalog.getBackReferences(object, relationship='relatesTo')]"
 
 #: ./portlets/portlet_generic_content.py:53

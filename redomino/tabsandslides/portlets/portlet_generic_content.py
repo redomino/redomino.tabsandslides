@@ -79,7 +79,7 @@ class IContentPortlet(IPortletDataProvider):
         title=_plone(u"Select random items"),
         description=_plone(u"If enabled, items will be selected randomly from the "
                       u"collection, rather than based on its sort order."),
-        required=True,
+        required=False,
         default=False)
 
     target_view = schema.Choice(
@@ -93,7 +93,7 @@ class IContentPortlet(IPortletDataProvider):
         title=_plone(u"Omit portlet border"),
         description=_plone(u"Tick this box if you want to render the text above "
                       "without the standard header, border or footer."),
-        required=True,
+        required=False,
         default=False)
 
 class Assignment(base.Assignment):
@@ -188,7 +188,7 @@ class Renderer(base.Renderer):
                                 context=context,
                                 target_language=current_language) + " " + self.data.header
 
-                return u'<div class="managePortletsLink editContent visualClear"><a href="%s/createObject?type_name=%s&id=%s">%s</a></div>' % (
+                return u'<div class="managePortletsLink editContent visualClear"><a href="%s/createTabsandSlidesContent?type_name=%s&id=%s">%s</a></div>' % (
                         context.absolute_url(),
                         self.data.contentType,
                         self.data.content_id,
@@ -198,8 +198,8 @@ class Renderer(base.Renderer):
 
     @property
     def available(self):
-        if self.context.id == self.data.content_id:
-            return False # don't show for the content id
+#        if self.context.id == self.data.content_id:
+#            return False # don't show for the content id
 
         context_state = getMultiAdapter((self.get_context(), self.request), name=u'plone_context_state')
         if not context_state.is_folderish():
@@ -226,7 +226,7 @@ class Renderer(base.Renderer):
         context = self.get_context()
         if shasattr(context, self.data.content_id):
             return getattr(context, self.data.content_id)
-        return None            
+        return None
 
     def getObjects(self):
         """ Get the actual result brains from the folder"""
