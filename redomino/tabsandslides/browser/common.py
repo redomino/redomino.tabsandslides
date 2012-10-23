@@ -68,8 +68,14 @@ class OriginalView(BrowserView):
 
         self.request['ajax_load'] = "1"
 
-        html = view()    
+        html = view()
 
-        return filterById(html,'content-core',newclass='template_' + layout)
+        filtered = filterById(html,'content-core',newclass='template_' + layout)
+
+        if filtered:
+            return filtered
+
+        # old styles views
+        return filterById(html,'content',newclass='template_' + layout)
 
 
