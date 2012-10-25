@@ -157,6 +157,35 @@
             />
     </browser:menuItems>
 
+<!-- accordion -->
+
+  <browser:page
+      for="Products.CMFCore.interfaces.IFolderish"
+      name="accordion_view"
+      class=".common.BaseView"
+      template="templates/accordion.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATTopic"
+      name="accordion_view"
+      class=".common.BaseView"
+      template="templates/accordion.pt"
+      permission="zope2.View"
+      />
+
+    <browser:menuItems
+        for="*"
+        menu="plone_displayviews">
+        <browser:menuItem
+            title="Accordion"
+            action="accordion_view"
+            description=""
+            />
+    </browser:menuItems>
+
+
 <!-- generic utility view -->
 
   <browser:page

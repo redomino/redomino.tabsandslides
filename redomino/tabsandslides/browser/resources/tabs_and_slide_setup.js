@@ -1,3 +1,4 @@
+
 /*
 *
 * slideshow
@@ -5,9 +6,9 @@
 */
 
 jQuery.fn.init_slideshow = function (){
-    var context = this;
-    var config = tabsandslides.slideshow.config;
-    var slideshow_config = tabsandslides.slideshow.slideshow_config
+    var context = this,
+        config = tabsandslides.slideshow.config,
+        slideshow_config = tabsandslides.slideshow.slideshow_config
 
     jQuery(".slideshow_tabs",context).tabs(".slideshow_panes > div",config).slideshow(slideshow_config);
     jQuery(".slideshow_tabs",context).each(function (){
@@ -27,8 +28,8 @@ jQuery.fn.init_slideshow = function (){
 */
 
 jQuery.fn.init_tabs = function (){
-    var context = this;
-    var config = tabsandslides.tabs.config;
+    var context = this,
+        config = tabsandslides.tabs.config;
 
     jQuery(".tabs",context).tabs("> .panes > div",config);
     return context;
@@ -42,9 +43,9 @@ jQuery.fn.init_tabs = function (){
 */
 
 jQuery.fn.init_image_tabs = function (){
-    var context = this;
-    var config = tabsandslides.image_tabs.config;
-    var config_boxscrollable = tabsandslides.image_tabs.config_boxscrollable;
+    var context = this,
+        config = tabsandslides.image_tabs.config,
+        config_boxscrollable = tabsandslides.image_tabs.config_boxscrollable;
 
 
     jQuery(".imagetabs-tabs",context).tabs("> .imagetabs-panes > div",config);
@@ -82,9 +83,9 @@ jQuery.fn.init_gallery = function (){
 */
 
 jQuery.fn.init_slideshowpreview = function (){
-    var context = this;
-    var config = tabsandslides.slideshowpreview.config;
-    var slideshow_config = tabsandslides.slideshowpreview.slideshow_config
+    var context = this,
+        config = tabsandslides.slideshowpreview.config,
+        slideshow_config = tabsandslides.slideshowpreview.slideshow_config;
 
     jQuery(".slideshow_preview_tabs",context).tabs(".slideshow_preview_panes > div",config).slideshow(slideshow_config);
     jQuery(".slideshow_preview_tabs",context).each(function (){
@@ -95,6 +96,22 @@ jQuery.fn.init_slideshowpreview = function (){
     return context;
 };
 
+
+/*
+*
+* tabs
+*
+*/
+
+jQuery.fn.init_accordion = function (){
+    var context = this,
+        config = tabsandslides.accordion.config || {};
+
+    jQuery(".tabsandslides-accordion",context).accordion(config);
+    return context;
+
+};
+
 /*
 *
 * init
@@ -102,12 +119,19 @@ jQuery.fn.init_slideshowpreview = function (){
 */
 
 (function($){
+
 $(document).ready(function (){
-    $(this).init_image_tabs().init_gallery().init_slideshow().init_tabs().init_slideshowpreview();
+    $(this)
+        .init_image_tabs()
+        .init_gallery()
+        .init_slideshow()
+        .init_tabs()
+        .init_accordion()
+        .init_slideshowpreview();
 });
 
 
-})(jQuery);
+}(jQuery));
 
 
 

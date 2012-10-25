@@ -16,7 +16,9 @@
             <a tal:attributes="href string:${context/absolute_url}/image">
                 <img tal:attributes="src string:${context/absolute_url};
                                      alt context/Title;
-                                     title context/Title"/>
+                                     title context/Title;
+                                     width string:${context/width}px;
+                                     height string:${context/height}px"/>
             </a>
         </div>
     </tal:image>

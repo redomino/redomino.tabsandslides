@@ -1,4 +1,8 @@
-var tabsandslides = {};
+window.tabsandslides = {};
+
+(function (tabsandslides){
+
+
 
 //
 // GALLERY
@@ -14,6 +18,14 @@ tabsandslides.image_tabs = {};
 tabsandslides.image_tabs.config = {};
 tabsandslides.image_tabs.config_boxscrollable = {scroll:1};
 //http://sorgalla.com/projects/jcarousel/
+
+//
+// ACCORDION
+//
+
+tabsandslides.accordion = {};
+tabsandslides.accordion.config = {};
+
 
 //
 // TABS
@@ -53,4 +65,5 @@ tabsandslides.slideshowpreview.config = {
 
 tabsandslides.slideshowpreview.slideshow_config = {clickable:false};
 
+}(window.tabsandslides));
 

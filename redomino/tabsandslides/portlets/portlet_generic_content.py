@@ -166,6 +166,7 @@ class Renderer(base.Renderer):
 
     @property
     def footer(self):
+        footer = []
         sm = getSecurityManager()       
         context = self.get_context()
 
@@ -175,26 +176,40 @@ class Renderer(base.Renderer):
             # get tool
             tool = getToolByName(context, 'translation_service')
 
+            
+            #THERE IS A DESCENDANT ACQUIRED BY CONTEXT (USE ACQUISITION)
+            if not shasattr(context, self.data.content_id) and hasattr(context, self.data.content_id) :
+                # this returns type unicode
+                editstring = tool.translate(u"edit",
+                               'plone',
+                                context=context,
+                                target_language=current_language) + " " + self.data.header
+                footer.append(u'<div class="managePortletsLink editContent visualClear"><a href="%s/view">%s</a></div>' % (self.get_item().absolute_url(), editstring))
+
+            #THERE IS A DIRECT DESCENDANT
             if shasattr(context, self.data.content_id):
                 # this returns type unicode
                 editstring = tool.translate(u"edit",
                                'plone',
                                 context=context,
                                 target_language=current_language) + " " + self.data.header
-                return u'<div class="managePortletsLink editContent visualClear"><a href="%s/view">%s</a></div>' % (self.object_url(), editstring)
-            else:
+                footer.append(u'<div class="managePortletsLink editContent visualClear"><a href="%s/view">%s</a></div>' % (self.object_url(), editstring))
+
+            #THERE ISN'T A DIRECT DESCENDANT
+            if not shasattr(context, self.data.content_id) and not hasattr(context, self.data.content_id) :
                 addstring = tool.translate(u"add",
                                'plone',
                                 context=context,
                                 target_language=current_language) + " " + self.data.header
 
-                return u'<div class="managePortletsLink editContent visualClear"><a href="%s/createTabsandSlidesContent?type_name=%s&id=%s">%s</a></div>' % (
+                footer.append(u'<div class="managePortletsLink editContent visualClear"><a href="%s/createTabsandSlidesContent?type_name=%s&id=%s">%s</a></div>' % (
                         context.absolute_url(),
                         self.data.contentType,
                         self.data.content_id,
-                        addstring)
+                        addstring))
 
-        return None
+        
+        return ''.join(footer)
 
     @property
     def available(self):
@@ -224,9 +239,10 @@ class Renderer(base.Renderer):
 
     def get_item(self):
         context = self.get_context()
-        if shasattr(context, self.data.content_id):
-            return getattr(context, self.data.content_id)
-        return None
+#        if shasattr(context, self.data.content_id):
+#            return getattr(context, self.data.content_id)
+        return getattr(context, self.data.content_id, None)
+#        return None
 
     def getObjects(self):
         """ Get the actual result brains from the folder"""

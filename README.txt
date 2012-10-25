@@ -9,23 +9,31 @@ Views
 
 - **Gallery**: A scrollable carousel.
 - **Tabs**: Show the contents inside a tab.
-- **Gallery with preview (image bottom or Image top)**: A scrollable carousel that shows a preview of each content.
+- **Accordion**: Show the contents inside aa accordion.
+- **Gallery with preview (image top)**: A scrollable carousel that shows a preview of each content.
+- **Gallery with preview (image bottom)**: A scrollable carousel that shows a preview of each content.
 - **Slideshow**: Shows elements inside a folder (or collection) as a slideshow.
 
 Portlets
 ------------
-This product provides two portlets. For each portlet you can choose among three different views:
+This product provides three portlets. For each portlet you can choose among many different views:
 
 - **Gallery**
 - **Tabs**
+- **Accordion**
 - **Slideshow**
 - **Gallery with preview (image top)**
 - **Gallery with preview (image bottom)**
+- **List of items**
+- **All items**
 
 The portlets are:
 
-- **TabsAndSlides Collection portlet**: Show the items of a collection. You can limit the elements to be shown, randomize the order of the items, show or not the border of the portlet.
-- **TabsAndSlides Folder portlet**: Show the items inside a folder. If you assign this portlet to a non-folderish content type, it will show the siblings of the content. The content can be optionally filtered using a tal expression. This is a good reference: http://www.owlfish.com/software/simpleTAL/tal-guide.html
+- **TabsAndSlides Collection portlet**: Show the items of a collection. 
+- **TabsAndSlides Content portlet**: Show items with a certain ID inside a certain context (usually a folderish object). If the item is a Folder or a collection it returns the contained items.
+- **TabsAndSlides Tal portlet**: Show the items using a TAL expression. This expression can return a list of brain of a list of objects. This is a good reference: http://www.owlfish.com/software/simpleTAL/tal-guide.html
+
+For each of that portlet you can limit the elements to be shown, randomize the order of the items, show or not the border of the portlet.
 
 Customize the views
 -------------------
@@ -74,6 +82,8 @@ Jcarousel
 JQuerytools tabs
     - http://flowplayer.org/tools/tabs/index.html
 
+JQueryUI
+    - http://jqueryui.com/
 
 Installation
 Add the product to buildout as usual.::
@@ -90,12 +100,12 @@ Dependencies
 ---------------
 
 - Plone 4.x
-
+- collective.js.jqueryui
 
 Credits
 ----------
 
-Maurizio Lupo <maurizio.lupo@redomino.com> [sithmel], Author - 2011
+Maurizio Lupo <maurizio.lupo@redomino.com> [sithmel], Author
 Giacomo Spettoli <giacomo.spettoli@redomino.com> [giacomos]
 
 

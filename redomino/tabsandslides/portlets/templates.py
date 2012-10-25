@@ -7,6 +7,7 @@ def TemplatesAvailable(context):
     return SimpleVocabulary(
         [
          SimpleTerm(value=u'portlet_tabs.pt', title=_(u'tabs')),
+         SimpleTerm(value=u'portlet_accordion.pt', title=_(u'accordion')),
          SimpleTerm(value=u'portlet_slideshow.pt', title=_(u'slideshow')),
          SimpleTerm(value=u'portlet_gallery.pt', title=_(u'gallery')),
          SimpleTerm(value=u'portlet_imagetab.pt', title=_(u'Gallery with preview (Image top)')),

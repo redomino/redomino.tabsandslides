@@ -26,7 +26,8 @@ setup(name='redomino.tabsandslides',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'lxml'
+          'lxml',
+          'collective.js.jqueryui>=1.8'
       ],
       entry_points="""
       # -*- Entry points: -*-
