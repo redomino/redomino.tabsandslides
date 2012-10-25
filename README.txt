@@ -9,7 +9,7 @@ Views
 
 - **Gallery**: A scrollable carousel.
 - **Tabs**: Show the contents inside a tab.
-- **Accordion**: Show the contents inside aa accordion.
+- **Accordion**: Show the contents inside an accordion.
 - **Gallery with preview (image top)**: A scrollable carousel that shows a preview of each content.
 - **Gallery with preview (image bottom)**: A scrollable carousel that shows a preview of each content.
 - **Slideshow**: Shows elements inside a folder (or collection) as a slideshow.
@@ -105,7 +105,10 @@ Dependencies
 Credits
 ----------
 
-Maurizio Lupo <maurizio.lupo@redomino.com> [sithmel], Author
-Giacomo Spettoli <giacomo.spettoli@redomino.com> [giacomos]
+Author
+    - Maurizio Lupo <maurizio.lupo@redomino.com> [sithmel]
+
+Contributors
+    - Giacomo Spettoli <giacomo.spettoli@redomino.com> [giacomos]
 
 
