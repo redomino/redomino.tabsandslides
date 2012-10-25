@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.8.5 (unreleased)
+0.9.0 (2012-10-25)
 ------------------
 
 - Fixed the portlet templates in case of one element collection [sithmel]
