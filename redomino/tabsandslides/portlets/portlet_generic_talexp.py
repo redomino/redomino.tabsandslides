@@ -170,7 +170,6 @@ class Renderer(base.Renderer):
         context = self.get_context()
 
         if self.data.talexp and self.data.talexp.strip() and context:
-            context = self.get_context()
             expression = Expression(self.data.talexp)
             expression_context = getExprContext(context, object = context)
             expresult = expression(expression_context)
