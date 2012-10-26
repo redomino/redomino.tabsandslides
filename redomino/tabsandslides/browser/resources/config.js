@@ -24,8 +24,8 @@ tabsandslides.image_tabs.config_boxscrollable = {scroll:1};
 //
 
 tabsandslides.accordion = {};
-tabsandslides.accordion.config = {};
-
+tabsandslides.accordion.config = { collapsible: true, autoHeight: false };
+//http://api.jqueryui.com/1.8/accordion/
 
 //
 // TABS

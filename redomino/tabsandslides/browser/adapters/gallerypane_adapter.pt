@@ -14,11 +14,7 @@
     <tal:image condition="python: is_image">
         <div class="image">
             <a tal:attributes="href string:${context/absolute_url}/image">
-                <img tal:attributes="src string:${context/absolute_url}/@@images/image/preview;
-                                     alt context/Title;
-                                     title context/Title;
-                                     width string:${context/width}px;
-                                     height string:${context/height}px"/>
+                <img tal:define="img context/@@images" tal:replace="structure python: img.tag(scale='preview')" />
             </a>
         </div>
     </tal:image>

@@ -66,6 +66,13 @@ class ITalExpPortlet(IPortletDataProvider):
         required=False
 #        default=False
 )
+    relative_to_ct_inherit = schema.Bool(
+        title=_plone(u"Allow inheritance from parent"),
+        description=_(u"If enabled, the portlet will be visible on objects contained by the context choosen. "
+                      u"This option is used only if the portlet is relative to a specific content type (using the option above)."),
+        required=False,
+        default=False)
+
     limit = schema.Int(
         title=_plone(u"Limit"),
         description=_plone(u"Specify the maximum number of items to show in the "
@@ -111,12 +118,15 @@ class Assignment(base.Assignment):
     limit = None
     random = False
 
-    def __init__(self, header=u"", talexp='', relative_to_contenttype = None, limit=None,
+    relative_to_ct_inherit = False
+
+    def __init__(self, header=u"", talexp='', relative_to_contenttype = None,relative_to_ct_inherit = False, limit=None,
                  random=False, target_view="templates/portlet_tabs.pt", omit_border=False):
         self.header = header
         self.limit = limit
         self.talexp = talexp
         self.relative_to_contenttype = relative_to_contenttype
+        self.relative_to_ct_inherit = relative_to_ct_inherit 
         self.random = random
         self.target_view = target_view
         self.omit_border = omit_border
@@ -177,7 +187,9 @@ class Renderer(base.Renderer):
                 results = [brain.getObject() for brain in expresult]
             else:
                 results = expresult # case 2: talexp returns objects
+
             results = [res for res in results if res.UID() != context.UID()]
+                
         return results
 
     @memoize
@@ -202,10 +214,15 @@ class Renderer(base.Renderer):
             context = container
 
         if self.data.relative_to_contenttype:
-            while context.portal_type != self.data.relative_to_contenttype:
-                if INavigationRoot.providedBy(context):
+            if hasattr(self.data, 'relative_to_ct_inherit') and self.data.relative_to_ct_inherit:
+                while context.portal_type != self.data.relative_to_contenttype:
+                    if INavigationRoot.providedBy(context):
+                        return None # parent not found
+                    context = aq_parent(context)
+            else:
+                if context.portal_type != self.data.relative_to_contenttype:
                     return None # parent not found
-                context = aq_parent(context)
+
 
         return context
 

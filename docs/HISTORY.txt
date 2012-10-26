@@ -4,8 +4,10 @@ Changelog
 0.9.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Changed default settings of accordion (autoHeight, collapsible).
+  Now It's more usable [sithmel]
+- Fix the images size [sithmel]
+- Added option "inherit from parent" in portlet "tal" and "content" [sithmel]
 
 0.9.0 (2012-10-25)
 ------------------

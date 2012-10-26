@@ -6,7 +6,12 @@
                    is_collection python:iinfo.provides('Products.ATContentTypes.interface.IATTopic');
                    is_folder python:iinfo.provides('Products.ATContentTypes.interface.IATFolder')">
 
-    <tal:image condition="python: is_image or is_news">
+    <tal:image condition="python: is_image">
+        <a tal:attributes="href string:${context/absolute_url}/view">
+            <img tal:define="img context/@@images" tal:replace="structure python: img.tag(scale='thumb')" />
+        </a>
+    </tal:image>
+    <tal:image condition="python: is_news">
         <a tal:attributes="href string:${context/absolute_url}/view">
             <img tal:attributes="src string:${context/absolute_url}/@@images/image/thumb;
                                  alt context/Title;

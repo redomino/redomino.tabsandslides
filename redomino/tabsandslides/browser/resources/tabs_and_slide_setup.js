@@ -99,7 +99,7 @@ jQuery.fn.init_slideshowpreview = function (){
 
 /*
 *
-* tabs
+* accordion
 *
 */
 
