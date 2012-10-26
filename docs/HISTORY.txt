@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.9.1 (unreleased)
+0.9.1 (2012-10-26)
 ------------------
 
 - Changed default settings of accordion (autoHeight, collapsible).
