@@ -1,0 +1,63 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="redomino.tabsandslides">
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="gallery_view"
+      class=".common.BaseView"
+      template="templates/gallery_folder.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="tabbed_view"
+      class=".common.BaseView"
+      template="templates/tabbed_folder.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="tabbed_summary_view"
+      class=".common.BaseView"
+      template="templates/images_tabbed_folder.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="tabbed_summary_view2"
+      class=".common.BaseView"
+      template="templates/images_tabbed_folder2.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="slideshow_view"
+      class=".common.BaseView"
+      template="templates/slideshow_folder.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="accordion_view"
+      class=".common.BaseView"
+      template="templates/accordion.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="tabsandslides_view"
+      class=".common.BaseView"
+      permission="zope2.View"
+      />
+
+</configure>

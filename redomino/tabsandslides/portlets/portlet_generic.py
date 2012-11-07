@@ -53,7 +53,7 @@ class ICollectionPortlet(IPortletDataProvider):
         description=_plone(u"Find the collection which provides the items to list"),
         required=True,
         source=SearchableTextSourceBinder(
-            {'object_provides': IATTopic.__identifier__},
+            {'portal_type': ('Topic', 'Collection')},
             default_query='path:'))
 
     limit = schema.Int(

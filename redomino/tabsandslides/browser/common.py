@@ -20,8 +20,16 @@ from Products.Five import BrowserView
 from zope.component import getMultiAdapter
 from redomino.tabsandslides.utility import filterById
 from Products.ATContentTypes.interface import IATTopic, IATFolder
+from Products.CMFCore.interfaces import IFolderish
 from Acquisition import aq_inner
 from plone.memoize.view import memoize
+
+try:
+    from plone.app.collection.interfaces import ICollection
+except ImportError:
+    class ICollection(object):
+        def providedBy(self, obj):
+            return False
 
 class SingleView(BrowserView):
     """utility view for non folderish content (used in content portlet)"""
@@ -43,7 +51,7 @@ class BaseView(BrowserView):
 
     def contentsMethod(self):
         context = aq_inner(self.context)
-        if IATTopic.providedBy(context):
+        if IATTopic.providedBy(context) or ICollection.providedBy(context):
             contentsMethod = context.queryCatalog
         else:
             contentsMethod = context.getFolderContents
@@ -63,7 +71,7 @@ class OriginalView(BrowserView):
         view = self.context.restrictedTraverse(layout)
             
         #danger of infinite recursion
-        if IATTopic.providedBy(self.context) or IATFolder.providedBy(self.context):
+        if IATTopic.providedBy(self.context) or ICollection.providedBy(context) or IFolderish.providedBy(self.context):
             view = self.context.restrictedTraverse('folder_listing')
 
         self.request['ajax_load'] = "1"

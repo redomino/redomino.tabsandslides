@@ -27,7 +27,6 @@ from plone.portlet.collection import PloneMessageFactory as _plone
 from redomino.tabsandslides import tabsandslidesMessageFactory as _
 
 from plone.app.portlets.portlets import base
-from Products.ATContentTypes.interface import IATTopic
 from plone.app.layout.navigation.interfaces import INavigationRoot 
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Acquisition import aq_inner, aq_parent
