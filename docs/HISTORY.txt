@@ -4,7 +4,9 @@ Changelog
 0.9.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added class "portletItem" to portlets [sithmel]
+- Fixed bug in content types vocabulary. Now it is possible to choose
+  a global addable content type in portlets [sithmel]
 
 
 0.9.1 (2012-10-26)

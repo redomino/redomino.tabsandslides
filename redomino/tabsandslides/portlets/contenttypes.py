@@ -4,7 +4,7 @@ from zope.interface import implements, directlyProvides
 from redomino.tabsandslides import tabsandslidesMessageFactory as _
 
 def ContentTypes(context):
-    allowedCT = context.allowedContentTypes()
+    allowedCT = context.getDefaultAddableTypes()
     return SimpleVocabulary(
         [SimpleTerm(value=t.getId(), title=t.Title()) for t in allowedCT])
 

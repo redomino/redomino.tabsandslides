@@ -41,7 +41,7 @@
     </dt>
     
 
-    <dd tal:define="objects view/getObjects">
+    <dd class="portletItem" tal:define="objects view/getObjects">
         <tal:block tal:condition="python: len(objects) > 1">
             <!-- tab "panes" -->
             <div class="slideshow_panes">
