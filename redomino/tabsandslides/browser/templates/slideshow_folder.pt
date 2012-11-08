@@ -12,6 +12,8 @@
             <div class="documentDescription" tal:content="context/Description"></div>
 
                 <div id="content-core" tal:define="objects view/getObjects">
+                <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>
+                <div class="visualClear"><!-- --></div>
                     <!-- tab "panes" -->
                     <div class="slideshow_panes">
 	                    <div tal:repeat="obj objects" tal:content="structure obj/@@slideshow_pane">pane 1 content</div>
@@ -22,7 +24,8 @@
                         <tal:block repeat="obj objects" tal:content="structure obj/@@slideshow_tab">Tab1</tal:block>
                     </div>
                 </div>
-                <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>
+                <div class="visualClear"><!-- --></div>
+<!--                <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>-->
 
         </tal:main-macro>
     </div>

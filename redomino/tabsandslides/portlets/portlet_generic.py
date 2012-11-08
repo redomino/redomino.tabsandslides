@@ -186,49 +186,33 @@ class Renderer(base.Renderer):
         else:
             return collection.absolute_url()
 
+    @memoize
     def results(self):
-        """ Get the actual result brains from the collection.
-            This is a wrapper so that we can memoize if and only if we aren't
-            selecting random items."""
         if self.data.random:
             return self._random_results()
         else:
             return self._standard_results()
 
-    @memoize
     def _standard_results(self):
         results = []
         collection = self.collection()
         if collection is not None:
-            results = collection.queryCatalog()
-            if self.data.limit and self.data.limit > 0:
-                results = results[:self.data.limit]
+            limit = self.data.limit
+            if limit and limit > 0:
+                # pass on batching hints to the catalog
+                results = collection.queryCatalog(batch=True, b_size=limit)
+                results = results._sequence
+            else:
+                results = collection.queryCatalog()
+            if limit and limit > 0:
+                results = results[:limit]
         return results
 
-    # intentionally non-memoized
     def _random_results(self):
+        # intentionally non-memoized
         results = []
         collection = self.collection()
         if collection is not None:
-            """
-            Kids, do not try this at home.
-
-            We're poking at the internals of the (lazy) catalog
-            results to avoid instantiating catalog brains
-            unnecessarily.
-
-            We're expecting a LazyCat wrapping two LazyMaps as the
-            return value from
-            Products.ATContentTypes.content.topic.ATTopic.queryCatalog.
-            The second of these contains the results of the catalog
-            query.  We force sorting off because it's unnecessary and
-            might result in a different structure of lazy objects.
-
-            Using the correct LazyMap (results._seq[1]), we randomly
-            pick a catalog index and then retrieve it as a catalog
-            brain using the _func method.
-            """
-
             results = collection.queryCatalog(sort_on=None)
             if results is None:
                 return []
@@ -242,8 +226,6 @@ class Renderer(base.Renderer):
 
     @memoize
     def collection(self):
-        """ get the collection the portlet is pointing to"""
-
         collection_path = self.data.target_collection
         if not collection_path:
             return None
@@ -258,9 +240,15 @@ class Renderer(base.Renderer):
                                        name=u'plone_portal_state')
         portal = portal_state.portal()
         if isinstance(collection_path, unicode):
-            #restrictedTraverse accept only strings
+            # restrictedTraverse accepts only strings
             collection_path = str(collection_path)
-        return portal.restrictedTraverse(collection_path, default=None)
+
+        result = portal.unrestrictedTraverse(collection_path, default=None)
+        if result is not None:
+            sm = getSecurityManager()
+            if not sm.checkPermission('View', result):
+                result = None
+        return result
 
     def getObjects(self):
         return [b.getObject() for b in self.results()]
