@@ -28,7 +28,8 @@ try:
     from plone.app.collection.interfaces import ICollection
 except ImportError:
     class ICollection(object):
-        def providedBy(self, obj):
+        @staticmethod
+        def providedBy(obj):
             return False
 
 class SingleView(BrowserView):
@@ -71,7 +72,7 @@ class OriginalView(BrowserView):
         view = self.context.restrictedTraverse(layout)
             
         #danger of infinite recursion
-        if IATTopic.providedBy(self.context) or ICollection.providedBy(context) or IFolderish.providedBy(self.context):
+        if IATTopic.providedBy(self.context) or ICollection.providedBy(self.context) or IFolderish.providedBy(self.context):
             view = self.context.restrictedTraverse('folder_listing')
 
         self.request['ajax_load'] = "1"
