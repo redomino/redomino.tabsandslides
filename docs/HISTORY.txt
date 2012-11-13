@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.9.3 (unreleased)
+0.9.3 (2012-11-13)
 ------------------
 
 - removed types.xml from profiles. It's useless and trigger the creation of new
