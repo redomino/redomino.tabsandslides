@@ -48,15 +48,7 @@ class ITalExpPortlet(IPortletDataProvider):
 
     talexp = schema.TextLine(
         title=_(u"Tal expression"),
-        description=_(u"Tal expression description", default="""This tal expression can returns a list of brain or objects. For example:
-- subject example:  python:portal.portal_catalog.searchResults(Subject=object.Subject())
-- path example:  python:portal.portal_catalog.searchResults(path='/'.join(object.getPhysicalPath()))
-- path example2: python:portal.portal_catalog.searchResults(path={query='/'.join(object.getPhysicalPath(), depth = 1}))
-- type example:  python: portal.portal_catalog.searchResults(Type='Document')
-- sort example:  portal.portal_catalog.searchResults(sort_order="reverse", sort_limit = 5, sort_on="Date")
-- related items: python: object.getRelatedItems()
-- related backreference: python: [ b.getSourceObject() for b in portal.reference_catalog.getBackReferences(object, relationship="relatesTo")]
-"""),
+        description=_(u"Tal expression description", default="This tal expression can returns a list of brains or objects."),
         required=False)
 
     relative_to_contenttype = schema.Choice(
@@ -67,7 +59,7 @@ class ITalExpPortlet(IPortletDataProvider):
 #        default=False
 )
     relative_to_ct_inherit = schema.Bool(
-        title=_plone(u"Allow inheritance from parent"),
+        title=_(u"Allow inheritance from parent"),
         description=_(u"If enabled, the portlet will be visible on objects contained by the context choosen. "
                       u"This option is used only if the portlet is relative to a specific content type (using the option above)."),
         required=False,

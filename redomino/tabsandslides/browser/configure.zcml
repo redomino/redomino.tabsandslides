@@ -218,4 +218,14 @@
       permission="zope2.View"
       />
 
+
+<!-- talexp help portlet -->
+  <browser:page
+      for="*"
+      name="talexp_portlet_help"
+      template="templates/talexp_portlet_help.pt"
+      permission="zope2.View"
+      />
+
+
 </configure>

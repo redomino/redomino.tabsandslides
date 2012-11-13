@@ -224,7 +224,28 @@
 
 /*
 **********************************************************************
- 
+ talexp help
 **********************************************************************
 */
+.talexp_help h1{
+    font-size: 12px;
+}
+.talexp_help{
+    font-size: 12px;
+    position: absolute;
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    border: 1px solid #AAA;
+    padding: 2px;
+    margin-top: -1px;
+}
+.talexp_help dt{
+    cursor: pointer;
+}
+#formfield-form-talexp input{
+    width: 100%;
+    max-width: 500px;
+}
+
 

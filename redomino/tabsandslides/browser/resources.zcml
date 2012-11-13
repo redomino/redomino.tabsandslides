@@ -33,6 +33,11 @@
       file="resources/tabs_and_slide_setup.js"
       />
        
+   <browser:resource
+      name="redomino.tabsandslides.talexp_help.js"
+      file="resources/talexp_help.js"
+      />
+
 <!-- css -->
 
    <browser:resource

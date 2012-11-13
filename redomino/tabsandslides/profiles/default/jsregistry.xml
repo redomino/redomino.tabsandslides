@@ -44,5 +44,10 @@
     cacheable="False" compression="safe" cookable="False"
     enabled="True" expression=""  inline="False"/>
 
+ <javascript
+    id="++resource++redomino.tabsandslides.talexp_help.js"
+    cacheable="False" compression="safe" cookable="False"
+    enabled="True" expression=""  inline="False"/>
+
 
 </object>

@@ -4,7 +4,12 @@ Changelog
 0.9.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- removed types.xml from profiles. It's useless and trigger the creation of new
+  collections on old Plone [sithmel]
+- another fix to content types vocabulary. May be useful to add contents that
+  are not globally addable [sithmel]
+- added selection helper for tal expression [sithmel]
+- fix italian i18n [sithmel]
 
 
 0.9.2 (2012-11-08)

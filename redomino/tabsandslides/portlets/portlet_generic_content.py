@@ -68,7 +68,7 @@ class IContentPortlet(IPortletDataProvider):
 #        default=False
 )
     relative_to_ct_inherit = schema.Bool(
-        title=_plone(u"Allow inheritance from parent"),
+        title=_(u"Allow inheritance from parent"),
         description=_(u"If enabled, the portlet will be visible on objects contained by the context choosen. "
                       u"This option is used only if the portlet is relative to a specific content type (using the option above)."),
         required=False,

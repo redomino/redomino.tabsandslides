@@ -1,0 +1,24 @@
+<div i18n:domain="redomino.tabsandslides">
+<h1 i18n:translate="">Examples:</h1>
+<dl>
+
+<dt i18n:translate="">Objects under this folder (at any depth)</dt>
+<dd>python:portal.portal_catalog.searchResults(path='/'.join(object.getPhysicalPath()))</dd>
+
+<dt i18n:translate="">Objects contained by this folder</dt>
+<dd>python:portal.portal_catalog.searchResults(path={query='/'.join(object.getPhysicalPath(), depth = 1}))</dd>
+
+<dt i18n:translate="">Objects with a certain type</dt>
+<dd>python: portal.portal_catalog.searchResults(Type='Document')</dd>
+
+<dt i18n:translate="">Sorting example</dt>
+<dd>python: portal.portal_catalog.searchResults(sort_order="reverse", sort_limit = 5, sort_on="Date")</dd>
+
+<dt i18n:translate="">Related items</dt>
+<dd>python: object.getRelatedItems()</dd>
+
+<dt i18n:translate="">Related backreference</dt>
+<dd>python: [ b.getSourceObject() for b in portal.reference_catalog.getBackReferences(object, relationship="relatesTo")]</dd>
+
+</dl>
+</div>
