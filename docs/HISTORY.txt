@@ -4,7 +4,9 @@ Changelog
 0.9.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix wrong URLs in portlet listing [sithmel]
+- Accordion portlets now have titles [sithmel]
+- Fix examples in portlet tal helper [sithmel]
 
 
 0.9.3 (2012-11-13)
