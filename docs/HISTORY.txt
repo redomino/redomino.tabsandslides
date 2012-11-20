@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.9.4 (unreleased)
+0.9.4 (2012-11-20)
 ------------------
 
 - Fix wrong URLs in portlet listing [sithmel]
