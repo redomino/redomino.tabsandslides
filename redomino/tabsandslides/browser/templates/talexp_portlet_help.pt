@@ -6,7 +6,7 @@
 <dd>python:portal.portal_catalog.searchResults(path='/'.join(object.getPhysicalPath()))</dd>
 
 <dt i18n:translate="">Objects contained by this folder</dt>
-<dd>python:portal.portal_catalog.searchResults(path={query:'/'.join(object.getPhysicalPath()), depth: 1})</dd>
+<dd>python:portal.portal_catalog.searchResults(path={'query':'/'.join(object.getPhysicalPath()), 'depth': 1})</dd>
 
 <dt i18n:translate="">Objects with a certain type</dt>
 <dd>python: portal.portal_catalog.searchResults(portal_type='Document')</dd>

@@ -4,7 +4,8 @@ Changelog
 0.9.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added a customizable footer to the tal portlet [sithmel]
+- Fix examples in portlet tal helper (again) [sithmel]
 
 
 0.9.4 (2012-11-20)

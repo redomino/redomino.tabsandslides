@@ -33,6 +33,7 @@ from plone.app.layout.navigation.defaultpage import isDefaultPage
 
 from Products.CMFCore.Expression import Expression, getExprContext
 
+from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
 from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import BoundPageTemplate
@@ -94,7 +95,10 @@ class ITalExpPortlet(IPortletDataProvider):
         required=False,
         default=False)
 
-
+    footer_text = schema.Text(
+        title=_(u"Footer"),
+        description=_(u"The footer text"),
+        required=False)
 
 class Assignment(base.Assignment):
     """
@@ -109,11 +113,12 @@ class Assignment(base.Assignment):
     talexp = False
     limit = None
     random = False
+    footer_text = ''
 
     relative_to_ct_inherit = False
 
     def __init__(self, header=u"", talexp='', relative_to_contenttype = None,relative_to_ct_inherit = False, limit=None,
-                 random=False, target_view="templates/portlet_tabs.pt", omit_border=False):
+                 random=False, target_view="templates/portlet_tabs.pt", omit_border=False, footer_text=''):
         self.header = header
         self.limit = limit
         self.talexp = talexp
@@ -122,6 +127,7 @@ class Assignment(base.Assignment):
         self.random = random
         self.target_view = target_view
         self.omit_border = omit_border
+        self.footer_text = footer_text
 
 
     @property
@@ -151,6 +157,10 @@ class Renderer(base.Renderer):
         header = self.data.header
         normalizer = getUtility(IIDNormalizer)
         return "portlet-tabsandslides-%s" % normalizer.normalize(header)
+
+    @property
+    def footer(self):
+        return self.data.footer_text
 
     def render(self):
         _template = ViewPageTemplateFile('templates/%s' % self.data.target_view)
@@ -227,7 +237,7 @@ class AddForm(base.AddForm):
     constructs the assignment that is being added.
     """
     form_fields = form.Fields(ITalExpPortlet)
-#    form_fields['target_collection'].custom_widget = UberSelectionWidget
+    form_fields['footer_text'].custom_widget = WYSIWYGWidget
 
     label = _plone(u"Add TalExp Portlet")
     description = _plone(u"This portlet display a listing of items from a "
@@ -245,6 +255,7 @@ class EditForm(base.EditForm):
     """
 
     form_fields = form.Fields(ITalExpPortlet)
+    form_fields['footer_text'].custom_widget = WYSIWYGWidget
 
     label = _plone(u"Edit Collection Portlet")
     description = _plone(u"This portlet display a listing of items from a "
