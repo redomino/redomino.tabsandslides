@@ -39,6 +39,8 @@ from Products.CMFCore.permissions import ModifyPortalContent
 from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import BoundPageTemplate
+from AccessControl import Unauthorized
+from Acquisition import aq_inner
 
 class IContentPortlet(IPortletDataProvider):
     """"""
@@ -252,7 +254,16 @@ class Renderer(base.Renderer):
         context = self.get_context()
 #        if shasattr(context, self.data.content_id):
 #            return getattr(context, self.data.content_id)
-        return getattr(context, self.data.content_id, None)
+        path = context.getPhysicalPath() + (self.data.content_id,)
+        try:
+            obj = context.restrictedTraverse(path)
+        except AttributeError:
+            return None
+        except Unauthorized:
+            return None
+
+        return obj
+#        return getattr(context, self.data.content_id, None)
 #        return None
 
     def getObjects(self):

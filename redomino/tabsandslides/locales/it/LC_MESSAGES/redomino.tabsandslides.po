@@ -107,11 +107,11 @@ msgstr "Seleziona il tipo di contenuto da aggiungere a questa portlet."
 
 #: ./browser/templates/talexp_portlet_help.pt:20
 msgid "Related backreference"
-msgstr "Elementi correlati"
+msgstr "Correlati inversi"
 
 #: ./browser/templates/talexp_portlet_help.pt:17
 msgid "Related items"
-msgstr "Correlati inversi"
+msgstr "Elementi correlati"
 
 #: ./browser/templates/talexp_portlet_help.pt:14
 msgid "Sorting example"

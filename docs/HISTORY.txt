@@ -4,8 +4,9 @@ Changelog
 0.9.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fix italian translation (portlet helper) [sithmel]
+- Fix example of how to get backreference on the tal portlet [sithmel]
+- portlet content didn't take into account security. Fixed [sithmel]
 
 0.9.5 (2012-11-21)
 ------------------

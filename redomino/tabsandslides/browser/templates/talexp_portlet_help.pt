@@ -18,7 +18,7 @@
 <dd>python: object.getRelatedItems()</dd>
 
 <dt i18n:translate="">Related backreference</dt>
-<dd>python: [ b.getSourceObject() for b in portal.reference_catalog.getBackReferences(object, relationship="relatesTo")]</dd>
+<dd>python: object.getBRefs(relationship="relatesTo")</dd>
 
 </dl>
 </div>
