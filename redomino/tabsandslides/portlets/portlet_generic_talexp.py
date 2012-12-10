@@ -29,6 +29,9 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 from plone.app.layout.navigation.interfaces import INavigationRoot 
 from Acquisition import aq_inner, aq_parent
+from AccessControl import getSecurityManager
+from Products.CMFCore.permissions import View
+
 from plone.app.layout.navigation.defaultpage import isDefaultPage
 
 from Products.CMFCore.Expression import Expression, getExprContext
@@ -189,9 +192,9 @@ class Renderer(base.Renderer):
                 results = [brain.getObject() for brain in expresult]
             else:
                 results = expresult # case 2: talexp returns objects
+            sm = getSecurityManager()
+            results = [res for res in results if res.UID() != context.UID() and sm.checkPermission(View, res)]
 
-            results = [res for res in results if res.UID() != context.UID()]
-                
         return results
 
     @memoize
