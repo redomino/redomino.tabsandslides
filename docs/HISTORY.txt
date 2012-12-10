@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.9.7 (unreleased)
+0.9.7 (2012-12-10)
 ------------------
 
 - portlet tal: now show only element that a user can view [sithmel]
