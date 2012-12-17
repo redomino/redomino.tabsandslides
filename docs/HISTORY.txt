@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.9.8 (unreleased)
+0.9.8 (2012-12-17)
 ------------------
 
 - view templates fixes. Now they use the content-core slot instead of main slot
