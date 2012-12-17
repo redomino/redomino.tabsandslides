@@ -6,14 +6,12 @@
 
 
 <body>
-    <div metal:fill-slot="main">
-        <tal:main-macro metal:define-macro="main">
-            <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
-            <div class="documentDescription" tal:content="context/Description"></div>
+    <div metal:fill-slot="content-core">
+        <tal:main-macro metal:define-macro="content-core">
 
-                <div id="content-core" tal:define="objects view/getObjects">
                 <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>
                 <div class="visualClear"><!-- --></div>
+                <tal:block define="objects view/getObjects">
                     <!-- tab "panes" -->
                     <div class="slideshow_panes">
 	                    <div tal:repeat="obj objects" tal:content="structure obj/@@slideshow_pane">pane 1 content</div>
@@ -23,7 +21,7 @@
                     <div class="slideshow_tabs">
                         <tal:block repeat="obj objects" tal:content="structure obj/@@slideshow_tab">Tab1</tal:block>
                     </div>
-                </div>
+                </tal:block>
                 <div class="visualClear"><!-- --></div>
 <!--                <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>-->
 

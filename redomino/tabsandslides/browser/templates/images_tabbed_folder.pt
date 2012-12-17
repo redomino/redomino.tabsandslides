@@ -4,13 +4,11 @@
       i18n:domain="redomino.tabsandslides">
 
 <body>
-    <div metal:fill-slot="main">
-        <tal:main-macro metal:define-macro="main">
-            <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
-            <div class="documentDescription" tal:content="context/Description"></div>
+    <div metal:fill-slot="content-core">
+        <tal:main-macro metal:define-macro="content-core">
             <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>
 
-            <div id="content-core" tal:define="objects view/getObjects">
+            <tal:block define="objects view/getObjects">
                 <!-- the tabs -->
                 <ul class="imagetabs-tabs jcarousel-skin-plone" tal:condition="objects">
                     <li tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_tab">tab 1 content</li>
@@ -21,7 +19,7 @@
                 <div class="imagetabs-panes" tal:condition="objects">
                     <div tal:repeat="obj objects" tal:content="structure obj/@@images_tabbed_adapter_pane">pane 1 content</div>
                 </div>
-            </div>
+            </tal:block>
 
         </tal:main-macro>
     </div>

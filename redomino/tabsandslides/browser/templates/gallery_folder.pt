@@ -4,16 +4,13 @@
       i18n:domain="redomino.tabsandslides">
 
 <body>
-    <div metal:fill-slot="main">
-        <tal:main-macro metal:define-macro="main">
-            <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
-            <div class="documentDescription" tal:content="context/Description"></div>
-            <div id="content-core">
-                <!-- the gallery -->
-                <ul class="imagegallery jcarousel-skin-plone" tal:define="objs view/getObjects" tal:condition="objs">
-                    <li tal:repeat="obj objs" tal:content="structure obj/@@gallery_adapter">gallery 1 content</li>
-                </ul>
-            </div>
+    <div metal:fill-slot="content-core">
+        <tal:main-macro metal:define-macro="content-core">
+
+            <!-- the gallery -->
+            <ul class="imagegallery jcarousel-skin-plone" tal:define="objs view/getObjects" tal:condition="objs">
+                <li tal:repeat="obj objs" tal:content="structure obj/@@gallery_adapter">gallery 1 content</li>
+            </ul>
             <div class="visualClear"></div>
             <div id="parent-fieldname-text" tal:content="structure context/getText | nothing"></div>
 
