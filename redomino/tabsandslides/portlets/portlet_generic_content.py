@@ -285,6 +285,9 @@ class Renderer(base.Renderer):
     def object_url(self):
         return '%s/%s' % (self.get_context().absolute_url(),self.data.content_id)
 
+    def header_url(self):
+        return ''
+
 class AddForm(base.AddForm):
     """Portlet add form.
 

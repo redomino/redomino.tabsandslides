@@ -35,11 +35,11 @@
 <dl tal:condition="not:view/data/omit_border"
     tal:attributes="class string:portlet portletImageTab ${view/css_class}"
     i18n:domain="plone"
-    tal:define="object_url view/object_url">
+    tal:define="header_url view/header_url">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <a tal:attributes="href object_url">
+        <a tal:omit-tag="header_url" tal:attributes="href header_url">
             <span tal:content="view/data/header" />
         </a>
         <span class="portletTopRight"></span>

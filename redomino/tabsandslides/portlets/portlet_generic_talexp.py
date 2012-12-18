@@ -231,6 +231,8 @@ class Renderer(base.Renderer):
 
         return context
 
+    def header_url(self):
+        return ''
 
 class AddForm(base.AddForm):
     """Portlet add form.

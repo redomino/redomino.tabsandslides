@@ -253,6 +253,8 @@ class Renderer(base.Renderer):
     def getObjects(self):
         return [b.getObject() for b in self.results()]
 
+    def header_url(self):
+        return self.object_url()
 
 
 class AddForm(base.AddForm):
