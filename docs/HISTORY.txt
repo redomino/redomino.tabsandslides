@@ -4,7 +4,8 @@ Changelog
 0.9.10 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- added a more precise infinite recursion prevention. It allows, for example,
+  to show customized views for topic or folder inside a tab [sithmel]
 
 
 0.9.9 (2012-12-18)

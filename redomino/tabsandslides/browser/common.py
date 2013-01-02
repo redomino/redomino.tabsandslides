@@ -32,6 +32,8 @@ except ImportError:
         def providedBy(obj):
             return False
 
+recursive_views = ['accordion_view', 'tabbed_view', 'slideshow_view']
+
 class SingleView(BrowserView):
     """utility view for non folderish content (used in content portlet)"""
 
@@ -69,11 +71,12 @@ class BaseView(BrowserView):
 class OriginalView(BrowserView):
     def __call__(self):
         layout = self.context.getLayout()
-        view = self.context.restrictedTraverse(layout)
-            
+
         #danger of infinite recursion
-        if IATTopic.providedBy(self.context) or ICollection.providedBy(self.context) or IFolderish.providedBy(self.context):
+        if layout in recursive_views and (IATTopic.providedBy(self.context) or ICollection.providedBy(self.context)):
             view = self.context.restrictedTraverse('folder_listing')
+        else:
+            view = self.context.restrictedTraverse(layout)
 
         self.request['ajax_load'] = "1"
 
