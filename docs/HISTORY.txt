@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.9.10 (unreleased)
+0.9.10 (2013-01-02)
 -------------------
 
 - added a more precise infinite recursion prevention. It allows, for example,
