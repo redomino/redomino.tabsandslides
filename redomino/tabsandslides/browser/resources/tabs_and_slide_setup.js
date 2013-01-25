@@ -1,3 +1,20 @@
+/*
+tabshistory
+*/
+
+jQuery.fn.tabshistory = function (){
+    var hash = window.location.toString(),
+        history = hash.match(/#content=(.*)/),
+        urlcontent = history && history.length > 1 && history[1] || '';
+    
+    this.find('a[href=' + decodeURI(urlcontent) + ']').click();
+
+    this.find('a').click(function (){
+        window.location.hash = '#content=' + encodeURI(jQuery(this).attr('href'));
+    });
+    return this;
+};
+
 
 /*
 *
@@ -10,7 +27,7 @@ jQuery.fn.init_slideshow = function (){
         config = tabsandslides.slideshow.config,
         slideshow_config = tabsandslides.slideshow.slideshow_config
 
-    jQuery(".slideshow_tabs",context).tabs(".slideshow_panes > div",config).slideshow(slideshow_config);
+    jQuery(".slideshow_tabs",context).tabs(".slideshow_panes > div",config).tabshistory().slideshow(slideshow_config);
     jQuery(".slideshow_tabs",context).each(function (){
         if (jQuery(this).data('slideshow')){
             jQuery(this).data('slideshow').play();
@@ -31,7 +48,7 @@ jQuery.fn.init_tabs = function (){
     var context = this,
         config = tabsandslides.tabs.config;
 
-    jQuery(".tabs",context).tabs("> .panes > div",config);
+    jQuery(".tabs",context).tabs("> .panes > div",config).tabshistory();
     return context;
 
 };
@@ -48,7 +65,7 @@ jQuery.fn.init_image_tabs = function (){
         config_boxscrollable = tabsandslides.image_tabs.config_boxscrollable;
 
 
-    jQuery(".imagetabs-tabs",context).tabs("> .imagetabs-panes > div",config);
+    jQuery(".imagetabs-tabs",context).tabs("> .imagetabs-panes > div",config).tabshistory();
     jQuery('.imagetabs-tabs',context).jcarousel(config_boxscrollable);
 
     jQuery('.imagetabs-panes .image > a')
@@ -87,7 +104,7 @@ jQuery.fn.init_slideshowpreview = function (){
         config = tabsandslides.slideshowpreview.config,
         slideshow_config = tabsandslides.slideshowpreview.slideshow_config;
 
-    jQuery(".slideshow_preview_tabs",context).tabs(".slideshow_preview_panes > div",config).slideshow(slideshow_config);
+    jQuery(".slideshow_preview_tabs",context).tabs(".slideshow_preview_panes > div",config).tabshistory().slideshow(slideshow_config);
     jQuery(".slideshow_preview_tabs",context).each(function (){
         jQuery(this).data('slideshow').play();
     });
