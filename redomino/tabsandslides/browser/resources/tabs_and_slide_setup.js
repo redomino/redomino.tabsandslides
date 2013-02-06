@@ -7,10 +7,10 @@ jQuery.fn.tabshistory = function (){
         history = hash.match(/#content=(.*)/),
         urlcontent = history && history.length > 1 && history[1] || '';
     
-    this.find('a[href=' + decodeURI(urlcontent) + ']').click();
+    this.find('a[href$=' + urlcontent + ']').click();
 
     this.find('a').click(function (){
-        window.location.hash = '#content=' + encodeURI(jQuery(this).attr('href'));
+        window.location.hash = '#content=' + jQuery(this).attr('href');
     });
     return this;
 };
