@@ -39,7 +39,7 @@
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <a tal:omit-tag="header_url" tal:attributes="href header_url">
+        <a tal:omit-tag="not: header_url" tal:attributes="href header_url">
             <span tal:content="view/data/header" />
         </a>
         <span class="portletTopRight"></span>

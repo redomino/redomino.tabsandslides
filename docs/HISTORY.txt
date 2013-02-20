@@ -5,6 +5,7 @@ Changelog
 -------------------
 
 - added history navigation on tabs, slides, imagetabs [sithmel]
+- fixed header url [sithmel]
 
 
 0.9.10 (2013-01-02)
