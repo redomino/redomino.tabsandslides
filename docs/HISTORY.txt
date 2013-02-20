@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.9.11 (unreleased)
+0.9.11 (2013-02-20)
 -------------------
 
 - added history navigation on tabs, slides, imagetabs [sithmel]
