@@ -7,7 +7,9 @@ jQuery.fn.tabshistory = function (){
         history = hash.match(/#content=(.*)/),
         urlcontent = history && history.length > 1 && history[1] || '';
     
-    this.find('a[href$=' + urlcontent + ']').click();
+    if (urlcontent.length){
+        this.find('a[href$=' + urlcontent + ']').click();
+    }
 
     this.find('a').click(function (){
         window.location.hash = '#content=' + jQuery(this).attr('href');
