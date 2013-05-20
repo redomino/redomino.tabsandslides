@@ -5,7 +5,7 @@ Changelog
 -------------------
 
 - fix history navigation for IE8-7 [sithmel]
-
+- fix history navigation escaping URLs (for jQUery>1.4) [Yuri]
 
 0.9.11 (2013-02-20)
 -------------------
