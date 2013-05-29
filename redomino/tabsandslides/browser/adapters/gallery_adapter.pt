@@ -7,7 +7,7 @@
 
     <tal:image condition="python: is_image">
         <a tal:attributes="href string:${context/absolute_url}/view">
-            <img tal:define="img context/@@images" tal:replace="structure python: img.tag(scale='thumb')" />
+            <img tal:define="img context/@@images" tal:replace="structure python: img.tag(scale='thumb', alt=context.Title(), title=context.Title())" />
         </a>
     </tal:image>
     <tal:image condition="python: is_news">
